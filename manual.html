@@ -1,0 +1,142 @@
+<!doctype html>
+<!-- Materia Archipelago user manual. (c) 2026 AEML, NTUST · CT5812701 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="AEML, NTUST">
+<title>霧之群島 說明書 · Materia Archipelago Manual · AEML, NTUST</title>
+<link rel="icon" href="assets/stamp-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#2b3a55;--soft:#5b6e8c;--washi:#f4eedf;--card:#fbf8f0;--shu:#c8483b;--gold:#c9a961}
+*{box-sizing:border-box}
+body{margin:0;background:var(--washi);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.7}
+body[data-lang="zh"] .en{display:none}
+body[data-lang="en"] .zh{display:none}
+body[data-lang="both"] .en{display:block;color:var(--soft);font-size:.94em}
+body[data-lang="both"] span.en{display:inline}
+body[data-lang="both"] span.zh + span.en::before{content:" / ";opacity:.5}
+header{position:sticky;top:0;z-index:2;background:rgba(244,238,223,.94);backdrop-filter:blur(4px);border-bottom:1px solid rgba(43,58,85,.12);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+header b{font-family:"Noto Serif TC",serif;font-weight:900;font-size:18px;letter-spacing:.06em}
+.lang{display:inline-flex;border:1px solid rgba(43,58,85,.25);border-radius:999px;overflow:hidden;background:#fff}
+.lang button{border:0;background:none;padding:.35em .8em;font:inherit;font-size:12.5px;cursor:pointer;color:var(--ink)}
+.lang button.on{background:var(--ink);color:#fff}
+main{max-width:860px;margin:0 auto;padding:20px 18px 60px}
+h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(28px,5vw,42px);letter-spacing:.1em;margin:.4em 0 .1em}
+h2{font-family:"Noto Serif TC",serif;font-size:21px;margin:2em 0 .5em;padding-bottom:.25em;border-bottom:2px solid var(--gold)}
+.card{background:var(--card);border:1px solid rgba(43,58,85,.12);border-radius:12px;padding:14px 18px;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--card);border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid rgba(43,58,85,.1);vertical-align:top}
+th{background:rgba(43,58,85,.06);font-weight:700;white-space:nowrap}
+.isles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.isles figure{margin:0;background:var(--card);border-radius:12px;padding:10px;border:1px solid rgba(43,58,85,.1);text-align:center}
+.isles img{width:100%;height:150px;object-fit:contain}
+.isles figcaption{font-size:13.5px}
+.isles figure.mist img{filter:grayscale(.7) opacity(.6)}
+kbd{font-family:inherit;font-size:.85em;background:#fff;border:1px solid rgba(43,58,85,.3);border-bottom-width:2px;border-radius:5px;padding:0 .4em}
+.btn{display:inline-block;background:var(--shu);color:#fff;text-decoration:none;border-radius:999px;padding:.5em 1.2em;font-weight:700}
+.btn .en{color:#fff !important}
+footer{text-align:center;font-size:12px;color:var(--soft);padding:20px}
+footer img{height:40px;display:block;margin:0 auto 6px}
+</style>
+</head>
+<body data-lang="both" data-owner="AEML, NTUST">
+<header>
+  <b><span class="zh">霧之群島 說明書</span><span class="en">Materia Archipelago Manual</span></b>
+  <span class="lang"><button data-l="zh">中文</button><button data-l="both">中文/English</button><button data-l="en">English</button></span>
+</header>
+<main>
+  <h1>霧之群島 <small style="font-size:.45em;letter-spacing:.2em">Materia Archipelago</small></h1>
+  <p class="zh">「材料物化性分析」CT5812701 的課程地圖。每座島是一個分析單元，點島就會搭上渡船「微光丸」出航，經過一段島嶼特寫與霧教授的介紹後，從介紹卡開新視窗進入該單元的遊戲。</p>
+  <p class="en">The course map for CT5812701 Physical and Chemical Analysis on Materials. Each island is one unit. Tap an island to sail there on the ferry Bikō-maru; after a short close-up with Prof. Kiri's introduction, the island card opens that unit's game in a new window.</p>
+  <p><a class="btn" href="./" target="_blank" rel="noopener"><span class="zh">開啟地圖</span><span class="en">Open the map</span> ↗</a></p>
+
+  <h2><span class="zh">1. 開始</span><span class="en">1. Getting started</span></h2>
+  <div class="card">
+    <ol>
+      <li><span class="zh">在初始畫面選擇語言：中文、中文/English 或 English。</span><span class="en">Pick a language on the title screen: Chinese, Chinese/English or English.</span></li>
+      <li><span class="zh">手機與平板建議先按「全螢幕」，並將裝置橫放。</span><span class="en">On phones and tablets, press Fullscreen first and hold the device in landscape.</span></li>
+      <li><span class="zh">按「乗船 Board」上船。第一次會播放約 20 秒的開場，可按右上角 Skip 跳過；之後再來會直接進入地圖。</span><span class="en">Press Board. The first visit plays a 20-second opening (Skip at the top right); later visits go straight to the map.</span></li>
+    </ol>
+  </div>
+
+  <h2><span class="zh">2. 操作</span><span class="en">2. Controls</span></h2>
+  <table>
+    <tr><th><span class="zh">動作</span><span class="en">Action</span></th><th><span class="zh">電腦</span><span class="en">Computer</span></th><th><span class="zh">手機／平板</span><span class="en">Phone / tablet</span></th></tr>
+    <tr><td><span class="zh">移動視角</span><span class="en">Look around</span></td><td><span class="zh">拖曳</span><span class="en">Drag</span></td><td><span class="zh">單指拖曳</span><span class="en">One-finger drag</span></td></tr>
+    <tr><td><span class="zh">縮放</span><span class="en">Zoom</span></td><td><span class="zh">滑鼠滾輪</span><span class="en">Mouse wheel</span></td><td><span class="zh">雙指縮放</span><span class="en">Pinch</span></td></tr>
+    <tr><td><span class="zh">出航到某座島</span><span class="en">Sail to an island</span></td><td><span class="zh">點島或島名標籤</span><span class="en">Click the island or its label</span></td><td><span class="zh">點島或島名標籤</span><span class="en">Tap the island or its label</span></td></tr>
+    <tr><td><span class="zh">跳過動畫</span><span class="en">Skip a cutscene</span></td><td><kbd>Space</kbd> <kbd>Enter</kbd> <kbd>Esc</kbd> · Skip</td><td>Skip</td></tr>
+    <tr><td><span class="zh">關閉面板／介紹卡</span><span class="en">Close a panel or card</span></td><td><kbd>Esc</kbd></td><td><span class="zh">點面板外側</span><span class="en">Tap outside the panel</span></td></tr>
+    <tr><td><span class="zh">今日の一言</span><span class="en">Word of the day</span></td><td colspan="2"><span class="zh">點右下角「霧教授」</span><span class="en">Press "Prof. Kiri" at the bottom right</span></td></tr>
+    <tr><td><span class="zh">小彩蛋</span><span class="en">Easter egg</span></td><td colspan="2"><span class="zh">點一下船首的小汞</span><span class="en">Tap Merc on the bow of the ferry</span></td></tr>
+  </table>
+
+  <h2><span class="zh">3. 群島</span><span class="en">3. The islands</span></h2>
+  <p class="zh">已開放的島點燈並以金色航路相連；霧中的島只會播放短暫預告，開放後霧教授會替你們驅霧。</p>
+  <p class="en">Open islands have lit lanterns and gold sea lanes. Islands in the mist only play a short teaser until Prof. Kiri clears the mist.</p>
+  <div class="isles">
+    <figure><img src="assets/isle-pa.webp" alt=""><figcaption><b><span class="zh">篩之島</span><span class="en">Sieve Isle</span></b><br>PA · 粒徑大作戰：篩網轟炸客</figcaption></figure>
+    <figure><img src="assets/isle-xrd.webp" alt=""><figcaption><b><span class="zh">晶之島</span><span class="en">Crystal Isle</span></b><br>XRD · 結晶密碼：布拉格偵探社</figcaption></figure>
+    <figure><img src="assets/isle-sem.webp" alt=""><figcaption><b><span class="zh">微光之島</span><span class="en">Glimmer Isle</span></b><br>SEM · Micro Bloom 微光花園</figcaption></figure>
+    <figure><img src="assets/isle-port.webp" alt=""><figcaption><b><span class="zh">星屑港</span><span class="en">Stardust Harbor</span></b><br><span class="zh">期中考</span><span class="en">Midterm</span> · 噗芙的星之碎片大冒險</figcaption></figure>
+    <figure class="mist"><img src="assets/isle-mip.webp" alt=""><figcaption><b><span class="zh">汞之島</span><span class="en">Mercury Isle</span></b><br>MIP · <span class="zh">霧中</span><span class="en">in the mist</span></figcaption></figure>
+    <figure class="mist"><img src="assets/isle-ga.webp" alt=""><figcaption><b><span class="zh">雲苔之庭</span><span class="en">Cloud-Moss Garden</span></b><br>GA · <span class="zh">霧中</span><span class="en">in the mist</span></figcaption></figure>
+    <figure class="mist"><img src="assets/isle-ta.webp" alt=""><figcaption><b><span class="zh">熱之火山</span><span class="en">Ember Volcano</span></b><br>TA · <span class="zh">霧中</span><span class="en">in the mist</span></figcaption></figure>
+  </div>
+
+  <h2><span class="zh">4. 出航與介紹卡</span><span class="en">4. Sailing and the island card</span></h2>
+  <div class="card">
+    <p class="zh">點島後，微光丸沿航路駛向該島（約 2 秒），接著是 10–12 秒的島嶼特寫：畫面上方是分鏡字幕，下方是霧教授的旁白與同學的提問。之後會落下一面暖簾，打開介紹卡：</p>
+    <p class="en">After you tap an island the ferry sails there (about 2 s), then a 10–12 s close-up plays: shot captions at the top, Prof. Kiri's narration and a student's question at the bottom. A noren curtain then drops and opens the island card:</p>
+    <ul>
+      <li><b><span class="zh">出航</span><span class="en">Set sail</span></b>：<span class="zh">以新視窗開啟該單元的遊戲。地圖會留在原本的分頁，玩完切回來即可。</span><span class="en">opens the unit's game in a new window. The map stays in its own tab, so you can switch back afterwards.</span></li>
+      <li><b><span class="zh">我已完成，蓋章</span><span class="en">I've cleared it · stamp</span></b>：<span class="zh">在御朱印帳蓋上這座島的印。</span><span class="en">stamps this island in your stamp book.</span></li>
+      <li><b><span class="zh">神社抽籤</span><span class="en">Draw omikuji</span></b>（<span class="zh">星屑港限定</span><span class="en">harbor only</span>）：<span class="zh">每天抽一支籤，籤上是一題 PA／XRD／SEM 複習題，答對得「大吉」，答錯得「末吉」並提示該回哪座島複習。</span><span class="en">draw one fortune a day: a PA, XRD or SEM review question. Answer right for "Great blessing"; a wrong answer earns "Future blessing" and tells you which island to revisit.</span></li>
+      <li><b><span class="zh">回地圖</span><span class="en">Back to map</span></b>。</li>
+    </ul>
+  </div>
+
+  <h2><span class="zh">5. 設定</span><span class="en">5. Settings</span></h2>
+  <table>
+    <tr><th><span class="zh">項目</span><span class="en">Item</span></th><th><span class="zh">選項（預設）</span><span class="en">Options (default)</span></th><th><span class="zh">說明</span><span class="en">Notes</span></th></tr>
+    <tr><td><span class="zh">語言</span><span class="en">Language</span></td><td>中文 · <b>中文/English</b> · English</td><td></td></tr>
+    <tr><td><span class="zh">背景音樂</span><span class="en">Music</span></td><td><b><span class="zh">關閉</span><span class="en">Off</span></b> · <span class="zh">開啟</span><span class="en">On</span></td><td><span class="zh">由 8 個樂器音軌（琴、鋼琴、尺八、三味線、貝斯、弦樂鋪底、鐘琴、八音盒）加 1 個鼓組音軌即時合成，立體聲雙聲道；開場、地圖、各島與霧中各有不同編曲，隨場景交叉淡入。頂端的音符按鈕可快速開關。</span><span class="en">Synthesised live from 8 instrument tracks (koto, piano, shakuhachi, shamisen, bass, string pad, celesta, music box) plus 1 drum-kit track, in stereo. The opening, the map, each island and the mist each have their own arrangement, cross-faded as the scene changes. The note button at the top toggles it quickly.</span></td></tr>
+    <tr><td><span class="zh">音效</span><span class="en">Sound FX</span></td><td><span class="zh">關閉</span><span class="en">Off</span> · <b><span class="zh">開啟</span><span class="en">On</span></b></td><td><span class="zh">風鈴、拍子木、暖簾、蓋章、紙拉門等和風音效。</span><span class="en">Wind chimes, wooden clappers, the noren, the stamp, sliding doors and more.</span></td></tr>
+    <tr><td><span class="zh">音量</span><span class="en">Volume</span></td><td><span class="zh">主音量 · 音樂 · 音效</span><span class="en">Master · Music · FX</span></td><td></td></tr>
+    <tr><td><span class="zh">全螢幕</span><span class="en">Fullscreen</span></td><td><b><span class="zh">關閉</span><span class="en">Off</span></b> · <span class="zh">開啟</span><span class="en">On</span></td><td><span class="zh">初始畫面也有全螢幕按鈕。iPhone 不支援網頁內全螢幕，會改開新分頁。</span><span class="en">There is also a Fullscreen button on the title screen. iPhone does not support in-page fullscreen, so the map opens in a new tab instead.</span></td></tr>
+    <tr><td><span class="zh">繪圖</span><span class="en">Renderer</span></td><td><b>WebGPU <span class="zh">硬體</span><span class="en">(HW)</span></b> · <span class="zh">軟體</span><span class="en">Software</span></td><td><span class="zh">WebGPU 以 GPU 著色器即時繪製青海波海面；裝置不支援時會自動改用軟體繪圖，設定欄會顯示目前狀態。</span><span class="en">WebGPU draws the seigaiha sea with a GPU shader. Devices without WebGPU fall back to software drawing automatically; the settings row shows which one is active.</span></td></tr>
+    <tr><td><span class="zh">畫質</span><span class="en">Quality</span></td><td><b><span class="zh">流暢</span><span class="en">Smooth</span> 720p</b> · <span class="zh">標準</span><span class="en">Standard</span> 1080p · <span class="zh">高</span><span class="en">High</span> 2K (2560)</td><td><span class="zh">畫質越高越清晰，也越耗電。</span><span class="en">Higher quality is sharper and uses more power.</span></td></tr>
+    <tr><td><span class="zh">劇情提示</span><span class="en">Story hints</span></td><td><span class="zh">關閉</span><span class="en">Off</span> · <b><span class="zh">開啟</span><span class="en">On</span></b></td><td><span class="zh">關閉後不顯示霧教授的旁白與提示。</span><span class="en">Turn off to hide Prof. Kiri's narration and hints.</span></td></tr>
+  </table>
+  <p class="zh">設定頁也可「重播開場」與「清除御朱印」。所有設定與蓋章記錄都存在你自己的瀏覽器裡。</p>
+  <p class="en">Settings also offers "Replay opening" and "Clear stamps". Settings and stamps are saved in your own browser.</p>
+
+  <h2><span class="zh">6. 疑難排解</span><span class="en">6. Troubleshooting</span></h2>
+  <div class="card">
+    <ul>
+      <li><span class="zh">沒有聲音：背景音樂預設為關閉，請在設定或頂端音符按鈕開啟；手機請確認未開靜音。</span><span class="en">No sound: music is off by default; turn it on in Settings or with the note button. On phones, check the silent switch.</span></li>
+      <li><span class="zh">畫面卡頓：把畫質改為「流暢」，或把繪圖改為「軟體」試試。</span><span class="en">Choppy: set Quality to Smooth, or try the Software renderer.</span></li>
+      <li><span class="zh">「出航」沒反應：請允許瀏覽器開啟彈出視窗。</span><span class="en">Set sail does nothing: allow pop-ups for this site.</span></li>
+      <li><span class="zh">看到「已遭修改」的畫面：此地圖只能從 AEML 發佈的原始網址使用。</span><span class="en">A "modified" lock screen means the map is not running from the original AEML release.</span></li>
+    </ul>
+  </div>
+</main>
+<footer><img src="assets/aeml-logo.png" alt="AEML, NTUST"><span id="aeml-credit">© 2026 AEML, NTUST · CT5812701 Physical and Chemical Analysis on Materials</span></footer>
+<script>
+/* (c) 2026 AEML, NTUST */
+(function () {
+  var k = "aeml-archi-settings", lang = "both";
+  try { var s = JSON.parse(localStorage.getItem(k) || "{}"); if (s.lang) lang = s.lang; } catch (e) {}
+  function set(l) {
+    document.body.setAttribute("data-lang", l);
+    Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) { b.classList.toggle("on", b.getAttribute("data-l") === l); });
+    try { var s = JSON.parse(localStorage.getItem(k) || "{}"); s.lang = l; localStorage.setItem(k, JSON.stringify(s)); } catch (e) {}
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".lang button"), function (b) { b.addEventListener("click", function () { set(b.getAttribute("data-l")); }); });
+  set(lang);
+})();
+</script>
+</body>
+</html>

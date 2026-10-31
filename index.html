@@ -1,0 +1,2015 @@
+<!doctype html>
+<!--
+  Materia Archipelago 霧之群島 · PCAM Course Map
+  (c) 2026 AEML, NTUST · Advanced Engineering Materials Laboratory,
+  Department of Civil and Construction Engineering,
+  National Taiwan University of Science and Technology · CT5812701
+  Original work by AEML, NTUST. Unauthorized copying or modification is prohibited.
+-->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="author" content="AEML, NTUST">
+<meta name="copyright" content="(c) 2026 AEML, NTUST · CT5812701">
+<meta name="description" content="霧之群島 Materia Archipelago — CT5812701 材料物化性分析 Physical and Chemical Analysis on Materials 課程地圖 · AEML, NTUST">
+<meta name="theme-color" content="#f4eedf">
+<title>霧之群島 Materia Archipelago · PCAM · AEML, NTUST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/stamp-icon.png">
+<script id="aeml-guard">
+/* AEML, NTUST integrity guard. (c) 2026 AEML, NTUST */
+(function(){
+  var SIG = "4c25b82b";
+  function fnv(s){ var h = 0x811c9dc5; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ("0000000" + h.toString(16)).slice(-8); }
+  function check(){
+    var core = document.getElementById("aeml-core");
+    var txt = core ? core.textContent.replace(/\r\n/g, "\n") : "";
+    var sigOk = fnv(txt) === SIG && txt.indexOf("AEML, NTUST") >= 0;
+    var host = location.hostname;
+    var hostOk = /(^|\.)chuntaoc\.github\.io$/i.test(host) || host === "localhost" || host === "127.0.0.1";
+    var frameOk = true;
+    if (window.top !== window.self) {
+      var ref = "";
+      try { if (location.ancestorOrigins && location.ancestorOrigins.length) { ref = location.ancestorOrigins[location.ancestorOrigins.length - 1]; } else { ref = document.referrer; } } catch (e) { ref = document.referrer; }
+      if (ref) { frameOk = /^https?:\/\/([a-z0-9-]+\.)*(concrete\.tw|blogspot\.com|blogger\.com|googleusercontent\.com|chuntaoc\.github\.io|localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(ref); }
+    }
+    var meta = document.querySelector('meta[name="author"]');
+    var credit = document.getElementById("aeml-credit");
+    var markOk = !!(meta && meta.content.indexOf("AEML, NTUST") >= 0 && credit && credit.textContent.indexOf("AEML, NTUST") >= 0);
+    window.__AEML = { ok: sigOk && hostOk && frameOk && markOk, sig: SIG, owner: "AEML, NTUST" };
+    if (!window.__AEML.ok) { document.documentElement.className += " aeml-locked"; }
+  }
+  document.addEventListener("DOMContentLoaded", check);
+})();
+</script>
+<style>
+/* Materia Archipelago - (c) 2026 AEML, NTUST */
+:root{
+  --ink:#2b3a55; --ink-soft:#5b6e8c; --washi:#f4eedf; --washi-2:#ebe3cf; --mist:#e8ebef;
+  --shu:#c8483b; --gold:#c9a961; --sakura:#f2b8c6; --moss:#7a9a5a; --sea:#9fb3c8;
+  --card:#fbf8f0; --shadow:0 10px 30px rgba(43,58,85,.18);
+  --serif:"Noto Serif TC","Noto Serif JP",serif; --sans:"Noto Sans TC",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--washi);color:var(--ink);font-family:var(--sans);overflow:hidden;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--ink-soft)}
+.hidden{display:none !important}
+
+/* language switching: Chinese lives in HTML, script only flips this attribute */
+body[data-lang="zh"] .en{display:none !important}
+body[data-lang="en"] .zh{display:none !important}
+body[data-lang="both"] .zh + .en::before{content:" / ";opacity:.45}
+body[data-lang="both"] .stack .zh,body[data-lang="both"] .stack .en{display:block}
+body[data-lang="both"] .stack .zh + .en::before{content:none}
+body[data-lang="both"] .stack .en{font-size:.88em;opacity:.8;margin-top:.15em}
+
+#app{position:fixed;inset:0;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+#gpu,#fx{position:absolute;inset:0;width:100%;height:100%;display:block}
+#fx{cursor:grab}
+#fx.dragging{cursor:grabbing}
+
+/* labels */
+#labels{position:absolute;inset:0;pointer-events:none}
+.isle-label{position:absolute;left:0;top:0;transform:translate(-50%,0);pointer-events:auto;background:rgba(251,248,240,.86);border:1px solid rgba(43,58,85,.22);border-radius:10px;padding:.35em .8em .4em;text-align:center;box-shadow:0 3px 12px rgba(43,58,85,.12);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);transition:background .2s,box-shadow .2s,opacity .4s;white-space:nowrap;line-height:1.25}
+.isle-label b{display:block;font-family:var(--serif);font-weight:700;font-size:15px;letter-spacing:.04em}
+.isle-label small{display:block;font-size:11px;color:var(--ink-soft);margin-top:1px}
+.isle-label.open b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);margin-right:.45em;vertical-align:.12em}
+.isle-label.gate{border-color:var(--shu)}
+.isle-label.gate b::before{background:var(--shu);box-shadow:0 0 8px var(--shu)}
+.isle-label.mist{background:rgba(232,235,239,.72);border-style:dashed;color:var(--ink-soft)}
+.isle-label.hot,.isle-label:hover,.isle-label:focus-visible{background:#fff;box-shadow:0 6px 18px rgba(43,58,85,.25);outline:none}
+.isle-label.stamped::after{content:"";position:absolute;right:-10px;top:-10px;width:22px;height:22px;border-radius:50%;background:var(--shu);box-shadow:0 0 0 2px #fff}
+.ui-hidden #labels,.ui-hidden #hud,.ui-hidden #btn-kiri{opacity:0;pointer-events:none}
+#labels,#hud,#btn-kiri{transition:opacity .5s}
+
+/* hud */
+#hud{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;pointer-events:none}
+.brand{pointer-events:auto;font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:.06em;color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.7)}
+.brand em{display:block;font-style:normal;font-family:var(--sans);font-weight:500;font-size:11px;letter-spacing:.08em;color:var(--ink-soft)}
+.hud-btns{display:flex;gap:6px;pointer-events:auto;flex-wrap:wrap;justify-content:flex-end}
+.hud-btn{display:inline-flex;align-items:center;gap:.4em;background:rgba(251,248,240,.9);border:1px solid rgba(43,58,85,.2);border-radius:999px;padding:.38em .85em;font-size:13px;text-decoration:none;color:var(--ink);box-shadow:0 2px 8px rgba(43,58,85,.1)}
+.hud-btn.icon{padding:.38em .55em}
+.hud-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hud-btn.on{background:var(--ink);color:#fff}
+.hud-btn:hover{background:#fff}
+.hud-btn.on:hover{background:var(--ink-soft)}
+
+#btn-kiri{position:absolute;right:14px;bottom:calc(36px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:.5em;background:rgba(251,248,240,.92);border:1px solid rgba(43,58,85,.2);border-radius:999px;padding:4px 14px 4px 4px;font-size:13px;box-shadow:var(--shadow)}
+#btn-kiri img{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:50% 20%;background:var(--mist)}
+
+#aeml-logo{position:absolute;left:12px;bottom:calc(26px + env(safe-area-inset-bottom));height:40px;width:auto;border-radius:6px;background:#fff;padding:3px 6px;box-shadow:0 2px 8px rgba(43,58,85,.15);pointer-events:none}
+#aeml-credit{position:absolute;left:0;right:0;bottom:calc(4px + env(safe-area-inset-bottom));text-align:center;font-size:11px;color:var(--ink-soft);letter-spacing:.04em;pointer-events:none;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+
+/* subtitles & dialog */
+#shot{position:absolute;left:50%;top:calc(70px + env(safe-area-inset-top));transform:translateX(-50%);max-width:min(860px,92vw);padding:.55em 1.2em;border-radius:8px;background:rgba(43,58,85,.72);color:#fff;font-size:15px;line-height:1.55;text-align:center;letter-spacing:.02em;animation:fadein .5s}
+#shot.stack .en{opacity:.85}
+#dialog{position:absolute;left:50%;bottom:calc(78px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(820px,94vw);display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border-radius:14px;background:rgba(251,248,240,.96);border:1px solid rgba(43,58,85,.18);box-shadow:var(--shadow);animation:rise .35s ease-out}
+#dialog .face{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 20%;flex:none;background:var(--mist);border:2px solid #fff;box-shadow:0 2px 8px rgba(43,58,85,.2)}
+#dialog .who{font-family:var(--serif);font-weight:700;font-size:14px;color:var(--shu);margin-bottom:.25em}
+#dialog .said{font-size:16px;line-height:1.6}
+#dialog.student .face{display:none}
+#dialog.student .who{color:var(--ink-soft)}
+#btn-skip{position:absolute;right:14px;top:calc(64px + env(safe-area-inset-top));background:rgba(43,58,85,.7);color:#fff;border:0;border-radius:999px;padding:.4em 1em;font-size:13px}
+
+/* noren card */
+#card{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;background:rgba(43,58,85,.28);padding-top:calc(16px + env(safe-area-inset-top));overflow:auto}
+.noren{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(560px,92vw);height:0;z-index:2;pointer-events:none}
+.noren-rod{height:10px;background:linear-gradient(#8a6a3a,#5c4424);border-radius:5px;margin:0 -12px}
+.noren-cloth{position:relative;height:150px;background:linear-gradient(180deg,var(--noren,#2b3a55),color-mix(in srgb,var(--noren,#2b3a55) 80%,#000));transform-origin:top;animation:noren 1.6s cubic-bezier(.3,1.4,.5,1) both;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+.noren-cloth i{position:absolute;top:22px;bottom:0;width:2px;background:var(--washi)}
+.noren-cloth i:nth-child(1){left:33.3%} .noren-cloth i:nth-child(2){left:66.6%}
+.noren-title{font-family:var(--serif);font-weight:900;color:var(--washi);font-size:40px;letter-spacing:.3em;text-shadow:0 2px 0 rgba(0,0,0,.2);text-align:center;line-height:1.1;padding:0 .3em}
+.noren-title .en{display:block;font-family:var(--sans);font-size:13px;letter-spacing:.15em;font-weight:500;margin-top:.4em;opacity:.9}
+body[data-lang="both"] .noren-title .zh + .en::before{content:none}
+#card.leaving .noren-cloth{animation:norenUp .5s ease-in both}
+.card-sheet{position:relative;z-index:3;margin-top:150px;width:min(560px,92vw);background:var(--card);border-radius:0 0 14px 14px;box-shadow:var(--shadow);padding:22px 24px 18px;animation:sheet .9s .5s both;margin-bottom:60px}
+.card-content h2{display:none}
+.card-content .unit{margin:0 0 .4em;font-size:13px;color:var(--ink-soft);letter-spacing:.04em}
+.card-content .hook{font-family:var(--serif);font-weight:700;font-size:21px;line-height:1.45;margin:.2em 0 .6em;color:var(--ink)}
+body[data-lang="both"] .card-content .hook .en{display:block}
+body[data-lang="both"] .card-content .hook .zh + .en::before,body[data-lang="both"] .card-content .hook .en + .zh::before{content:none}
+body[data-lang="both"] .card-content .hook .zh{display:block;font-size:.82em;color:var(--ink-soft);margin-top:.2em}
+.card-content .game{font-size:14px;margin:.4em 0;padding:.45em .7em;border-left:3px solid var(--gold);background:rgba(201,169,97,.1)}
+.card-content ul{margin:.6em 0;padding-left:1.25em;font-size:14px;line-height:1.6}
+body[data-lang="both"] .card-content li .zh{display:block;color:var(--ink-soft);font-size:.92em}
+body[data-lang="both"] .card-content li .en + .zh::before{content:none}
+.card-content .meta{font-size:12.5px;color:var(--ink-soft);margin:.6em 0 0}
+.card-content .mistnote{font-size:15px;padding:.6em .8em;background:var(--mist);border-radius:8px;border:1px dashed var(--ink-soft)}
+.card-content a.go{display:none}
+.card-stamp{position:absolute;z-index:5;right:16px;top:-46px;width:78px;height:78px;border-radius:50%;border:2px dashed rgba(200,72,59,.55);background:rgba(251,248,240,.9);color:var(--shu);display:flex;align-items:center;justify-content:center}
+.card-stamp svg{width:44px;height:44px;opacity:.28}
+.card-stamp.done{border:3px solid var(--shu);background:radial-gradient(circle,#fff 0,#fbeee8 70%)}
+.card-stamp.done svg{opacity:1}
+.card-stamp.pop{animation:stamp .5s cubic-bezier(.2,1.6,.4,1)}
+.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.card-actions button,.panel-actions button,.ts-btns button{border:1px solid rgba(43,58,85,.25);background:#fff;border-radius:999px;padding:.55em 1.1em;font-size:14px}
+button.primary{background:var(--shu) !important;color:#fff;border-color:var(--shu) !important;font-weight:700}
+button.primary:hover{filter:brightness(1.07)}
+.card-actions button:hover,.panel-actions button:hover{background:var(--washi)}
+
+/* title screen */
+#title-screen{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:20}
+.ts-paper{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#fbf7ec 0%,var(--washi) 55%,var(--washi-2) 100%)}
+.ts-paper::after{content:"";position:absolute;inset:0;opacity:.35;background-image:repeating-radial-gradient(circle at 0 100%,transparent 0 10px,rgba(91,110,140,.18) 10px 11px,transparent 11px 20px);background-size:44px 22px;mask-image:linear-gradient(to top,#000 0,transparent 40%);-webkit-mask-image:linear-gradient(to top,#000 0,transparent 40%)}
+.ts-art{position:absolute;right:-4vw;bottom:-6vh;width:min(46vw,620px);opacity:.92;filter:drop-shadow(0 20px 30px rgba(43,58,85,.15));animation:float 7s ease-in-out infinite}
+.ts-inner{position:relative;text-align:center;padding:24px;max-width:780px}
+.ts-course{font-size:13px;letter-spacing:.12em;color:var(--ink-soft);margin:0 0 10px}
+.ts-title{margin:0;font-family:var(--serif);color:var(--ink)}
+.ts-kanji{display:block;font-weight:900;font-size:clamp(54px,11vw,118px);letter-spacing:.18em;line-height:1.05;animation:brush 2.2s ease-out both}
+.ts-latin{display:block;font-weight:500;font-size:clamp(16px,2.6vw,26px);letter-spacing:.42em;margin-top:6px;color:var(--ink-soft);animation:fadein 1.4s .8s both}
+.ts-sub{margin:14px 0 26px;color:var(--ink-soft);font-size:15px;animation:fadein 1.4s 1.2s both}
+.ts-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadein 1s 1.6s both}
+.ts-btns .big{font-size:18px;padding:.7em 1.6em;display:inline-flex;align-items:center;gap:.4em;box-shadow:var(--shadow)}
+.ts-btns svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.ts-small{margin-top:18px;display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;font-size:13px;animation:fadein 1s 1.9s both}
+.ts-small>button,.ts-small>a{background:none;border:0;text-decoration:underline;text-underline-offset:3px;color:var(--ink-soft);padding:4px}
+.ts-lang{display:inline-flex;border:1px solid rgba(43,58,85,.25);border-radius:999px;overflow:hidden;background:#fff}
+.ts-lang button{border:0;background:none;padding:.35em .8em;font-size:12.5px}
+.ts-lang button.on,.seg button.on{background:var(--ink);color:#fff}
+.ts-loading{margin-top:16px;font-size:12px;color:var(--ink-soft)}
+#title-screen.leave{animation:fadeout .9s both;pointer-events:none}
+
+/* ink overlay in opening */
+#ink{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;z-index:8}
+.ink-kanji{font-family:var(--serif);font-weight:900;font-size:clamp(60px,12vw,130px);letter-spacing:.2em;color:var(--ink);animation:brush 2.4s ease-out both;text-shadow:0 0 30px rgba(255,255,255,.8)}
+.ink-latin{margin-top:8px;font-size:14px;letter-spacing:.3em;color:var(--ink-soft);animation:fadein 1.2s 1s both}
+#ink.out{animation:fadeout 1.2s both}
+
+/* panels */
+.panel{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:rgba(43,58,85,.35);padding:16px}
+.panel-box{width:min(640px,96vw);max-height:92vh;overflow:auto;background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:18px 22px;animation:rise .3s ease-out}
+.panel-box.washi{background:linear-gradient(var(--card),var(--washi))}
+.panel-box h3{margin:0 0 12px;font-family:var(--serif);font-size:20px;letter-spacing:.06em}
+.set-table{width:100%;border-collapse:collapse;font-size:14px}
+.set-table th{text-align:left;font-weight:500;padding:8px 10px 8px 0;white-space:nowrap;vertical-align:middle;width:1%}
+.set-table td{padding:6px 0}
+.set-table tr+tr{border-top:1px solid rgba(43,58,85,.08)}
+.seg button{border:1px solid rgba(43,58,85,.25);background:#fff;padding:.35em .75em;font-size:13px;margin:2px 0;border-radius:0}
+.seg button:first-child{border-radius:999px 0 0 999px}
+.seg button:last-of-type{border-radius:0 999px 999px 0}
+.seg button+button{margin-left:-1px}
+.seg em{font-style:normal;font-size:12px;color:var(--ink-soft);margin-left:6px}
+input[type=range]{width:min(260px,52vw);accent-color:var(--shu)}
+.set-note{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin:12px 0 0}
+.panel-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:16px}
+
+/* stamp book */
+.stamp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:14px;margin-top:14px}
+.slot{text-align:center;font-size:13px}
+.slot .seal{width:84px;height:84px;margin:0 auto 6px;border-radius:50%;border:2px dashed rgba(200,72,59,.45);display:flex;align-items:center;justify-content:center;color:var(--shu)}
+.slot .seal svg{width:46px;height:46px;opacity:.25}
+.slot.done .seal{border:3px solid var(--shu);background:radial-gradient(circle,#fff,#fbeee8);transform:rotate(-8deg)}
+.slot.done .seal svg{opacity:1}
+.slot.locked{opacity:.45}
+body[data-lang="both"] .slot .zh,body[data-lang="both"] .slot .en{display:block}
+body[data-lang="both"] .slot .zh + .en::before{content:none}
+
+/* omikuji */
+.omi-q p{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.5;margin:.2em 0 .6em}
+body[data-lang="both"] .omi-q p .zh{display:block;font-size:.85em;color:var(--ink-soft)}
+body[data-lang="both"] .omi-q p .en + .zh::before{content:none}
+.omi-q ol{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.omi-q li{border:1px solid rgba(43,58,85,.25);border-radius:10px;padding:.6em .9em;background:#fff;cursor:pointer;font-size:14px}
+.omi-q li:hover{background:var(--washi)}
+.omi-q li.right{border-color:var(--moss);background:#eef4e6}
+.omi-q li.wrong{border-color:var(--shu);background:#fbeee8}
+.omi-q .why{display:none}
+.omi-result{margin-top:14px;padding:12px 14px;border-radius:10px;background:#fff;border:1px solid rgba(43,58,85,.15);font-size:14px;line-height:1.6}
+.omi-result .rank{font-family:var(--serif);font-weight:900;font-size:30px;color:var(--shu);letter-spacing:.2em}
+
+#rotate-hint{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);background:rgba(43,58,85,.85);color:#fff;padding:.5em 1em;border-radius:999px;font-size:13px;z-index:25}
+#toast{position:absolute;left:50%;top:calc(64px + env(safe-area-inset-top));transform:translateX(-50%);background:rgba(43,58,85,.88);color:#fff;padding:.5em 1.1em;border-radius:999px;font-size:13px;z-index:40;animation:fadein .3s}
+
+#lock-screen{display:none;position:absolute;inset:0;z-index:99;background:var(--washi);align-items:center;justify-content:center;text-align:center;padding:24px}
+#lock-screen b{font-family:var(--serif);font-size:28px;letter-spacing:.1em}
+#lock-screen p{max-width:560px;line-height:1.7}
+.aeml-locked #lock-screen{display:flex}
+.aeml-locked #title-screen{display:none}
+
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes fadeout{from{opacity:1}to{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
+.panel-box{animation-name:riseBox}
+@keyframes riseBox{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes brush{from{clip-path:inset(0 100% 0 0);filter:blur(6px);opacity:.2}to{clip-path:inset(0 0 0 0);filter:blur(0);opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes noren{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes norenUp{from{transform:scaleY(1)}to{transform:scaleY(0)}}
+@keyframes sheet{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+@keyframes stamp{from{transform:scale(2.2) rotate(-25deg);opacity:0}to{transform:scale(1) rotate(-8deg);opacity:1}}
+
+@media (max-width:640px){
+  .brand{font-size:16px}
+  .hud-btn{font-size:12px;padding:.32em .6em}
+  .hud-btn span{display:none}
+  .isle-label b{font-size:13px}
+  .isle-label small{font-size:10px}
+  #dialog .said{font-size:14px}
+  #dialog .face{width:48px;height:48px}
+  .noren-title{font-size:30px}
+  .ts-art{width:70vw;opacity:.35}
+  #aeml-logo{height:30px}
+}
+@media (max-height:520px){
+  #hud{padding-top:calc(6px + env(safe-area-inset-top))}
+  .brand{font-size:15px}
+  .brand em{font-size:9.5px}
+  .hud-btn span{display:none}
+  .hud-btn{padding:.3em .5em}
+  #dialog{width:min(640px,80vw);padding:8px 12px;gap:10px;bottom:calc(30px + env(safe-area-inset-bottom))}
+  #dialog .face{width:40px;height:40px}
+  #dialog .said{font-size:12.5px;line-height:1.45}
+  #dialog .who{font-size:12px}
+  #shot{font-size:12px;top:calc(44px + env(safe-area-inset-top));padding:.4em .9em}
+  .isle-label{padding:.2em .55em}
+  .isle-label b{font-size:12px}
+  .isle-label small{font-size:9.5px}
+  #aeml-logo{height:24px;bottom:calc(14px + env(safe-area-inset-bottom))}
+  #aeml-credit{font-size:9px;bottom:calc(2px + env(safe-area-inset-bottom))}
+  #btn-kiri{bottom:calc(16px + env(safe-area-inset-bottom));padding:3px 10px 3px 3px;font-size:11px}
+  #btn-kiri img{width:30px;height:30px}
+  .noren-cloth{height:96px}
+  .noren-title{font-size:26px}
+  .card-sheet{margin-top:96px;padding:14px 16px}
+  .card-content .hook{font-size:16px}
+  .card-content ul{font-size:12.5px}
+  .ts-kanji{font-size:clamp(40px,9vw,80px)}
+  .ts-art{opacity:.3;width:52vw}
+  .ts-sub{margin:8px 0 14px}
+  .ts-btns .big{font-size:15px;padding:.55em 1.2em}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01s !important;animation-delay:0s !important}
+}
+
+</style>
+</head>
+<body data-lang="both" data-owner="AEML, NTUST">
+<div id="app">
+  <canvas id="gpu" aria-hidden="true"></canvas>
+  <canvas id="fx" aria-label="Course map canvas"></canvas>
+
+  <!-- island labels (positioned by script) -->
+  <div id="labels">
+    <button class="isle-label open" data-isle="pa"><b><span class="zh">篩之島</span><span class="en">Sieve Isle</span></b><small>PA · <span class="zh">粒徑分析</span><span class="en">Particulate Analysis</span></small></button>
+    <button class="isle-label open" data-isle="xrd"><b><span class="zh">晶之島</span><span class="en">Crystal Isle</span></b><small>XRD · <span class="zh">X 光繞射</span><span class="en">X-ray Diffraction</span></small></button>
+    <button class="isle-label open" data-isle="sem"><b><span class="zh">微光之島</span><span class="en">Glimmer Isle</span></b><small>SEM · <span class="zh">掃描式電子顯微鏡</span><span class="en">Scanning Electron Microscopy</span></small></button>
+    <button class="isle-label open gate" data-isle="port"><b><span class="zh">星屑港</span><span class="en">Stardust Harbor</span></b><small>Midterm · <span class="zh">期中考</span><span class="en">Midterm Review</span></small></button>
+    <button class="isle-label mist" data-isle="mip"><b><span class="zh">汞之島</span><span class="en">Mercury Isle</span></b><small>MIP · <span class="zh">霧中</span><span class="en">In the mist</span></small></button>
+    <button class="isle-label mist" data-isle="ga"><b><span class="zh">雲苔之庭</span><span class="en">Cloud-Moss Garden</span></b><small>GA · <span class="zh">霧中</span><span class="en">In the mist</span></small></button>
+    <button class="isle-label mist" data-isle="ta"><b><span class="zh">熱之火山</span><span class="en">Ember Volcano</span></b><small>TA · <span class="zh">霧中</span><span class="en">In the mist</span></small></button>
+    <button class="isle-label mist fog" data-isle="unk"><b><span class="zh">無名之霧</span><span class="en">Nameless Mist</span></b><small>? · <span class="zh">未來單元</span><span class="en">Future unit</span></small></button>
+  </div>
+
+  <!-- top bar -->
+  <header id="hud" class="hidden">
+    <div class="brand"><span class="zh">霧之群島</span><span class="en">Materia Archipelago</span><em>CT5812701 · PCAM</em></div>
+    <div class="hud-btns">
+      <button id="btn-stamps" class="hud-btn" title="Stamp book"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8M12 8v8"/></svg><span class="zh">御朱印帳</span><span class="en">Stamps</span></button>
+      <button id="btn-music" class="hud-btn icon" title="Music"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="7" cy="18" r="2.4"/><circle cx="17" cy="16" r="2.4"/></svg></button>
+      <button id="btn-settings" class="hud-btn" title="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span class="zh">設定</span><span class="en">Settings</span></button>
+      <a class="hud-btn" href="manual.html" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></svg><span class="zh">說明書</span><span class="en">Manual</span></a>
+      <button id="btn-fs" class="hud-btn icon" title="Fullscreen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+  </header>
+
+  <!-- guide button -->
+  <button id="btn-kiri" class="hidden" title="Prof. Kiri"><img src="assets/kiri.webp" alt=""><span class="zh">霧教授</span><span class="en">Prof. Kiri</span></button>
+
+  <!-- subtitles & dialogue -->
+  <div id="shot" class="hidden"></div>
+  <div id="dialog" class="hidden"><img class="face" src="assets/kiri.webp" alt=""><div class="dlg-body"><div class="who"></div><div class="said"></div></div></div>
+  <button id="btn-skip" class="hidden">Skip ▶▶</button>
+
+  <!-- noren card -->
+  <div id="card" class="hidden" role="dialog" aria-modal="true">
+    <div class="noren"><div class="noren-rod"></div><div class="noren-cloth"><i></i><i></i><div class="noren-title"></div></div></div>
+    <div class="card-sheet">
+      <div class="card-stamp" aria-hidden="true"></div>
+      <div class="card-content"></div>
+      <div class="card-actions">
+        <button id="card-go" class="primary"><span class="zh">出航</span><span class="en">Set sail</span> ▶</button>
+        <button id="card-done"><span class="zh">我已完成，蓋章</span><span class="en">I've cleared it · stamp</span></button>
+        <button id="card-omikuji" class="hidden"><span class="zh">神社抽籤</span><span class="en">Draw omikuji</span></button>
+        <button id="card-back"><span class="zh">回地圖</span><span class="en">Back to map</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- card bodies (copied into the card by script) -->
+  <div id="cards" hidden>
+    <section data-isle="pa" data-icon="sieve">
+      <h2><span class="zh">篩之島</span><span class="en">Sieve Isle</span></h2>
+      <p class="unit">Particulate Analysis · <span class="zh">粒徑分析</span></p>
+      <p class="hook"><span class="en">"Who passes, who stays?"</span><span class="zh">誰過得去，誰留下來？</span></p>
+      <p class="game"><span class="zh">遊戲：</span><span class="en">Game: </span>粒徑大作戰：篩網轟炸客 Sieve Bomber</p>
+      <ul>
+        <li><span class="en">ASTM standard sieves, CPFT and the fineness modulus (FM)</span><span class="zh">ASTM 標準篩、累積小於百分率與細度模數</span></li>
+        <li><span class="en">Dry vs. wet sieving, fines and agglomerates</span><span class="zh">乾篩與濕篩、細粉附著與團聚顆粒</span></li>
+        <li><span class="en">Particle counting, sedimentation, laser scattering and combined PSDs</span><span class="zh">粒子計數、沉降法、雷射散射與合併粒徑分佈</span></li>
+      </ul>
+      <p class="meta"><span class="zh">客串：古井博士 · 約 15–30 分鐘 · 1–4 人</span><span class="en">Cameo: Dr. Furui · about 15–30 min · 1–4 players</span></p>
+      <a class="go" data-url="https://news.concrete.tw/2026/10/pzg-sieve-bomber.html"></a>
+    </section>
+    <section data-isle="xrd" data-icon="crystal">
+      <h2><span class="zh">晶之島</span><span class="en">Crystal Isle</span></h2>
+      <p class="unit">X-ray Diffraction · <span class="zh">X 光繞射</span></p>
+      <p class="hook"><span class="en">"Every peak must be assigned."</span><span class="zh">每一根峰，都要有主人。</span></p>
+      <p class="game"><span class="zh">遊戲：</span><span class="en">Game: </span>結晶密碼：布拉格偵探社 The Crystal Cipher</p>
+      <ul>
+        <li><span class="en">Lattices, Miller indices and symmetry</span><span class="zh">晶格、米勒指標與對稱性</span></li>
+        <li><span class="en">Bragg's law λ = 2d sinθ, extinction and the structure factor</span><span class="zh">布拉格定律、消光與結構因子</span></li>
+        <li><span class="en">Diffractometer optics, phase identification and quantification</span><span class="zh">繞射儀光路、相鑑定與定量</span></li>
+      </ul>
+      <p class="meta"><span class="zh">客串：葛諾博士 · 12 個案件，每案 10–15 分鐘 · 1–4 人</span><span class="en">Cameo: Dr. Gonio · 12 cases, 10–15 min each · 1–4 players</span></p>
+      <a class="go" data-url="https://news.concrete.tw/2026/10/tps_01445641733.html"></a>
+    </section>
+    <section data-isle="sem" data-icon="flower">
+      <h2><span class="zh">微光之島</span><span class="en">Glimmer Isle</span></h2>
+      <p class="unit">Scanning Electron Microscopy · <span class="zh">掃描式電子顯微鏡</span></p>
+      <p class="hook"><span class="en">"Light is too clumsy here. Bring the beam."</span><span class="zh">光太笨拙了，換電子束上場。</span></p>
+      <p class="game"><span class="zh">遊戲：</span><span class="en">Game: </span>Micro Bloom 微光花園（World 1 → 2 → 3）</p>
+      <ul>
+        <li><span class="en">Electron gun, lenses and the interaction volume; SE vs. BSE</span><span class="zh">電子槍、透鏡與交互作用體積；二次電子與背向散射電子</span></li>
+        <li><span class="en">Image contrast, image analysis and characteristic X-rays</span><span class="zh">影像對比、影像分析與特性 X 光</span></li>
+        <li><span class="en">EDS, specimen preparation and cement microstructure</span><span class="zh">能量散佈光譜、試片製備與水泥微結構</span></li>
+      </ul>
+      <p class="meta"><span class="zh">三個世界依序遊玩 · 夥伴與花瓣會帶到下一個世界</span><span class="en">Play the three worlds in order · partners and petals carry over</span></p>
+      <a class="go" data-url="https://news.concrete.tw/2026/10/rts-micro-bloom-entrance.html"></a>
+    </section>
+    <section data-isle="port" data-icon="star">
+      <h2><span class="zh">星屑港</span><span class="en">Stardust Harbor</span></h2>
+      <p class="unit">Midterm Review · <span class="zh">期中考總複習（PA · XRD · SEM）</span></p>
+      <p class="hook"><span class="en">"Gather the shards of what you have learned."</span><span class="zh">把學過的碎片撿回來！</span></p>
+      <p class="game"><span class="zh">遊戲：</span><span class="en">Game: </span>噗芙的星之碎片大冒險 — 台北篇 Puff's Star Shard Adventure</p>
+      <ul>
+        <li><span class="en">Past exam questions on PA, XRD and SEM</span><span class="zh">PA、XRD、SEM 考古題</span></li>
+        <li><span class="en">An AR adventure around Taipei</span><span class="zh">走遍台北的 AR 冒險</span></li>
+        <li><span class="en">Draw a daily omikuji at the harbor shrine for a quick review question</span><span class="zh">在港邊神社抽籤，每天一題快速複習</span></li>
+      </ul>
+      <p class="meta"><span class="zh">客串：噗芙 · 手機遊玩請改用「手機版」連結</span><span class="en">Cameo: Puff · on a phone, use the mobile link</span> · <a href="https://chuntaoc.github.io/pcam/" target="_blank" rel="noopener"><span class="zh">手機版</span><span class="en">Mobile version</span> ↗</a></p>
+      <a class="go" data-url="https://news.concrete.tw/2026/10/rts-puffs-star-shard-adventure-taipei.html"></a>
+    </section>
+    <section data-isle="mip" data-icon="drop" class="misty">
+      <h2><span class="zh">汞之島</span><span class="en">Mercury Isle</span></h2>
+      <p class="unit">Mercury Intrusion Porosimetry · <span class="zh">壓汞試驗</span></p>
+      <p class="hook"><span class="en">"Something silver refuses to get wet…"</span><span class="zh">有個銀色的東西，拒絕被沾濕……</span></p>
+      <p class="mistnote"><span class="zh">這座島還在霧中，即將開放。</span><span class="en">This island is still in the mist. Coming soon.</span></p>
+      <p class="meta"><span class="zh">霧教授：「まだですよ。再等一下。」</span><span class="en">Prof. Kiri: "Not yet. Just a little longer."</span></p>
+    </section>
+    <section data-isle="ga" data-icon="cloud" class="misty">
+      <h2><span class="zh">雲苔之庭</span><span class="en">Cloud-Moss Garden</span></h2>
+      <p class="unit">Gas Adsorption · <span class="zh">氣體吸附</span></p>
+      <p class="hook"><span class="en">"One layer, then another…"</span><span class="zh">一層，再一層……</span></p>
+      <p class="mistnote"><span class="zh">這座島還在霧中，即將開放。</span><span class="en">This island is still in the mist. Coming soon.</span></p>
+      <p class="meta"><span class="zh">霧教授：「まだですよ。」</span><span class="en">Prof. Kiri: "Not yet."</span></p>
+    </section>
+    <section data-isle="ta" data-icon="flame" class="misty">
+      <h2><span class="zh">熱之火山</span><span class="en">Ember Volcano</span></h2>
+      <p class="unit">Thermal Analyses · <span class="zh">熱分析</span></p>
+      <p class="hook"><span class="en">"Turn up the heat and it will confess."</span><span class="zh">加熱，它就會招供。</span></p>
+      <p class="mistnote"><span class="zh">這座島還在霧中，開放時間待定。</span><span class="en">This island is still in the mist. Opening date to be announced.</span></p>
+      <p class="meta"><span class="zh">霧教授：「火山還在沉睡。」</span><span class="en">Prof. Kiri: "The volcano is still asleep."</span></p>
+    </section>
+    <section data-isle="unk" data-icon="mist" class="misty">
+      <h2><span class="zh">無名之霧</span><span class="en">Nameless Mist</span></h2>
+      <p class="unit"><span class="zh">未來單元</span><span class="en">A future unit</span></p>
+      <p class="hook"><span class="en">"Even I don't know what sleeps in this one."</span><span class="zh">連我都不知道，這團霧裡睡著什麼。</span></p>
+      <p class="mistnote"><span class="zh">預留給未來的第八、九座島。</span><span class="en">Reserved for an eighth and ninth island.</span></p>
+    </section>
+  </div>
+
+  <!-- narration texts (shown by script) -->
+  <div id="texts" hidden>
+    <p data-t="who-kiri"><span class="zh">霧教授</span><span class="en">Prof. Kiri</span></p>
+    <p data-t="who-aoi"><span class="zh">葵</span><span class="en">Aoi</span></p>
+    <p data-t="who-ren"><span class="zh">蓮</span><span class="en">Ren</span></p>
+    <p data-t="who-merc"><span class="zh">小汞</span><span class="en">Merc</span></p>
+
+    <p data-t="open-1"><span class="en">Every material hides its secret at its own scale.</span><span class="zh">每種材料，都把秘密藏在自己的尺度裡。</span></p>
+    <p data-t="open-2"><span class="en">This is the Sea of Measurement. Sieves read millimetres, X-rays read ångströms, electrons read micrometres.</span><span class="zh">這裡是測之海。篩網讀得到毫米，X 光讀得到埃，電子束讀得到微米。</span></p>
+    <p data-t="open-3"><span class="en">The far islands are still in the mist. I'll clear it, one island at a time, as you learn.</span><span class="zh">遠方的島還在霧裡。隨著你們學習，我會一座一座替你們驅霧。</span></p>
+    <p data-t="open-4"><span class="en">Board the Bikō-maru. Tap an island and we sail.</span><span class="zh">上船吧，微光丸。點一座島，我們就出航。</span></p>
+    <p data-t="hint-map"><span class="en">Drag to look around, scroll or pinch to zoom, tap an island to sail. Tap me any time for a word of advice.</span><span class="zh">拖曳可移動視角，滾輪或雙指縮放，點一座島就出航。隨時點我，我會送你一句話。</span></p>
+    <p data-t="hint-back"><span class="en">Welcome back. The boat waited where you left it.</span><span class="zh">歡迎回來。船停在你上次離開的地方。</span></p>
+    <p data-t="locked"><span class="en">Not yet. The mist hasn't lifted here.</span><span class="zh">まだですよ。這裡的霧還沒散。</span></p>
+    <p data-t="merc-skip"><span class="en">Watch! I don't wet anything, so I bounce. θ ≈ 140°!</span><span class="zh">看我！我什麼都不潤濕，所以會彈起來。θ ≈ 140°！</span></p>
+    <p data-t="stamped"><span class="en">A stamp for your book. Well sailed.</span><span class="zh">蓋上御朱印。航得好。</span></p>
+    <p data-t="all-stamped"><span class="en">Every open island is stamped. You are a true navigator of the Sea of Measurement.</span><span class="zh">所有開放的島都蓋滿了。你是測之海真正的航海士。</span></p>
+
+    <!-- PA -->
+    <p data-t="pa-s1"><span class="zh">微光丸駛近梯田島，每層梯田的邊緣都是細竹編成的篩網。</span><span class="en">The ferry nears a terraced island; every terrace is edged with a fine bamboo sieve.</span></p>
+    <p data-t="pa-s2"><span class="zh">骨材雨落下：大石留在上層，中粒滾到中段，細砂一路往下。</span><span class="en">A rain of aggregate: big stones stay high, mid sizes roll to the middle, fine sand slips through.</span></p>
+    <p data-t="pa-s3"><span class="zh">一團白色細粉黏在粗石上不肯掉，那是乾篩的細粉附著。</span><span class="en">A puff of white fines clings to a coarse stone: fines clinging in dry sieving.</span></p>
+    <p data-t="pa-s4"><span class="zh">連篩網都留不住的細粉，流進了海裡。</span><span class="en">The dust no sieve can hold runs into the sea.</span></p>
+    <p data-t="pa-n"><span class="en">On this island every terrace is a sieve. Coarse stones stay high, fine sand slips through. Count what stays, and you know the grading.</span><span class="zh">這座島的每一層梯田都是一面篩。粗石留在高處，細砂穿過。算清楚留下多少，就讀懂了級配。</span></p>
+    <p data-t="pa-q" data-who="aoi"><span class="en">So the fineness modulus is just… adding up what stays?</span><span class="zh">所以細度模數，就是把留下來的加起來？</span></p>
+    <!-- XRD -->
+    <p data-t="xrd-s1"><span class="zh">船駛近淡色水晶崖，霧中的白色燈塔亮起。</span><span class="en">The ferry nears pale crystal cliffs; a white lighthouse wakes in the mist.</span></p>
+    <p data-t="xrd-s2"><span class="zh">光束掃過岩壁，只有在某幾個角度，光才反射成一圈圈圓錐光環。</span><span class="en">The beam sweeps the cliff. Only at certain angles does it flare into rings of light cones.</span></p>
+    <p data-t="xrd-s3"><span class="zh">光環在夜空連成一條繞射圖譜，其中一根峰的位置空著。</span><span class="en">The rings draw a diffraction pattern across the sky, with one peak missing.</span></p>
+    <p data-t="xrd-s4"><span class="zh">偵探社的圓窗亮燈，葛諾博士探出頭來。</span><span class="en">The detective agency's round window lights up; Dr. Gonio leans out.</span></p>
+    <p data-t="xrd-n"><span class="en">Light speaks to a crystal only at certain angles, where the extra path is a whole number of wavelengths. Every peak is a witness. Even a missing one is evidence.</span><span class="zh">光只在特定角度與晶體對話，也就是額外路徑恰為整數個波長的時候。每一根峰都是證人，連缺席的那一根也是證據。</span></p>
+    <p data-t="xrd-q" data-who="ren"><span class="en">Like reading a fingerprint off a rock.</span><span class="zh">像是從石頭上讀指紋。</span></p>
+    <!-- SEM -->
+    <p data-t="sem-s1"><span class="zh">天色由黃昏轉夜，花園一片暗。</span><span class="en">Dusk turns to night; the garden goes dark.</span></p>
+    <p data-t="sem-s2"><span class="zh">電子束之塔射下一道細光，一行一行掃描，掃過的花一列列亮起。</span><span class="en">The Beam Tower sends down a fine ray, line by line; the flowers light up row by row.</span></p>
+    <p data-t="sem-s3"><span class="zh">花瓣邊緣特別亮（邊緣效應）；海灣裡，重元素的石頭亮、輕的暗。</span><span class="en">Petal edges glow brightest (edge effect); in the cove, heavy stones shine and light ones stay dark.</span></p>
+    <p data-t="sem-s4"><span class="zh">三個區域亮起：電子束之塔、對比海灣、水泥花園。</span><span class="en">Three districts light up: Beam Tower, Contrast Cove, Cement Garden.</span></p>
+    <p data-t="sem-n"><span class="en">Light is too clumsy at this scale, so we paint with electrons, line by line. Bright edges, bright heavy atoms: each signal tells a different story.</span><span class="zh">到了這個尺度，光太笨拙了，所以我們用電子一行一行作畫。亮的邊緣、亮的重原子，每種訊號說的故事都不一樣。</span></p>
+    <p data-t="sem-q" data-who="aoi"><span class="en">Wait, why is the edge brighter?</span><span class="zh">等等，為什麼邊緣比較亮？</span></p>
+    <!-- PORT -->
+    <p data-t="port-s1"><span class="zh">夏祭之夜，燈籠串滿碼頭，遠處傳來太鼓聲。</span><span class="en">A summer festival night: lanterns along the pier, taiko drums in the distance.</span></p>
+    <p data-t="port-s2"><span class="zh">三發煙火炸成篩網、晶格與花朵，散成星之碎片落入港灣。</span><span class="en">Three fireworks burst as a sieve, a lattice and a flower, then fall as star shards into the harbor.</span></p>
+    <p data-t="port-s3"><span class="zh">噗芙跳上碼頭撿碎片，布告欄的大卷軸展開：期中考。</span><span class="en">Puff hops onto the pier to gather shards; the great scroll on the noticeboard unrolls: the midterm.</span></p>
+    <p data-t="port-s4"><span class="zh">太鼓橋的另一端還在霧裡，橋頭掛著一把鎖。</span><span class="en">Beyond the taiko bridge the mist still waits, and a lock hangs at its end.</span></p>
+    <p data-t="port-n"><span class="en">Three islands, one night. Gather the shards of what you have learned. The bridge opens only after the festival.</span><span class="zh">三座島，一個夜晚。把學過的碎片撿回來，祭典結束後，橋才會打開。</span></p>
+    <p data-t="port-q" data-who="ren"><span class="en">Festival first, exam second… right?</span><span class="zh">先祭典，再考試……對吧？</span></p>
+    <!-- MIST teasers -->
+    <p data-t="mip-s1"><span class="zh">霧裡傳來水滴聲。一顆銀色水珠滾上岸，又縮回霧中。</span><span class="en">A drip in the mist. A silver bead rolls ashore, then shrinks back.</span></p>
+    <p data-t="mip-n"><span class="en">Something silver refuses to get wet… Not yet. Soon.</span><span class="zh">有個銀色的東西，拒絕被沾濕……還不是時候，快了。</span></p>
+    <p data-t="ga-s1"><span class="zh">霧中一片苔蘚，露珠一層一層地凝結。</span><span class="en">Moss in the mist; dew gathers, one layer after another.</span></p>
+    <p data-t="ga-n"><span class="en">One layer, then another… You'll count them one day.</span><span class="zh">一層，再一層……總有一天你會數清楚它們。</span></p>
+    <p data-t="ta-s1"><span class="zh">霧的後面，火山口閃過一陣紅光。</span><span class="en">Behind the mist, the crater flickers red.</span></p>
+    <p data-t="ta-n"><span class="en">Turn up the heat and it will confess. But the volcano is still asleep.</span><span class="zh">加熱，它就會招供。不過，火山還在沉睡。</span></p>
+    <p data-t="unk-s1"><span class="zh">一團沒有名字的霧，靜靜地停在海上。</span><span class="en">A nameless mist rests quietly on the sea.</span></p>
+    <p data-t="unk-n"><span class="en">Even I don't know what sleeps in this one.</span><span class="zh">連我都不知道，這團霧裡睡著什麼。</span></p>
+
+    <!-- quotes: today's word -->
+    <p class="quote"><span class="en">A number from an XRD is only as good as the powder it came from.</span><span class="zh">XRD 給出的數字，永遠不會比它所來自的那份粉末更可靠。</span></p>
+    <p class="quote"><span class="en">Different techniques measure different equivalent sizes. That is why the joins are rarely smooth.</span><span class="zh">不同方法量的是不同的「當量尺寸」，所以接合處很少是平滑的。</span></p>
+    <p class="quote"><span class="en">An unassigned peak is not noise until you prove it is.</span><span class="zh">未被指派的峰，在你證明它是雜訊之前，都不算雜訊。</span></p>
+    <p class="quote"><span class="en">Too little sample gives poor statistics; too much blinds the sieve.</span><span class="zh">樣品太少，統計性差；樣品太多，篩網就堵住了。</span></p>
+    <p class="quote"><span class="en">Habit hints at structure. Only diffraction proves it.</span><span class="zh">晶體外觀只暗示結構，唯有繞射能證明它。</span></p>
+    <p class="quote"><span class="en">A smaller spot is not free: you pay for it in signal.</span><span class="zh">更小的束斑不是免費的，代價是訊號。</span></p>
+    <p class="quote"><span class="en">Ask what the instrument saw before you ask what the material is.</span><span class="zh">先問儀器看見了什麼，再問材料是什麼。</span></p>
+    <p class="quote"><span class="en">Precision grows with √N: double it, and you count four times as long.</span><span class="zh">精度與 √N 成正比：要加倍，就得數四倍久。</span></p>
+
+    <!-- omikuji results -->
+    <p data-t="kichi-good"><span class="zh">大吉</span><span class="en">Great blessing</span></p>
+    <p data-t="kichi-bad"><span class="zh">末吉</span><span class="en">Future blessing</span></p>
+    <p data-t="review-pa"><span class="zh">建議回篩之島複習。</span><span class="en">Sail back to Sieve Isle for a review.</span></p>
+    <p data-t="review-xrd"><span class="zh">建議回晶之島複習。</span><span class="en">Sail back to Crystal Isle for a review.</span></p>
+    <p data-t="review-sem"><span class="zh">建議回微光之島複習。</span><span class="en">Sail back to Glimmer Isle for a review.</span></p>
+    <p data-t="fs-new"><span class="zh">這個瀏覽器無法在頁內全螢幕，已改開新分頁。</span><span class="en">This browser can't go fullscreen here, so the map opened in a new tab.</span></p>
+    <p data-t="gpu-on"><span class="zh">WebGPU 運作中</span><span class="en">WebGPU active</span></p>
+    <p data-t="gpu-fail"><span class="zh">此裝置不支援 WebGPU，已改用軟體繪圖</span><span class="en">No WebGPU here; using software</span></p>
+    <p data-t="soft-on"><span class="zh">軟體繪圖中</span><span class="en">Software rendering</span></p>
+    <p data-t="omikuji-used"><span class="zh">今天已經抽過了，明天再來吧。答案與解說留在下面。</span><span class="en">You've drawn today already. Come back tomorrow; today's answer stays below.</span></p>
+  </div>
+
+  <!-- omikuji question bank -->
+  <div id="qbank" hidden>
+    <div class="q" data-isle="pa" data-ans="1">
+      <p><span class="en">How is the fineness modulus (FM) calculated?</span><span class="zh">細度模數如何計算？</span></p>
+      <ol><li><span class="en">Sum of % passing on all sieves ÷ 100</span><span class="zh">各篩通過百分率總和 ÷ 100</span></li><li><span class="en">Sum of cumulative % retained on the standard sieves ÷ 100</span><span class="zh">標準篩上累積留篩百分率總和 ÷ 100</span></li><li><span class="en">Largest size ÷ smallest size</span><span class="zh">最大粒徑 ÷ 最小粒徑</span></li></ol>
+      <div class="why"><span class="en">Half-size sieves (12.5, 25 mm) are excluded.</span><span class="zh">半尺寸篩（12.5、25 mm）不計入。</span></div>
+    </div>
+    <div class="q" data-isle="pa" data-ans="0">
+      <p><span class="en">The main drawback of wet sieving is…</span><span class="zh">濕篩最主要的缺點是？</span></p>
+      <ol><li><span class="en">The sample must be dried afterwards</span><span class="zh">量測後樣品必須烘乾</span></li><li><span class="en">Fines cling to coarser particles</span><span class="zh">細粉附著在粗顆粒上</span></li><li><span class="en">It needs the refractive index</span><span class="zh">需要已知折射率</span></li></ol>
+      <div class="why"><span class="en">Fines clinging is the dry-sieving drawback.</span><span class="zh">細粉附著是乾篩的缺點。</span></div>
+    </div>
+    <div class="q" data-isle="pa" data-ans="2">
+      <p><span class="en">Why are colloids (&lt; 1 μm) hard to measure by gravity sedimentation?</span><span class="zh">為何膠體（&lt; 1 μm）難以用重力沉降量測？</span></p>
+      <ol><li><span class="en">The Reynolds number is too high</span><span class="zh">雷諾數太大</span></li><li><span class="en">They dissolve</span><span class="zh">它們會溶解</span></li><li><span class="en">Brownian motion outweighs gravity</span><span class="zh">布朗運動大於重力</span></li></ol>
+      <div class="why"><span class="en">Centrifugal sedimentation or photon correlation is used instead.</span><span class="zh">可改用離心沉降或光子相關法。</span></div>
+    </div>
+    <div class="q" data-isle="pa" data-ans="0">
+      <p><span class="en">What does CPFT stand for?</span><span class="zh">CPFT 的意思是？</span></p>
+      <ol><li><span class="en">Cumulative Percent Finer Than</span><span class="zh">累積小於百分率</span></li><li><span class="en">Coarse Particle Fraction Test</span><span class="zh">粗顆粒比例試驗</span></li><li><span class="en">Constant Particle Flow Technique</span><span class="zh">定速顆粒流技術</span></li></ol>
+      <div class="why"><span class="en">Sieve "% passing" is a CPFT.</span><span class="zh">篩分析的「% 通過」就是 CPFT。</span></div>
+    </div>
+    <div class="q" data-isle="xrd" data-ans="1">
+      <p><span class="en">Cu Kα (λ = 0.15418 nm) on quartz (101), d = 0.334 nm. 2θ is about…</span><span class="zh">Cu Kα（λ = 0.15418 nm）照射石英 (101)，d = 0.334 nm，2θ 約為？</span></p>
+      <ol><li>13.3°</li><li>26.7°</li><li>53.4°</li></ol>
+      <div class="why"><span class="en">sinθ = 0.231, θ = 13.3°, so 2θ = 26.7°.</span><span class="zh">sinθ = 0.231，θ = 13.3°，所以 2θ = 26.7°。</span></div>
+    </div>
+    <div class="q" data-isle="xrd" data-ans="2">
+      <p><span class="en">Which reflections appear for a body-centred (I) lattice?</span><span class="zh">體心 I 晶格會出現哪些反射？</span></p>
+      <ol><li><span class="en">All (hkl)</span><span class="zh">全部 (hkl)</span></li><li><span class="en">h, k, l all odd or all even</span><span class="zh">h、k、l 全奇或全偶</span></li><li><span class="en">h + k + l even</span><span class="zh">h + k + l 為偶數</span></li></ol>
+      <div class="why"><span class="en">That is why α-Fe shows (110) but not (100).</span><span class="zh">所以 α-Fe 有 (110) 峰，卻沒有 (100) 峰。</span></div>
+    </div>
+    <div class="q" data-isle="xrd" data-ans="0">
+      <p><span class="en">CH (001) is far stronger than the card and the other lines too weak. Most likely cause?</span><span class="zh">CH (001) 遠高於卡片、其他譜線偏低，最可能的原因是？</span></p>
+      <ol><li><span class="en">Preferred orientation of platy crystals</span><span class="zh">片狀晶粒的擇優取向</span></li><li><span class="en">A 2θ zero offset</span><span class="zh">2θ 零點偏移</span></li><li><span class="en">Kβ ghost peaks</span><span class="zh">Kβ 假峰</span></li></ol>
+      <div class="why"><span class="en">Side-loading or spinning the sample reduces it.</span><span class="zh">改用側向裝填或旋轉試樣可以改善。</span></div>
+    </div>
+    <div class="q" data-isle="xrd" data-ans="1">
+      <p><span class="en">What does an amorphous (glass) XRD pattern look like?</span><span class="zh">非晶質（玻璃）的 XRD 圖譜長什麼樣？</span></p>
+      <ol><li><span class="en">A set of sharp peaks</span><span class="zh">一組尖銳峰</span></li><li><span class="en">One broad hump, no sharp peaks</span><span class="zh">一個寬鼓包，沒有尖峰</span></li><li><span class="en">No signal at all</span><span class="zh">完全沒有訊號</span></li></ol>
+      <div class="why"><span class="en">Only short-range order: no sharp constructive interference.</span><span class="zh">只有短程有序，無法在特定角度建設性干涉。</span></div>
+    </div>
+    <div class="q" data-isle="sem" data-ans="0">
+      <p><span class="en">In a BSE image, which phase appears brightest?</span><span class="zh">在背向散射電子（BSE）影像中，哪一種相最亮？</span></p>
+      <ol><li><span class="en">The phase with the highest mean atomic number</span><span class="zh">平均原子序最高的相</span></li><li><span class="en">The phase with the roughest surface</span><span class="zh">表面最粗糙的相</span></li><li><span class="en">The phase with the lowest density of pores</span><span class="zh">孔隙最少的相</span></li></ol>
+      <div class="why"><span class="en">Backscatter yield rises with atomic number: atomic-number (Z) contrast.</span><span class="zh">背向散射產率隨原子序增加，這就是原子序對比。</span></div>
+    </div>
+    <div class="q" data-isle="sem" data-ans="2">
+      <p><span class="en">Why do edges look bright in a secondary-electron (SE) image?</span><span class="zh">為什麼二次電子（SE）影像中邊緣特別亮？</span></p>
+      <ol><li><span class="en">Edges contain heavier elements</span><span class="zh">邊緣含較重的元素</span></li><li><span class="en">Edges are charged</span><span class="zh">邊緣帶電</span></li><li><span class="en">More secondary electrons escape near an edge</span><span class="zh">邊緣附近有更多二次電子逃逸出來</span></li></ol>
+      <div class="why"><span class="en">SE come from a shallow depth; near edges more of them can escape.</span><span class="zh">二次電子來自很淺的深度，邊緣附近更容易逃逸。</span></div>
+    </div>
+    <div class="q" data-isle="sem" data-ans="1">
+      <p><span class="en">Raising the accelerating voltage makes the interaction volume…</span><span class="zh">提高加速電壓，交互作用體積會？</span></p>
+      <ol><li><span class="en">Smaller</span><span class="zh">變小</span></li><li><span class="en">Larger and deeper</span><span class="zh">變大、變深</span></li><li><span class="en">Unchanged</span><span class="zh">不變</span></li></ol>
+      <div class="why"><span class="en">Faster electrons penetrate deeper before losing their energy.</span><span class="zh">電子能量越高，損失能量前穿透得越深。</span></div>
+    </div>
+    <div class="q" data-isle="sem" data-ans="0">
+      <p><span class="en">A non-conductive cement specimen keeps "charging" in the SEM. A common fix?</span><span class="zh">不導電的水泥試片在 SEM 中一直「充電」，常見的解決方法是？</span></p>
+      <ol><li><span class="en">Coat it with a thin conductive layer (e.g. carbon)</span><span class="zh">鍍上一層薄導電膜（例如碳）</span></li><li><span class="en">Raise the magnification</span><span class="zh">提高放大倍率</span></li><li><span class="en">Use a thicker specimen</span><span class="zh">改用更厚的試片</span></li></ol>
+      <div class="why"><span class="en">Carbon coating is preferred when EDS analysis follows.</span><span class="zh">若之後要做 EDS，常用碳鍍膜。</span></div>
+    </div>
+  </div>
+
+  <!-- title screen -->
+  <section id="title-screen">
+    <div class="ts-paper"></div>
+    <img class="ts-art" src="assets/isle-port.webp" alt="" aria-hidden="true">
+    <div class="ts-inner">
+      <p class="ts-course">CT5812701 · <span class="zh">材料物化性分析</span><span class="en">Physical and Chemical Analysis on Materials</span></p>
+      <h1 class="ts-title"><span class="ts-kanji">霧之群島</span><span class="ts-latin">Materia Archipelago</span></h1>
+      <p class="ts-sub"><span class="zh">物性航路 · 測之海</span><span class="en">A voyage across the Sea of Measurement</span></p>
+      <div class="ts-btns">
+        <button id="btn-board" class="primary big"><span class="zh">乗船</span><span class="en">Board</span> ▶</button>
+        <button id="btn-fs-title" class="big"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="zh">全螢幕</span><span class="en">Fullscreen</span></button>
+      </div>
+      <div class="ts-small">
+        <button id="btn-settings-title"><span class="zh">設定</span><span class="en">Settings</span></button>
+        <a href="manual.html" target="_blank" rel="noopener"><span class="zh">說明書</span><span class="en">Manual</span></a>
+        <span class="ts-lang" role="group" aria-label="Language">
+          <button data-setlang="zh">中文</button><button data-setlang="both">中文/English</button><button data-setlang="en">English</button>
+        </span>
+      </div>
+      <p class="ts-loading" id="loading"><span class="zh">載入中…</span><span class="en">Loading…</span> <b id="load-pct">0%</b></p>
+    </div>
+  </section>
+
+  <!-- opening ink title -->
+  <div id="ink" class="hidden"><div class="ink-kanji">霧之群島</div><div class="ink-latin">Materia Archipelago · CT5812701</div></div>
+
+  <!-- settings -->
+  <div id="settings" class="panel hidden" role="dialog" aria-modal="true">
+    <div class="panel-box">
+      <h3><span class="zh">設定</span><span class="en">Settings</span></h3>
+      <table class="set-table">
+        <tr><th><span class="zh">語言</span><span class="en">Language</span></th><td class="seg" data-key="lang"><button data-v="zh">中文</button><button data-v="both">中文/English</button><button data-v="en">English</button></td></tr>
+        <tr><th><span class="zh">背景音樂</span><span class="en">Music</span></th><td class="seg" data-key="bgm"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
+        <tr><th><span class="zh">音效</span><span class="en">Sound FX</span></th><td class="seg" data-key="sfx"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
+        <tr><th><span class="zh">主音量</span><span class="en">Master volume</span></th><td><input type="range" min="0" max="100" data-key="vMaster"></td></tr>
+        <tr><th><span class="zh">音樂音量</span><span class="en">Music volume</span></th><td><input type="range" min="0" max="100" data-key="vMusic"></td></tr>
+        <tr><th><span class="zh">音效音量</span><span class="en">FX volume</span></th><td><input type="range" min="0" max="100" data-key="vSfx"></td></tr>
+        <tr><th><span class="zh">全螢幕</span><span class="en">Fullscreen</span></th><td class="seg" data-key="fs"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
+        <tr><th><span class="zh">繪圖</span><span class="en">Renderer</span></th><td class="seg" data-key="renderer"><button data-v="webgpu">WebGPU <span class="zh">硬體</span><span class="en">(HW)</span></button><button data-v="soft"><span class="zh">軟體</span><span class="en">Software</span></button> <em id="renderer-state"></em></td></tr>
+        <tr><th><span class="zh">畫質</span><span class="en">Quality</span></th><td class="seg" data-key="quality"><button data-v="smooth"><span class="zh">流暢</span><span class="en">Smooth</span> 720p</button><button data-v="standard"><span class="zh">標準</span><span class="en">Standard</span> 1080p</button><button data-v="high"><span class="zh">高</span><span class="en">High</span> 2K</button></td></tr>
+        <tr><th><span class="zh">劇情提示</span><span class="en">Story hints</span></th><td class="seg" data-key="hints"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
+      </table>
+      <p class="set-note"><span class="zh">背景音樂由 8 個樂器音軌（琴、鋼琴、尺八、三味線、貝斯、弦樂鋪底、鐘琴、八音盒）加 1 個鼓組音軌即時合成，立體聲雙聲道，並依場景切換。</span><span class="en">Music is synthesised live from 8 instrument tracks (koto, piano, shakuhachi, shamisen, bass, string pad, celesta, music box) plus 1 drum-kit track, in stereo, and changes with each scene.</span></p>
+      <div class="panel-actions">
+        <button id="btn-replay"><span class="zh">重播開場</span><span class="en">Replay opening</span></button>
+        <button id="btn-reset-stamps"><span class="zh">清除御朱印</span><span class="en">Clear stamps</span></button>
+        <button class="primary" data-close><span class="zh">完成</span><span class="en">Done</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- stamp book -->
+  <div id="stamps" class="panel hidden" role="dialog" aria-modal="true">
+    <div class="panel-box washi">
+      <h3><span class="zh">物性御朱印帳</span><span class="en">Stamp Book</span></h3>
+      <p class="set-note"><span class="zh">完成一座島，就在介紹卡按「我已完成，蓋章」。</span><span class="en">Finish an island, then press "I've cleared it" on its card.</span></p>
+      <div class="stamp-grid">
+        <div class="slot" data-isle="pa"><div class="seal"></div><span class="zh">篩之島</span><span class="en">Sieve</span></div>
+        <div class="slot" data-isle="xrd"><div class="seal"></div><span class="zh">晶之島</span><span class="en">Crystal</span></div>
+        <div class="slot" data-isle="sem"><div class="seal"></div><span class="zh">微光之島</span><span class="en">Glimmer</span></div>
+        <div class="slot" data-isle="port"><div class="seal"></div><span class="zh">星屑港</span><span class="en">Harbor</span></div>
+        <div class="slot locked" data-isle="mip"><div class="seal"></div><span class="zh">汞之島</span><span class="en">Mercury</span></div>
+        <div class="slot locked" data-isle="ga"><div class="seal"></div><span class="zh">雲苔之庭</span><span class="en">Moss</span></div>
+        <div class="slot locked" data-isle="ta"><div class="seal"></div><span class="zh">熱之火山</span><span class="en">Ember</span></div>
+      </div>
+      <div class="panel-actions"><button class="primary" data-close><span class="zh">闔上</span><span class="en">Close</span></button></div>
+    </div>
+  </div>
+
+  <!-- omikuji -->
+  <div id="omikuji" class="panel hidden" role="dialog" aria-modal="true">
+    <div class="panel-box washi">
+      <h3><span class="zh">港邊神社 · 抽籤</span><span class="en">Harbor Shrine · Omikuji</span></h3>
+      <div class="omi-q"></div>
+      <div class="omi-result hidden"></div>
+      <div class="panel-actions"><button class="primary" data-close><span class="zh">收起籤紙</span><span class="en">Fold it away</span></button></div>
+    </div>
+  </div>
+
+  <!-- seal icons (SVG, used by stamps) -->
+  <svg id="seal-defs" width="0" height="0" aria-hidden="true">
+    <defs>
+      <symbol id="ic-sieve" viewBox="0 0 40 40"><path d="M6 12h28l-4 18H10z" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M10 18h20M11 24h18M16 12v18M24 12v18" stroke="currentColor" stroke-width="1.4"/></symbol>
+      <symbol id="ic-crystal" viewBox="0 0 40 40"><path d="M20 4l10 10-10 22L10 14z" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M10 14h20M20 4v32" stroke="currentColor" stroke-width="1.4"/></symbol>
+      <symbol id="ic-flower" viewBox="0 0 40 40"><circle cx="20" cy="20" r="4" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="2.2"><ellipse cx="20" cy="10" rx="5" ry="7"/><ellipse cx="20" cy="30" rx="5" ry="7"/><ellipse cx="10" cy="20" rx="7" ry="5"/><ellipse cx="30" cy="20" rx="7" ry="5"/></g></symbol>
+      <symbol id="ic-star" viewBox="0 0 40 40"><path d="M20 4l4.5 10.5L36 16l-8.7 7.6L30 35l-10-6-10 6 2.7-11.4L4 16l11.5-1.5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+      <symbol id="ic-drop" viewBox="0 0 40 40"><path d="M20 5c7 10 11 15 11 21a11 11 0 0 1-22 0c0-6 4-11 11-21z" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+      <symbol id="ic-cloud" viewBox="0 0 40 40"><path d="M10 28a7 7 0 0 1 1-14 9 9 0 0 1 17 2 6 6 0 0 1 2 12z" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+      <symbol id="ic-flame" viewBox="0 0 40 40"><path d="M20 4c2 8 10 11 10 20a10 10 0 0 1-20 0c0-6 4-8 5-13 2 3 3 5 5 6 1-5 0-9 0-13z" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+      <symbol id="ic-mist" viewBox="0 0 40 40"><path d="M6 14h22M10 20h24M6 26h20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    </defs>
+  </svg>
+
+  <div id="rotate-hint" class="hidden"><span class="zh">請將裝置橫放以獲得最佳體驗</span><span class="en">Rotate your device to landscape</span></div>
+  <div id="toast" class="hidden"></div>
+
+  <img id="aeml-logo" src="assets/aeml-logo.png" alt="AEML, NTUST">
+  <footer id="aeml-credit">© 2026 AEML, NTUST · CT5812701 Physical and Chemical Analysis on Materials</footer>
+
+  <!-- tamper lock -->
+  <div id="lock-screen">
+    <div><b>AEML, NTUST</b>
+      <p><span class="zh">此地圖原始碼已遭修改或於未授權位置使用，無法執行。請使用 AEML, NTUST 發佈的原始版本。</span><span class="en">This copy has been modified or is running from an unauthorised location, and is locked. Please use the original release by AEML, NTUST.</span></p>
+      <p><a href="https://news.concrete.tw/">news.concrete.tw</a></p>
+    </div>
+  </div>
+</div>
+
+<script id="aeml-core">
+/*
+ * Materia Archipelago - course map engine
+ * (c) 2026 AEML, NTUST - Advanced Engineering Materials Laboratory,
+ * National Taiwan University of Science and Technology. CT5812701.
+ * All rights reserved. Unauthorised copying or modification is prohibited.
+ * Note: this script is ASCII only. All Chinese text lives in the HTML and is
+ * shown or hidden by switching body[data-lang].
+ */
+(function () {
+"use strict";
+var OWNER = "AEML, NTUST";
+var BUILD = "2026.10.31";
+
+function $(s, r) { return (r || document).querySelector(s); }
+function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+function lerp(a, b, t) { return a + (b - a) * t; }
+function ease(t) { t = clamp(t, 0, 1); return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+function easeOut(t) { t = clamp(t, 0, 1); return 1 - Math.pow(1 - t, 3); }
+function seeded(seed) { var s = seed >>> 0 || 1; return function () { s ^= s << 13; s >>>= 0; s ^= s >> 17; s ^= s << 5; s >>>= 0; return (s % 100000) / 100000; }; }
+function strSeed(str) { var h = 2166136261; for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h; }
+
+/* ------------------------------------------------------------------ settings */
+var DEF = { lang: "both", bgm: 0, sfx: 1, vMaster: 80, vMusic: 60, vSfx: 80, fs: 0, renderer: "webgpu", quality: "smooth", hints: 1 };
+var PDEF = { seenOpening: 0, stamps: {}, boat: "", omikuji: null, visits: 0 };
+var S = loadObj("aeml-archi-settings", DEF);
+var P = loadObj("aeml-archi-progress", PDEF);
+function loadObj(k, d) {
+  var o = JSON.parse(JSON.stringify(d));
+  try { var s = localStorage.getItem(k); if (s) { var j = JSON.parse(s); for (var x in j) { if (x in o) o[x] = j[x]; } } } catch (e) {}
+  return o;
+}
+function save() {
+  try {
+    localStorage.setItem("aeml-archi-settings", JSON.stringify(S));
+    localStorage.setItem("aeml-archi-progress", JSON.stringify(P));
+  } catch (e) {}
+}
+
+/* ------------------------------------------------------------------ world data */
+var WORLD_W = 1600, WORLD_H = 900;
+var ISLES = [
+  { id: "pa",   x: 270,  y: 330, size: 300, state: "open", scene: "pa",   bell: 74, noren: "#3f5a3c", icon: "sieve" },
+  { id: "xrd",  x: 640,  y: 235, size: 300, state: "open", scene: "xrd",  bell: 76, noren: "#3c4677", icon: "crystal" },
+  { id: "sem",  x: 1000, y: 335, size: 300, state: "open", scene: "sem",  bell: 79, noren: "#7a3d5c", icon: "flower" },
+  { id: "port", x: 1345, y: 440, size: 315, state: "open", scene: "port", bell: 81, noren: "#9a2e28", icon: "star" },
+  { id: "mip",  x: 1235, y: 725, size: 270, state: "mist", scene: "mist", bell: 69, noren: "#56657e", icon: "drop" },
+  { id: "ga",   x: 865,  y: 745, size: 270, state: "mist", scene: "mist", bell: 67, noren: "#56657e", icon: "cloud" },
+  { id: "ta",   x: 495,  y: 725, size: 270, state: "mist", scene: "mist", bell: 64, noren: "#56657e", icon: "flame" },
+  { id: "unk",  x: 150,  y: 735, size: 230, state: "fog",  scene: "mist", bell: 62, noren: "#56657e", icon: "mist" }
+];
+var ISLE = {}; ISLES.forEach(function (i) { ISLE[i.id] = i; i.hover = 0; i.lift = 0; });
+var ROUTE = ["pa", "xrd", "sem", "port", "mip", "ga", "ta", "unk"];
+var START_DOCK = { x: 95, y: 470 };
+function dockOf(isle) { return { x: isle.x - isle.size * 0.08, y: isle.y + isle.size * 0.47 }; }
+
+/* ------------------------------------------------------------------ dom */
+var app, gpuCanvas, fx, ctx, labels = {}, texts;
+var W = 0, H = 0, RS = 1, BASE = 1;
+var cam = { x: WORLD_W / 2, y: WORLD_H / 2, z: 1 };
+var mode = "title";
+var imgs = {}, mistImgs = {}, mistSprites = [], seaTile = null;
+var T0 = performance.now(), now = 0, lastT = 0;
+var hoverIsle = null;
+
+function txt(key) { var el = texts.querySelector('[data-t="' + key + '"]'); return el ? el.innerHTML : ""; }
+function txtWho(key) { var el = texts.querySelector('[data-t="' + key + '"]'); return el ? (el.getAttribute("data-who") || "kiri") : "kiri"; }
+
+/* ------------------------------------------------------------------ boot */
+document.addEventListener("DOMContentLoaded", boot);
+function boot() {
+  if (!window.__AEML || !window.__AEML.ok || window.__AEML.owner !== OWNER) { return; }
+  try { console.log("%cMateria Archipelago %c(c) 2026 " + OWNER + " - CT5812701 - build " + BUILD, "font-weight:bold;color:#c8483b", "color:#2b3a55"); } catch (e) {}
+  app = $("#app"); gpuCanvas = $("#gpu"); fx = $("#fx"); ctx = fx.getContext("2d");
+  texts = $("#texts");
+  $$(".isle-label").forEach(function (b) { labels[b.getAttribute("data-isle")] = b; });
+  watchCredit();
+  applyLang();
+  bindUI();
+  resize();
+  window.addEventListener("resize", resize);
+  window.addEventListener("orientationchange", function () { setTimeout(resize, 200); });
+  document.addEventListener("fullscreenchange", onFsChange);
+  document.addEventListener("webkitfullscreenchange", onFsChange);
+  makeMistSprites();
+  makeSeaTile();
+  preload(function () {
+    var l = $("#loading"); if (l) l.classList.add("hidden");
+    $("#btn-board").disabled = false;
+  });
+  initRenderer();
+  P.visits = (P.visits || 0) + 1; save();
+  var start = P.boat && ISLE[P.boat] ? dockOf(ISLE[P.boat]) : START_DOCK;
+  boat.x = start.x; boat.y = start.y;
+  refreshStamps();
+  requestAnimationFrame(frame);
+}
+
+function watchCredit() {
+  try {
+    var mo = new MutationObserver(function () {
+      var c = document.getElementById("aeml-credit"), l = document.getElementById("aeml-logo");
+      if (!c || c.textContent.indexOf(OWNER) < 0 || !l) { document.documentElement.className += " aeml-locked"; mode = "locked"; }
+    });
+    mo.observe(app, { childList: true, subtree: true, characterData: true });
+  } catch (e) {}
+}
+
+/* ------------------------------------------------------------------ assets */
+function preload(done) {
+  var list = ["pa", "xrd", "sem", "port", "mip", "ga", "ta"];
+  var n = list.length + 1, k = 0, pct = $("#load-pct");
+  function one() { k++; if (pct) pct.textContent = Math.round(k / n * 100) + "%"; if (k >= n) done(); }
+  list.forEach(function (id) {
+    var im = new Image();
+    im.onload = function () { imgs[id] = im; if (ISLE[id].state !== "open") mistImgs[id] = mistify(im); if (id === "sem") edgeImg = makeEdge(im); one(); };
+    im.onerror = one;
+    im.src = "assets/isle-" + id + ".webp";
+  });
+  var k2 = new Image(); k2.onload = one; k2.onerror = one; k2.src = "assets/kiri.webp";
+}
+var edgeImg = null;
+function makeEdge(im) {
+  var n = 256, c = document.createElement("canvas"); c.width = c.height = n;
+  var g = c.getContext("2d"); g.drawImage(im, 0, 0, n, n);
+  try {
+    var d = g.getImageData(0, 0, n, n), p = d.data, out = g.createImageData(n, n), o = out.data;
+    for (var y = 3; y < n - 3; y++) for (var x = 3; x < n - 3; x++) {
+      var k = (y * n + x) * 4; if (p[k + 3] < 170) continue;
+      var edge = 0;
+      for (var dd = 4; dd <= 12; dd += 4) { if (p[k + 3 - dd] < 80 || p[k + 3 + dd] < 80 || p[k + 3 - n * dd] < 80 || p[k + 3 + n * dd] < 80) { edge = 1 - (dd - 4) / 12; break; } }
+      if (edge) { o[k] = o[k + 1] = o[k + 2] = 255; o[k + 3] = 255 * edge; }
+    }
+    g.clearRect(0, 0, n, n); g.putImageData(out, 0, 0);
+  } catch (e) { return null; }
+  return c;
+}
+function mistify(im) {
+  var c = document.createElement("canvas"); c.width = im.width; c.height = im.height;
+  var g = c.getContext("2d"); g.drawImage(im, 0, 0);
+  try {
+    var d = g.getImageData(0, 0, c.width, c.height), p = d.data;
+    for (var i = 0; i < p.length; i += 4) {
+      var l = (p[i] * 0.3 + p[i + 1] * 0.59 + p[i + 2] * 0.11);
+      p[i] = lerp(l, 232, 0.55); p[i + 1] = lerp(l, 235, 0.55); p[i + 2] = lerp(l, 240, 0.5);
+    }
+    g.putImageData(d, 0, 0);
+  } catch (e) { g.globalCompositeOperation = "source-atop"; g.fillStyle = "rgba(232,235,239,0.6)"; g.fillRect(0, 0, c.width, c.height); }
+  return c;
+}
+function makeMistSprites() {
+  for (var v = 0; v < 5; v++) {
+    var c = document.createElement("canvas"); c.width = c.height = 256;
+    var g = c.getContext("2d"), r = seeded(77 + v * 131);
+    for (var i = 0; i < 46; i++) {
+      var a = r() * Math.PI * 2, d = Math.pow(r(), 0.7) * 70, x = 128 + Math.cos(a) * d * 1.35, y = 128 + Math.sin(a) * d * 0.7, rad = 26 + r() * 52;
+      var gr = g.createRadialGradient(x, y, 0, x, y, rad);
+      gr.addColorStop(0, "rgba(246,247,249,0.16)"); gr.addColorStop(1, "rgba(246,247,249,0)");
+      g.fillStyle = gr; g.beginPath(); g.arc(x, y, rad, 0, Math.PI * 2); g.fill();
+    }
+    mistSprites.push(c);
+  }
+}
+function makeSeaTile() {
+  var c = document.createElement("canvas"), u = 2, cw = 92, ch = 46;
+  c.width = cw * u; c.height = ch * u;
+  var g = c.getContext("2d"); g.scale(u, u);
+  g.strokeStyle = "rgba(248,246,240,0.55)"; g.lineWidth = 0.8;
+  var centers = [[0, 0], [46, 0], [92, 0], [23, 23], [69, 23], [0, 46], [46, 46], [92, 46]];
+  centers.forEach(function (cc) {
+    for (var r = 21; r > 3; r -= 5) { g.beginPath(); g.arc(cc[0], cc[1], r, Math.PI, 0); g.stroke(); }
+  });
+  seaTile = c;
+}
+
+/* ------------------------------------------------------------------ resize & quality */
+var QCAP = { smooth: 1280, standard: 1920, high: 2560 };
+function resize() {
+  var cw = app.clientWidth, ch = app.clientHeight;
+  var dpr = Math.max(1, window.devicePixelRatio || 1);
+  var cap = QCAP[S.quality] || 1280;
+  var sc = Math.min(dpr, cap / Math.max(cw, ch));
+  if (S.quality === "high") sc = Math.max(sc, Math.min(cap / Math.max(cw, ch), 2.5));
+  sc = Math.max(sc, 0.5);
+  W = cw; H = ch; RS = sc;
+  fx.width = Math.round(cw * sc); fx.height = Math.round(ch * sc);
+  gpuCanvas.width = fx.width; gpuCanvas.height = fx.height;
+  BASE = Math.min(W / 1720, H / 1010);
+  if (GPU.ok) GPU.resized = true;
+  var rh = $("#rotate-hint");
+  var portrait = (W < H) && (W < 700) && ("ontouchstart" in window);
+  if (rh) rh.classList.toggle("hidden", !portrait || mode === "title");
+}
+function scl() { return BASE * cam.z; }
+function w2s(x, y) { var s = scl(); return { x: (x - cam.x) * s + W / 2, y: (y - cam.y) * s + H / 2 }; }
+function s2w(x, y) { var s = scl(); return { x: (x - W / 2) / s + cam.x, y: (y - H / 2) / s + cam.y }; }
+function clampCam() {
+  cam.z = clamp(cam.z, 0.75, 4.5);
+  var s = scl(), hw = W / 2 / s, hh = H / 2 / s;
+  var mx = Math.max(0, WORLD_W / 2 - hw + 140), my = Math.max(0, WORLD_H / 2 - hh + 120);
+  cam.x = clamp(cam.x, WORLD_W / 2 - mx, WORLD_W / 2 + mx);
+  cam.y = clamp(cam.y, WORLD_H / 2 - my, WORLD_H / 2 + my);
+}
+
+/* ------------------------------------------------------------------ WebGPU sea */
+var GPU = { ok: false, tried: false };
+var WGSL = [
+  "struct U { t:f32, w:f32, h:f32, cx:f32, cy:f32, sc:f32, a:f32, b:f32 };",
+  "@group(0) @binding(0) var<uniform> u:U;",
+  "@vertex fn vs(@builtin(vertex_index) i:u32) -> @builtin(position) vec4f {",
+  "  var p = array<vec2f,3>(vec2f(-1.0,-3.0), vec2f(-1.0,1.0), vec2f(3.0,1.0));",
+  "  return vec4f(p[i], 0.0, 1.0); }",
+  "fn hash(p:vec2f) -> f32 { return fract(sin(dot(p, vec2f(127.1,311.7))) * 43758.5453); }",
+  "fn noise(p:vec2f) -> f32 { let i = floor(p); let f = fract(p);",
+  "  let a = hash(i); let b = hash(i + vec2f(1.0,0.0)); let c = hash(i + vec2f(0.0,1.0)); let d = hash(i + vec2f(1.0,1.0));",
+  "  let m = f*f*(3.0-2.0*f); return mix(mix(a,b,m.x), mix(c,d,m.x), m.y); }",
+  "fn fbm(p:vec2f) -> f32 { var v = 0.0; var q = p; var amp = 0.5;",
+  "  for (var k:i32 = 0; k < 4; k++) { v = v + amp * noise(q); q = q * 2.03; amp = amp * 0.5; } return v; }",
+  "@fragment fn fs(@builtin(position) fc:vec4f) -> @location(0) vec4f {",
+  "  let wp = (fc.xy - vec2f(u.w, u.h) * 0.5) / u.sc + vec2f(u.cx, u.cy);",
+  "  let gy = clamp(wp.y / 900.0, -0.3, 1.3);",
+  "  var col = mix(vec3f(0.80,0.858,0.89), vec3f(0.58,0.66,0.75), gy);",
+  "  let blot = fbm(wp / 210.0 + vec2f(u.t * 0.01, 0.0));",
+  "  col = mix(col, col * vec3f(0.90,0.93,0.98), smoothstep(0.45, 0.8, blot) * 0.6);",
+  "  let P = wp / 46.0;",
+  "  var best = -99.0; var bd = 1.0;",
+  "  let r0 = floor(P.y * 2.0);",
+  "  for (var k:i32 = 0; k < 3; k++) {",
+  "    let r = r0 + f32(k); let cyy = r * 0.5;",
+  "    let odd = ((i32(r) % 2) + 2) % 2;",
+  "    let sh = select(0.0, 0.5, odd == 1);",
+  "    let cxx = floor(P.x - sh + 0.5) + sh;",
+  "    for (var j:i32 = -1; j <= 1; j++) {",
+  "      let c = vec2f(cxx + f32(j), cyy); let dd = length(P - c);",
+  "      if (dd < 0.5 && P.y <= c.y && c.y > best) { best = c.y; bd = dd; } } }",
+  "  let rings = bd * 5.0 - u.t * 0.03;",
+  "  let rv = abs(fract(rings) - 0.5);",
+  "  let fw = fwidth(rings);",
+  "  var pat = (1.0 - smoothstep(0.0, 0.07 + fw * 1.3, rv)) * select(0.0, 1.0, best > -98.0);",
+  "  pat = pat * (0.35 + 0.65 * smoothstep(0.32, 0.66, fbm(wp / 300.0 + vec2f(3.1, u.t * 0.006))));",
+  "  col = mix(col, vec3f(0.97,0.96,0.93), pat * 0.38);",
+  "  let st = smoothstep(0.80, 0.97, noise(vec2f(wp.x * 0.006 + u.t * 0.03, wp.y * 0.045))) * smoothstep(0.55, 0.9, noise(wp / 140.0 + vec2f(u.t * 0.02, 1.7)));",
+  "  col = col + vec3f(st * 0.16);",
+  "  let sp = smoothstep(0.965, 1.0, noise(wp * 0.035 + vec2f(u.t * 0.2, -u.t * 0.12))) * (0.6 + 0.4 * sin(u.t * 2.0 + wp.x * 0.05));",
+  "  col = col + vec3f(sp * 0.35, sp * 0.33, sp * 0.25);",
+  "  let e = max(abs(wp.x - 800.0) - 830.0, abs(wp.y - 450.0) - 500.0);",
+  "  col = mix(col, vec3f(0.957,0.933,0.874), smoothstep(-40.0, 240.0, e));",
+  "  col = col + vec3f((hash(floor(fc.xy) * 0.37) - 0.5) * 0.02);",
+  "  return vec4f(col, 1.0); }"
+].join("\n");
+
+function initRenderer() {
+  var st = $("#renderer-state");
+  if (S.renderer === "webgpu") {
+    initGPU().then(function (ok) {
+      gpuCanvas.style.display = ok ? "block" : "none";
+      setRendererState(ok ? "gpu-on" : "gpu-fail");
+    });
+  } else {
+    GPU.ok = false; gpuCanvas.style.display = "none"; setRendererState("soft-on");
+  }
+}
+function setRendererState(key) { var st = $("#renderer-state"); if (st) st.innerHTML = txt(key); }
+function initGPU() {
+  if (GPU.ok) return Promise.resolve(true);
+  if (!navigator.gpu) return Promise.resolve(false);
+  return navigator.gpu.requestAdapter({ powerPreference: "high-performance" }).then(function (adapter) {
+    if (!adapter) return false;
+    return adapter.requestDevice().then(function (device) {
+      var gctx = gpuCanvas.getContext("webgpu");
+      if (!gctx) return false;
+      var format = navigator.gpu.getPreferredCanvasFormat();
+      gctx.configure({ device: device, format: format, alphaMode: "opaque" });
+      var module = device.createShaderModule({ code: WGSL });
+      var pipe = device.createRenderPipeline({
+        layout: "auto",
+        vertex: { module: module, entryPoint: "vs" },
+        fragment: { module: module, entryPoint: "fs", targets: [{ format: format }] },
+        primitive: { topology: "triangle-list" }
+      });
+      var ub = device.createBuffer({ size: 32, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+      var bg = device.createBindGroup({ layout: pipe.getBindGroupLayout(0), entries: [{ binding: 0, resource: { buffer: ub } }] });
+      GPU.device = device; GPU.ctx = gctx; GPU.pipe = pipe; GPU.ub = ub; GPU.bg = bg; GPU.format = format; GPU.ok = true;
+      GPU.u = new Float32Array(8);
+      device.lost.then(function () { GPU.ok = false; gpuCanvas.style.display = "none"; setRendererState("gpu-fail"); });
+      return true;
+    });
+  }).catch(function () { return false; });
+}
+function drawGPU(t) {
+  if (!GPU.ok || S.renderer !== "webgpu") return;
+  try {
+    var u = GPU.u, s = scl() * RS;
+    u[0] = t; u[1] = fx.width; u[2] = fx.height; u[3] = cam.x; u[4] = cam.y; u[5] = s; u[6] = 0; u[7] = 0;
+    GPU.device.queue.writeBuffer(GPU.ub, 0, u);
+    var enc = GPU.device.createCommandEncoder();
+    var pass = enc.beginRenderPass({ colorAttachments: [{ view: GPU.ctx.getCurrentTexture().createView(), loadOp: "clear", storeOp: "store", clearValue: { r: 0.95, g: 0.93, b: 0.87, a: 1 } }] });
+    pass.setPipeline(GPU.pipe); pass.setBindGroup(0, GPU.bg); pass.draw(3); pass.end();
+    GPU.device.queue.submit([enc.finish()]);
+  } catch (e) { GPU.ok = false; gpuCanvas.style.display = "none"; setRendererState("gpu-fail"); }
+}
+
+/* ------------------------------------------------------------------ software sea */
+function drawSoftSea(t) {
+  var tl = s2w(0, 0), br = s2w(W, H);
+  var g = ctx.createLinearGradient(0, 0, 0, WORLD_H);
+  g.addColorStop(0, "#ccdbe3"); g.addColorStop(1, "#94a9bf");
+  ctx.fillStyle = g; ctx.fillRect(tl.x - 10, tl.y - 10, br.x - tl.x + 20, br.y - tl.y + 20);
+  if (seaTile) {
+    var pat = ctx.createPattern(seaTile, "repeat");
+    if (pat && pat.setTransform && window.DOMMatrix) { pat.setTransform(new DOMMatrix().translate((t * 2) % 92, 0).scale(0.5)); }
+    ctx.globalAlpha = 0.32; ctx.fillStyle = pat; ctx.fillRect(tl.x - 10, tl.y - 10, br.x - tl.x + 20, br.y - tl.y + 20); ctx.globalAlpha = 1;
+  }
+  ctx.strokeStyle = "rgba(255,255,255,0.35)"; ctx.lineWidth = 1.4;
+  for (var i = 0; i < 14; i++) {
+    var y = (i * 71 + 30) % WORLD_H, x = ((i * 233 + t * (8 + i % 3 * 4)) % (WORLD_W + 300)) - 150;
+    ctx.globalAlpha = 0.3 + 0.3 * Math.sin(t * 0.7 + i);
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + 30, y - 3, x + 60, y); ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+  var e = 260;
+  var vg = [
+    [tl.x - 10, tl.y - 10, br.x - tl.x + 20, -tl.y + 50 + 10], [tl.x - 10, WORLD_H - 50, br.x - tl.x + 20, br.y - WORLD_H + 60]
+  ];
+  ctx.fillStyle = "rgba(244,238,223,0.85)";
+  if (tl.y < -50) ctx.fillRect(tl.x - 10, tl.y - 10, br.x - tl.x + 20, -50 - tl.y + 10);
+  if (br.y > WORLD_H + 50) ctx.fillRect(tl.x - 10, WORLD_H + 50, br.x - tl.x + 20, br.y - WORLD_H);
+  if (tl.x < -30) ctx.fillRect(tl.x - 10, tl.y - 10, -30 - tl.x + 10, br.y - tl.y + 20);
+  if (br.x > WORLD_W + 30) ctx.fillRect(WORLD_W + 30, tl.y - 10, br.x - WORLD_W, br.y - tl.y + 20);
+}
+
+/* ------------------------------------------------------------------ boat */
+var boat = { x: 0, y: 0, dir: 1, alpha: 1, trail: [], bob: 0, merc: null };
+function drawBoat(t) {
+  if (boat.alpha <= 0) return;
+  ctx.save(); ctx.globalAlpha = boat.alpha;
+  for (var i = 0; i < boat.trail.length; i++) {
+    var p = boat.trail[i], a = i / boat.trail.length;
+    ctx.strokeStyle = "rgba(255,255,255," + (a * 0.55).toFixed(3) + ")"; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(p.x, p.y + 5, 6 + (1 - a) * 14, 0.2, Math.PI - 0.2); ctx.stroke();
+  }
+  var bob = Math.sin(t * 2.2) * 1.6;
+  ctx.translate(boat.x, boat.y + bob); ctx.scale(boat.dir, 1); ctx.rotate(Math.sin(t * 1.7) * 0.03);
+  ctx.fillStyle = "rgba(43,58,85,0.18)"; ctx.beginPath(); ctx.ellipse(0, 9, 38, 6, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = "#7a5232"; ctx.strokeStyle = "#3a2a1c"; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(-34, -4); ctx.lineTo(36, -6); ctx.quadraticCurveTo(30, 8, 18, 9); ctx.lineTo(-26, 9); ctx.quadraticCurveTo(-34, 4, -34, -4); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = "#c9a961"; ctx.beginPath(); ctx.moveTo(-31, -1); ctx.lineTo(32, -3); ctx.stroke();
+  ctx.fillStyle = "#efe6d0"; ctx.strokeStyle = "#2b3a55"; ctx.lineWidth = 1;
+  ctx.fillRect(-16, -19, 24, 14); ctx.strokeRect(-16, -19, 24, 14);
+  ctx.fillStyle = "#3c4a68"; ctx.beginPath(); ctx.moveTo(-20, -19); ctx.lineTo(12, -19); ctx.lineTo(6, -25); ctx.lineTo(-14, -25); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = "#f2b8c6"; ctx.fillRect(-12, -15, 6, 6); ctx.fillStyle = "#9fb3c8"; ctx.fillRect(-2, -15, 6, 6);
+  ctx.strokeStyle = "#3a2a1c"; ctx.beginPath(); ctx.moveTo(26, -6); ctx.lineTo(26, -22); ctx.stroke();
+  var gl = ctx.createRadialGradient(26, -24, 0, 26, -24, 14); gl.addColorStop(0, "rgba(255,200,120,0.85)"); gl.addColorStop(1, "rgba(255,200,120,0)");
+  ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(26, -24, 14, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = "#d9534f"; ctx.beginPath(); ctx.ellipse(26, -24, 3.6, 4.8, 0, 0, Math.PI * 2); ctx.fill();
+  if (!boat.merc) drawMerc(38, -9, 5.5, t);
+  ctx.restore();
+  if (boat.merc) drawMercFlight(t);
+}
+function drawMerc(x, y, r, t) {
+  var g = ctx.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.1, x, y, r);
+  g.addColorStop(0, "#ffffff"); g.addColorStop(0.35, "#d6dbe6"); g.addColorStop(1, "#8790a8");
+  ctx.fillStyle = g; ctx.strokeStyle = "#3c4a7a"; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = "#2b3a55"; ctx.beginPath(); ctx.arc(x - r * 0.3, y - r * 0.05, r * 0.13, 0, 7); ctx.arc(x + r * 0.3, y - r * 0.05, r * 0.13, 0, 7); ctx.fill();
+  ctx.fillStyle = "rgba(242,140,160,0.8)"; ctx.beginPath(); ctx.arc(x, y + r * 0.3, r * 0.12, 0, 7); ctx.fill();
+}
+function drawMercFlight(t) {
+  var m = boat.merc, e = t - m.t0;
+  if (e > 3.2) { boat.merc = null; return; }
+  var hops = [0, 0.8, 1.45, 1.95, 2.3], amp = [26, 16, 9, 4];
+  var x = m.x, y = m.y, k;
+  for (k = 0; k < 4; k++) { if (e >= hops[k] && e < hops[k + 1]) break; }
+  if (k < 4) {
+    var f = (e - hops[k]) / (hops[k + 1] - hops[k]);
+    x = m.x + m.dir * (k * 34 + f * 34 + 12); y = m.y - Math.sin(f * Math.PI) * amp[k];
+    for (var j = 0; j <= k; j++) { var rx = m.x + m.dir * (j * 34 + 12), ra = e - hops[j]; ctx.strokeStyle = "rgba(255,255,255," + Math.max(0, 0.7 - ra * 0.4).toFixed(2) + ")"; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(rx, m.y + 2, 4 + ra * 14, 1.5 + ra * 4, 0, 0, 7); ctx.stroke(); }
+    drawMerc(x, y, 5.5, t);
+  } else {
+    var back = (e - 2.3) / 0.9; x = lerp(m.x + m.dir * 148, boat.x + boat.dir * 38, back); y = lerp(m.y, boat.y - 9, back) - Math.sin(back * Math.PI) * 40;
+    drawMerc(x, y, 5.5, t);
+  }
+}
+
+/* ------------------------------------------------------------------ islands */
+var LANTERNS = {
+  pa: [[-0.05, -0.17], [0.14, 0.02], [-0.2, 0.1]],
+  xrd: [[0.08, -0.08], [-0.12, 0.06], [0.16, 0.1]],
+  sem: [[0.12, -0.04], [-0.1, 0.08], [0.2, 0.15]],
+  port: [[-0.15, 0.2], [-0.05, 0.16], [0.08, -0.04], [-0.2, -0.06]]
+};
+var lanternLit = 1;
+function drawIsles(t) {
+  ISLES.forEach(function (i) {
+    var target = (hoverIsle === i && mode === "map") ? 1 : 0;
+    i.lift = lerp(i.lift, target, 0.15);
+    var s = i.size, y = i.y - i.lift * 8 + Math.sin(t * 0.6 + i.x) * 1.2;
+    ctx.fillStyle = "rgba(43,58,85," + (0.10 + i.lift * 0.06).toFixed(3) + ")";
+    ctx.beginPath(); ctx.ellipse(i.x, i.y + s * 0.3, s * 0.36, s * 0.09, 0, 0, Math.PI * 2); ctx.fill();
+    var im = i.state === "open" ? imgs[i.id] : mistImgs[i.id];
+    if (im) {
+      ctx.globalAlpha = i.state === "open" ? 1 : 0.8;
+      ctx.drawImage(im, i.x - s / 2, y - s / 2, s, s);
+      ctx.globalAlpha = 1;
+    }
+    if (i.state === "open" && LANTERNS[i.id] && lanternLit > 0) {
+      LANTERNS[i.id].forEach(function (L, k) {
+        var lit = clamp(lanternLit * LANTERNS[i.id].length - k, 0, 1);
+        if (lit <= 0) return;
+        var lx = i.x + L[0] * s, ly = y + L[1] * s, fl = 0.75 + 0.25 * Math.sin(t * 3 + k * 2 + i.x);
+        var gg = ctx.createRadialGradient(lx, ly, 0, lx, ly, 16);
+        gg.addColorStop(0, "rgba(255,214,140," + (0.8 * lit * fl).toFixed(3) + ")"); gg.addColorStop(1, "rgba(255,214,140,0)");
+        ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(lx, ly, 16, 0, 7); ctx.fill();
+        ctx.fillStyle = "rgba(217,83,79," + lit.toFixed(2) + ")"; ctx.beginPath(); ctx.ellipse(lx, ly, 2.4, 3.2, 0, 0, 7); ctx.fill();
+      });
+    }
+  });
+}
+function drawRoute(t) {
+  ctx.save(); ctx.lineCap = "round";
+  for (var k = 0; k < ROUTE.length - 1; k++) {
+    var a = ISLE[ROUTE[k]], b = ISLE[ROUTE[k + 1]], open = b.state === "open";
+    var pa = dockOf(a), pb = dockOf(b);
+    var mx = (pa.x + pb.x) / 2, my = (pa.y + pb.y) / 2 + (k % 2 ? -30 : 30);
+    ctx.setLineDash(open ? [2, 9] : [2, 14]);
+    ctx.lineDashOffset = -t * 6;
+    ctx.strokeStyle = open ? "rgba(201,169,97,0.95)" : "rgba(91,110,140,0.45)"; ctx.lineWidth = open ? 2.6 : 2;
+    ctx.beginPath(); ctx.moveTo(pa.x, pa.y); ctx.quadraticCurveTo(mx, my, pb.x, pb.y); ctx.stroke();
+  }
+  var s0 = dockOf(ISLE.pa);
+  ctx.setLineDash([2, 9]); ctx.strokeStyle = "rgba(201,169,97,0.95)"; ctx.lineWidth = 2.6;
+  ctx.beginPath(); ctx.moveTo(START_DOCK.x, START_DOCK.y); ctx.quadraticCurveTo((START_DOCK.x + s0.x) / 2, s0.y + 30, s0.x, s0.y); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = "#8a6a3a"; ctx.fillRect(START_DOCK.x - 26, START_DOCK.y + 8, 44, 6);
+  ctx.restore();
+}
+function drawMist(t, lift) {
+  ISLES.forEach(function (i) {
+    if (i.state === "open") return;
+    var amt = 0.7;
+    if (lift && lift.isle === i) amt *= (1 - lift.v);
+    for (var k = 0; k < 6; k++) {
+      var sp = mistSprites[(k + i.x) % mistSprites.length | 0];
+      var ox = Math.sin(t * 0.15 + k * 1.7 + i.x) * 40 + (k - 2.5) * i.size * 0.16;
+      var oy = Math.cos(t * 0.12 + k * 2.3) * 16 + ((k % 3) - 1) * i.size * 0.12;
+      var sz = i.size * (1.0 + (k % 2) * 0.3);
+      ctx.globalAlpha = amt * (0.75 + 0.25 * Math.sin(t * 0.3 + k));
+      ctx.drawImage(sp, i.x + ox - sz / 2, i.y + oy - sz * 0.32, sz, sz * 0.64);
+    }
+  });
+  ctx.globalAlpha = 1;
+}
+function drawGlobalMist(t, a) {
+  if (a <= 0) return;
+  ctx.save(); ctx.setTransform(RS, 0, 0, RS, 0, 0);
+  ctx.fillStyle = "rgba(240,242,244," + (a * 0.55).toFixed(3) + ")"; ctx.fillRect(0, 0, W, H);
+  var n = 18;
+  for (var k = 0; k < n; k++) {
+    var sp = mistSprites[k % mistSprites.length];
+    var x = ((k * 197 + t * (14 + k % 4 * 6)) % (W + 600)) - 300, y = (k * 113) % (H + 200) - 100;
+    var sz = Math.max(W, H) * 0.55;
+    ctx.globalAlpha = a; ctx.drawImage(sp, x - sz / 2, y - sz * 0.3, sz, sz * 0.6);
+  }
+  ctx.restore();
+}
+
+/* ------------------------------------------------------------------ cutscene effects */
+var FX = {};
+function prand(seed, n, fn) { var r = seeded(seed), out = []; for (var i = 0; i < n; i++) out.push(fn(r, i)); return out; }
+FX.pa = function (i, t) {
+  var cx = i.x, cy = i.y, R = i.size / 2;
+  if (!FX._pa) FX._pa = prand(11, 160, function (r) { var c = r(); return { ts: 2.8 + r() * 6.2, x: (r() - 0.5) * R * 0.75, cls: c < 0.22 ? 0 : c < 0.48 ? 1 : c < 0.75 ? 2 : 3, dx: (r() - 0.5) * 20 }; });
+  var stops = [cy - R * 0.3, cy - R * 0.02, cy + R * 0.22, cy + R * 0.58], rad = [5.2, 3.4, 2.2, 1.7];
+  var cols = ["#8b7d6b", "#a8916f", "#c9ab79", "rgba(255,255,255,0.9)"];
+  FX._pa.forEach(function (g) {
+    var e = t - g.ts; if (e < 0) return;
+    var y0 = cy - R * 1.2, y = y0 + 0.5 * 260 * e * e, sy = stops[g.cls];
+    var x = cx + g.x;
+    if (g.cls === 3) { x = lerp(cx + g.x, cx - R * 0.56, clamp((y - (cy - R * 0.2)) / (R * 0.9), 0, 1)); }
+    var landed = y >= sy; if (landed) y = sy;
+    var a = 1; if (g.cls === 3 && landed) { a = Math.max(0, 1 - (e - Math.sqrt(2 * (sy - y0) / 260)) * 0.8); }
+    if (a <= 0) return;
+    ctx.globalAlpha = a; ctx.fillStyle = cols[g.cls];
+    ctx.beginPath(); ctx.arc(x, y, rad[g.cls], 0, 7); ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+  if (t > 6.5 && t < 10.5) {
+    var pulse = Math.sin((t - 6.5) * 3) * 0.5 + 0.5, fade = Math.min(1, (t - 6.5)) * Math.min(1, (10.5 - t));
+    ctx.strokeStyle = "rgba(201,169,97," + (0.75 * fade).toFixed(2) + ")"; ctx.lineWidth = 2.2 + pulse * 1.5;
+    [[-0.32, 0.26], [-0.02, 0.36], [0.2, 0.44]].forEach(function (r) { ctx.beginPath(); ctx.ellipse(cx, cy + r[0] * R, R * r[1] * 1.6, R * r[1] * 0.38, 0, 0.1, Math.PI - 0.1); ctx.stroke(); });
+    var px = cx + R * 0.22, py = cy - R * 0.02;
+    var pg = ctx.createRadialGradient(px, py, 0, px, py, 18); pg.addColorStop(0, "rgba(255,255,255," + fade.toFixed(2) + ")"); pg.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = pg; ctx.beginPath(); ctx.arc(px, py, 18, 0, 7); ctx.fill();
+  }
+};
+FX.xrd = function (i, t) {
+  var cx = i.x, cy = i.y, R = i.size / 2;
+  tint(t, 0.32, "rgba(30,40,80,");
+  var ox = cx - R * 0.01, oy = cy - R * 0.6;
+  if (t > 1.5 && t < 10) {
+    var a = -Math.PI * 0.95 + clamp((t - 2) / 7, 0, 1) * Math.PI * 0.9, L = R * 3.2, wdt = 0.07;
+    var f = Math.min(1, t - 1.5) * Math.min(1, 10 - t);
+    var g = ctx.createRadialGradient(ox, oy, 0, ox, oy, L);
+    g.addColorStop(0, "rgba(255,246,210," + (0.75 * f).toFixed(2) + ")"); g.addColorStop(1, "rgba(255,246,210,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.arc(ox, oy, L, a - wdt, a + wdt); ctx.closePath(); ctx.fill();
+    [4.0, 5.5, 7.0].forEach(function (tt, k) {
+      var e = t - tt; if (e < 0 || e > 2.2) return;
+      var al = (1 - e / 2.2);
+      for (var r = 0; r < 3; r++) {
+        ctx.strokeStyle = "rgba(" + (k === 1 ? "242,184,198" : "255,230,170") + "," + (al * (0.9 - r * 0.25)).toFixed(2) + ")"; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.ellipse(ox, oy, (20 + r * 22) * (0.4 + e), (8 + r * 9) * (0.4 + e), 0, 0, 7); ctx.stroke();
+      }
+    });
+  }
+  ctx.fillStyle = "rgba(255,226,150,0.95)"; ctx.beginPath(); ctx.arc(ox, oy, 4 + Math.sin(t * 6) * 1, 0, 7); ctx.fill();
+  if (t > 9.5) {
+    var wx = cx + R * 0.2, wy = cy - R * 0.24, wa = Math.min(1, (t - 9.5) * 1.5);
+    var wg = ctx.createRadialGradient(wx, wy, 0, wx, wy, 26); wg.addColorStop(0, "rgba(255,214,140," + wa.toFixed(2) + ")"); wg.addColorStop(1, "rgba(255,214,140,0)");
+    ctx.fillStyle = wg; ctx.beginPath(); ctx.arc(wx, wy, 26, 0, 7); ctx.fill();
+  }
+};
+function screenOverlayXRD(t) {
+  if (t < 6.8 || t > 12) return;
+  var x0 = W * 0.12, x1 = W * 0.88, yb = H * 0.30, h = H * 0.13;
+  var prog = clamp((t - 6.8) / 2.6, 0, 1), fade = Math.min(1, 12 - t);
+  var peaks = [[0.16, 0.85], [0.3, 0.45], [0.46, 1.0], [0.62, 0], [0.78, 0.6], [0.88, 0.3]];
+  ctx.save(); ctx.setTransform(RS, 0, 0, RS, 0, 0);
+  ctx.globalAlpha = fade; ctx.strokeStyle = "rgba(255,240,200,0.95)"; ctx.lineWidth = 2; ctx.shadowColor = "rgba(255,220,150,0.9)"; ctx.shadowBlur = 8;
+  ctx.beginPath();
+  var N = 260;
+  for (var k = 0; k <= N * prog; k++) {
+    var u = k / N, y = 0.04 * Math.sin(u * 40);
+    peaks.forEach(function (p) { y += p[1] * Math.exp(-Math.pow((u - p[0]) / 0.008, 2)); });
+    var X = lerp(x0, x1, u), Y = yb - y * h;
+    if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+  }
+  ctx.stroke();
+  if (prog > 0.65) { ctx.shadowBlur = 0; ctx.fillStyle = "rgba(201,169,97," + fade.toFixed(2) + ")"; ctx.font = "700 " + Math.round(h * 0.5) + "px serif"; ctx.textAlign = "center"; ctx.fillText("?", lerp(x0, x1, 0.62), yb - h * 0.25); }
+  ctx.restore();
+}
+FX.sem = function (i, t) {
+  var cx = i.x, cy = i.y, R = i.size / 2;
+  tint(t, 0.5, "rgba(18,26,58,");
+  var ox = cx - R * 0.34, oy = cy - R * 0.44;
+  if (!FX._sem) FX._sem = prand(23, 140, function (r) { return { u: r(), v: r(), c: r() < 0.55 ? "242,184,198" : "255,224,150", tw: r() * 6 }; });
+  var rows = 12, y0 = cy - R * 0.08, y1 = cy + R * 0.22, x0 = cx - R * 0.42, x1 = cx + R * 0.08;
+  var prog = clamp((t - 2.4) / 5.6, 0, 1) * rows;
+  FX._sem.forEach(function (d) {
+    var row = Math.floor(d.v * rows), fu = d.u, x = lerp(x0, x1, fu) + (row - rows / 2) * R * 0.012, y = lerp(y0, y1, (row + 0.5) / rows);
+    var done = row < Math.floor(prog) || (row === Math.floor(prog) && fu < prog - Math.floor(prog));
+    if (!done) return;
+    var a = 0.55 + 0.3 * Math.sin(t * 3 + d.tw);
+    var g = ctx.createRadialGradient(x, y, 0, x, y, 4.5); g.addColorStop(0, "rgba(" + d.c + "," + a.toFixed(2) + ")"); g.addColorStop(1, "rgba(" + d.c + ",0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 4.5, 0, 7); ctx.fill();
+  });
+  if (prog > 0 && prog < rows) {
+    var r = Math.floor(prog), sx = lerp(x0, x1, prog - r), sy = lerp(y0, y1, (r + 0.5) / rows);
+    ctx.strokeStyle = "rgba(200,230,255,0.9)"; ctx.lineWidth = 1.2; ctx.shadowColor = "rgba(160,210,255,1)"; ctx.shadowBlur = 10;
+    ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(sx, sy); ctx.stroke();
+    ctx.strokeStyle = "rgba(200,230,255,0.35)"; ctx.beginPath(); ctx.moveTo(x0, sy); ctx.lineTo(sx, sy); ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+  ctx.fillStyle = "rgba(200,230,255,0.95)"; ctx.beginPath(); ctx.arc(ox, oy, 3 + Math.sin(t * 8), 0, 7); ctx.fill();
+  if (t > 7 && t < 11.5 && edgeImg) {
+    var f = Math.min(1, (t - 7) * 1.2) * Math.min(1, 11.5 - t);
+    ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.globalAlpha = 0.75 * f;
+    ctx.shadowColor = "rgba(255,255,255,0.9)"; ctx.shadowBlur = 12;
+    ctx.drawImage(edgeImg, i.x - i.size / 2, i.y - i.size / 2, i.size, i.size);
+    ctx.restore();
+    for (var k = 0; k < 8; k++) {
+      var bx = cx + R * (0.26 + (k % 4) * 0.055), by = cy + R * (0.28 + Math.floor(k / 4) * 0.07), bright = k % 2 === 0;
+      ctx.fillStyle = bright ? "rgba(255,255,255," + f.toFixed(2) + ")" : "rgba(30,36,60," + (0.8 * f).toFixed(2) + ")";
+      ctx.beginPath(); ctx.arc(bx, by, 3.4, 0, 7); ctx.fill();
+    }
+  }
+  if (t > 9.8) {
+    var pts = [[-0.34, -0.62], [0.34, 0.32], [0.0, 0.08]], fa = Math.min(1, (t - 9.8) * 1.2);
+    pts.forEach(function (p, k) { var e = clamp(fa * 3 - k, 0, 1); if (e <= 0) return; var px = cx + p[0] * R, py = cy + p[1] * R; ctx.strokeStyle = "rgba(201,169,97," + e.toFixed(2) + ")"; ctx.lineWidth = 2.4; ctx.beginPath(); ctx.arc(px, py, 10 + Math.sin(t * 4 + k) * 3, 0, 7); ctx.stroke(); });
+  }
+};
+FX.port = function (i, t) {
+  var cx = i.x, cy = i.y, R = i.size / 2;
+  tint(t, 0.4, "rgba(40,30,70,");
+  var shows = [
+    { t: 2.6, x: cx - R * 0.45, y: cy - R * 0.95, shape: "sieve", c: "255,214,140" },
+    { t: 4.0, x: cx + R * 0.05, y: cy - R * 1.1, shape: "lattice", c: "242,184,198" },
+    { t: 5.4, x: cx + R * 0.5, y: cy - R * 0.9, shape: "flower", c: "235,110,95" }
+  ];
+  shows.forEach(function (s, k) {
+    var e = t - s.t; if (e < -0.6) return;
+    if (e < 0) { var ry = lerp(cy + R * 0.2, s.y, (e + 0.6) / 0.6); ctx.fillStyle = "rgba(255,230,180,0.9)"; ctx.beginPath(); ctx.arc(s.x, ry, 2.2, 0, 7); ctx.fill(); return; }
+    var pts = FX["_pts" + k] || (FX["_pts" + k] = shapePts(s.shape, 40));
+    var ex = easeOut(e / 0.9) * R * 0.38;
+    pts.forEach(function (p, j) {
+      var x = s.x + p[0] * ex, y = s.y + p[1] * ex;
+      if (e > 1.2) { var fe = e - 1.2; y += 0.5 * 90 * fe * fe; x += p[0] * fe * 6; }
+      var water = cy + R * 0.45 + (j % 5) * 6;
+      if (y > water) { var re = (y - water) / 60; if (re < 1) { ctx.strokeStyle = "rgba(255,255,255," + (0.5 * (1 - re)).toFixed(2) + ")"; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(x, water, 3 + re * 10, 1 + re * 3, 0, 0, 7); ctx.stroke(); } return; }
+      var a = e < 1.2 ? 1 - e * 0.25 : 0.9;
+      if (e > 1.2) star(x, y, 3.2, "rgba(255,236,170," + a.toFixed(2) + ")", t + j);
+      else { ctx.fillStyle = "rgba(" + s.c + "," + a.toFixed(2) + ")"; ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 7); ctx.fill(); }
+    });
+    if (e < 0.35) { var fl = 1 - e / 0.35, gg = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, R * 0.5); gg.addColorStop(0, "rgba(255,240,210," + (0.6 * fl).toFixed(2) + ")"); gg.addColorStop(1, "rgba(255,240,210,0)"); ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(s.x, s.y, R * 0.5, 0, 7); ctx.fill(); }
+  });
+  if (t > 9.6) {
+    var a = Math.min(1, (t - 9.6) * 1.4), lx = cx + R * 0.78, ly = cy - R * 0.08;
+    var mg = ctx.createRadialGradient(lx, ly, 0, lx, ly, 46); mg.addColorStop(0, "rgba(240,242,244," + (0.8 * a).toFixed(2) + ")"); mg.addColorStop(1, "rgba(240,242,244,0)");
+    ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(lx, ly, 46, 0, 7); ctx.fill();
+    ctx.globalAlpha = a; ctx.strokeStyle = "#2b3a55"; ctx.fillStyle = "#c9a961"; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.arc(lx, ly - 7, 6, Math.PI, 0); ctx.stroke(); ctx.fillRect(lx - 9, ly - 7, 18, 14); ctx.strokeRect(lx - 9, ly - 7, 18, 14);
+    ctx.fillStyle = "#2b3a55"; ctx.beginPath(); ctx.arc(lx, ly - 1, 2, 0, 7); ctx.fill(); ctx.globalAlpha = 1;
+  }
+};
+function shapePts(shape, n) {
+  var out = [], k, a;
+  if (shape === "sieve") { for (var gx = -2; gx <= 2; gx++) for (var gy = -2; gy <= 2; gy++) out.push([gx / 2.2, gy / 2.2]); for (k = 0; k < 16; k++) { a = k / 16 * Math.PI * 2; out.push([Math.cos(a) * 1.25, Math.sin(a) * 1.25]); } }
+  else if (shape === "lattice") { for (var q = -2; q <= 2; q++) for (var r = -2; r <= 2; r++) { if (Math.abs(q + r) > 2) continue; out.push([(q + r * 0.5) / 2, r * 0.866 / 2]); } for (k = 0; k < 12; k++) { a = k / 12 * Math.PI * 2; out.push([Math.cos(a) * 1.2, Math.sin(a) * 1.2]); } }
+  else { for (k = 0; k < n; k++) { a = k / n * Math.PI * 2; var rr = 0.35 + 0.75 * Math.abs(Math.cos(2.5 * a)); out.push([Math.cos(a) * rr, Math.sin(a) * rr]); } }
+  return out;
+}
+function star(x, y, r, col, ph) {
+  ctx.fillStyle = col; ctx.beginPath();
+  var rot = ph * 0.8;
+  for (var k = 0; k < 8; k++) { var rr = k % 2 ? r * 0.38 : r, a = rot + k * Math.PI / 4; ctx.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); }
+  ctx.closePath(); ctx.fill();
+}
+FX.mip = function (i, t) {
+  var cx = i.x, cy = i.y, R = i.size / 2;
+  var sx = cx - R * 0.65, sy = cy + R * 0.4, ex = cx - R * 0.22, ey = cy + R * 0.3;
+  var f = t < 2.6 ? easeOut(t / 2.6) : t < 4.6 ? 1 - ease((t - 2.6) / 2) : 0;
+  var r = 7 * (t < 4.6 ? 1 : Math.max(0, 1 - (t - 4.6)));
+  if (r > 0) drawMerc(lerp(sx, ex, f), lerp(sy, ey, f) - Math.abs(Math.sin(t * 5)) * 3, r, t);
+  [0.5, 3.0].forEach(function (tt) { var e = t - tt; if (e < 0 || e > 1.6) return; ctx.strokeStyle = "rgba(255,255,255," + (0.7 * (1 - e / 1.6)).toFixed(2) + ")"; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.ellipse(sx + 10, sy + 6, 6 + e * 26, 2 + e * 8, 0, 0, 7); ctx.stroke(); });
+};
+FX.ga = function (i, t) {
+  var cx = i.x, cy = i.y, R = i.size / 2;
+  if (!FX._ga) FX._ga = prand(41, 90, function (r) { return { a: r() * Math.PI * 2, d: Math.sqrt(r()), l: Math.floor(r() * 4) }; });
+  FX._ga.forEach(function (d) {
+    var e = t - (0.8 + d.l * 1.1); if (e < 0) return;
+    var x = cx + Math.cos(d.a) * d.d * R * 0.55, y = cy - R * 0.05 + Math.sin(d.a) * d.d * R * 0.38 - d.l * 3;
+    var a = Math.min(1, e * 2) * 0.9;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, 5); g.addColorStop(0, "rgba(255,255,255," + a.toFixed(2) + ")"); g.addColorStop(1, "rgba(220,240,235,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 5, 0, 7); ctx.fill();
+  });
+};
+FX.ta = function (i, t) {
+  var cx = i.x - i.size * 0.03, cy = i.y - i.size * 0.2, p = 0.5 + 0.5 * Math.sin(t * 2.4);
+  var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 70); g.addColorStop(0, "rgba(235,90,60," + (0.25 + 0.4 * p).toFixed(2) + ")"); g.addColorStop(1, "rgba(235,90,60,0)");
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, 70, 0, 7); ctx.fill();
+  for (var k = 0; k < 7; k++) {
+    var e = (t * 0.35 + k / 7) % 1, x = cx + Math.sin(k * 2.1 + t * 0.5) * 18 * e, y = cy - e * 110;
+    ctx.fillStyle = "rgba(200,200,205," + (0.45 * (1 - e)).toFixed(2) + ")"; ctx.beginPath(); ctx.arc(x, y, 10 + e * 26, 0, 7); ctx.fill();
+  }
+};
+FX.unk = function (i, t) {};
+function tint(t, maxA, rgbaPrefix) {
+  var a = maxA * Math.min(1, t / 1.6) * (cut.leaving ? Math.max(0, 1 - cut.leaving) : 1);
+  ctx.save(); ctx.setTransform(RS, 0, 0, RS, 0, 0);
+  ctx.fillStyle = rgbaPrefix + a.toFixed(3) + ")"; ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+  var s = scl(); ctx.setTransform(RS * s, 0, 0, RS * s, RS * (W / 2 - cam.x * s), RS * (H / 2 - cam.y * s));
+}
+
+/* ------------------------------------------------------------------ cutscenes */
+var cut = { isle: null, phase: "", t0: 0, from: null, to: null, camFrom: null, camTo: null, lift: 0, leaving: 0, timers: [] };
+var opening = { on: false, t0: 0, mist: 0 };
+var SHOTS = { open: [0, 3, 7, 10], mist: [0] };
+
+function startOpening() {
+  mode = "opening"; opening.on = true; opening.t0 = now; opening.mist = 1;
+  lanternLit = 0; boat.alpha = 0;
+  cam.x = 800; cam.y = 470; cam.z = 1.9;
+  app.classList.add("ui-hidden"); $("#hud").classList.remove("hidden");
+  $("#ink").classList.remove("hidden", "out");
+  $("#btn-skip").classList.remove("hidden");
+  music("title");
+  sfx("chime");
+  schedule(3.0, function () { $("#ink").classList.add("out"); sayKey("open-1", 3400); });
+  schedule(6.6, function () { sayKey("open-2", 4300); });
+  schedule(11.2, function () { sayKey("open-3", 3800); sfx("chime"); });
+  schedule(15.2, function () { sayKey("open-4", 4500); });
+  schedule(20.0, endOpening);
+}
+function endOpening() {
+  if (mode !== "opening") return;
+  clearSchedule();
+  opening.on = false; opening.mist = 0; lanternLit = 1; boat.alpha = 1;
+  cam.x = WORLD_W / 2; cam.y = WORLD_H / 2; cam.z = 1;
+  $("#ink").classList.add("hidden"); $("#btn-skip").classList.add("hidden");
+  P.seenOpening = 1; save();
+  enterMap(true);
+}
+function updateOpening() {
+  var e = now - opening.t0;
+  var k = clamp((e - 7.5) / 7.5, 0, 1);
+  opening.mist = 1 - ease(k);
+  cam.z = lerp(1.9, 1.0, ease(k)); cam.x = lerp(800, WORLD_W / 2, ease(k)); cam.y = lerp(470, WORLD_H / 2, ease(k));
+  lanternLit = clamp((e - 10) / 4, 0, 1);
+  boat.alpha = clamp((e - 14.5) / 1.5, 0, 1);
+}
+function enterMap(first) {
+  mode = "map";
+  app.classList.remove("ui-hidden");
+  $("#hud").classList.remove("hidden"); $("#btn-kiri").classList.remove("hidden");
+  music("map");
+  resize();
+  if (S.hints) {
+    if (first) schedule(0.8, function () { sayKey("hint-map", 7000); });
+    else if (P.visits > 1) schedule(0.6, function () { sayKey("hint-back", 3500); });
+  }
+}
+
+function sailTo(isle) {
+  if (mode !== "map") return;
+  hideDialog();
+  mode = "voyage"; cut.isle = isle; cut.t0 = now; cut.leaving = 0;
+  app.classList.add("ui-hidden");
+  $("#btn-skip").classList.remove("hidden");
+  var d = dockOf(isle);
+  cut.from = { x: boat.x, y: boat.y }; cut.to = d;
+  var dist = Math.hypot(d.x - boat.x, d.y - boat.y);
+  cut.dur = clamp(dist / 420, 1.4, 2.6);
+  cut.ctrl = { x: (boat.x + d.x) / 2 + (d.y - boat.y) * 0.15, y: (boat.y + d.y) / 2 + 60 };
+  cut.camFrom = { x: cam.x, y: cam.y, z: cam.z };
+  sfx("click"); sfx("sail");
+  music(isle.state === "open" ? isle.scene : "mist");
+}
+function updateVoyage() {
+  var e = now - cut.t0, f = ease(e / cut.dur);
+  var a = cut.from, b = cut.to, c = cut.ctrl;
+  var x = (1 - f) * (1 - f) * a.x + 2 * (1 - f) * f * c.x + f * f * b.x;
+  var y = (1 - f) * (1 - f) * a.y + 2 * (1 - f) * f * c.y + f * f * b.y;
+  if (Math.abs(x - boat.x) > 0.05) boat.dir = x > boat.x ? 1 : -1;
+  boat.x = x; boat.y = y;
+  if (Math.floor(e * 20) !== boat.lastTrail) { boat.lastTrail = Math.floor(e * 20); boat.trail.push({ x: x, y: y }); if (boat.trail.length > 18) boat.trail.shift(); }
+  cam.x = lerp(cut.camFrom.x, (x + cut.isle.x) / 2, f); cam.y = lerp(cut.camFrom.y, (y + cut.isle.y) / 2, f); cam.z = lerp(cut.camFrom.z, 1.25, f);
+  if (e >= cut.dur) startCloseup();
+}
+function startCloseup() {
+  var isle = cut.isle;
+  mode = "closeup"; cut.t1 = now; cut.camFrom = { x: cam.x, y: cam.y, z: cam.z };
+  var zc = (Math.min(W * 0.9, H * 1.05) * 0.78) / (isle.size * BASE);
+  cut.camTo = { x: isle.x, y: isle.y + isle.size * 0.16, z: clamp(zc, 1.2, 5) };
+  cut.len = isle.state === "open" ? 12 : 6;
+  FX._pa = FX._sem = FX._ga = null; FX._pts0 = FX._pts1 = FX._pts2 = null;
+  var id = isle.id, open = isle.state === "open";
+  if (open) {
+    SHOTS.open.forEach(function (tt, k) { schedule(tt, function () { showShot(id + "-s" + (k + 1)); }); });
+    if (S.hints) {
+      schedule(1.2, function () { sayKey(id + "-n", 7600); });
+      schedule(9.2, function () { sayKey(id + "-q", 2700); });
+    }
+    if (id === "port") { [2.6, 4.0, 5.4].forEach(function (tt) { schedule(tt, function () { sfx("pop"); }); }); }
+    if (id === "xrd") { [4.0, 5.5, 7.0].forEach(function (tt, k) { schedule(tt, function () { sfx("bell", 79 + k * 3); }); }); }
+    if (id === "pa") schedule(3.0, function () { sfx("grains"); });
+    if (id === "sem") schedule(2.4, function () { sfx("scan"); });
+  } else {
+    schedule(0.1, function () { showShot(id + "-s1"); });
+    if (S.hints) schedule(1.5, function () { sayKey(id + "-n", 4300); });
+    if (id === "mip") { schedule(0.5, function () { sfx("drop"); }); schedule(3.0, function () { sfx("drop"); }); }
+    schedule(0.4, function () { sfx("muted"); });
+  }
+  schedule(cut.len, openCard);
+}
+function updateCloseup() {
+  var e = now - cut.t1, f = ease(e / 1.8);
+  cam.x = lerp(cut.camFrom.x, cut.camTo.x, f); cam.y = lerp(cut.camFrom.y, cut.camTo.y, f); cam.z = lerp(cut.camFrom.z, cut.camTo.z, f);
+  cam.z *= 1 + e * 0.004;
+  cut.lift = cut.isle.state === "open" ? 0 : clamp(e / 2, 0, 0.62);
+}
+function skipCut() {
+  if (mode === "opening") { endOpening(); return; }
+  if (mode === "voyage") { boat.x = cut.to.x; boat.y = cut.to.y; startCloseup(); clearSchedule(); openCard(); return; }
+  if (mode === "closeup") { clearSchedule(); openCard(); }
+}
+
+/* card */
+function openCard() {
+  clearSchedule();
+  var isle = cut.isle; if (!isle) return;
+  mode = "card"; hideShot(); hideDialog();
+  $("#btn-skip").classList.add("hidden");
+  var src = $('#cards section[data-isle="' + isle.id + '"]');
+  var card = $("#card");
+  card.style.setProperty("--noren", isle.noren);
+  $(".noren-title", card).innerHTML = src.querySelector("h2").innerHTML;
+  $(".card-content", card).innerHTML = src.innerHTML;
+  var open = isle.state === "open";
+  $("#card-go").classList.toggle("hidden", !open);
+  $("#card-done").classList.toggle("hidden", !open);
+  $("#card-omikuji").classList.toggle("hidden", isle.id !== "port");
+  var st = $(".card-stamp", card);
+  st.innerHTML = '<svg viewBox="0 0 40 40"><use href="#ic-' + isle.icon + '"/></svg>';
+  st.classList.toggle("done", !!P.stamps[isle.id]); st.classList.remove("pop");
+  st.classList.toggle("hidden", !open);
+  card.classList.remove("hidden", "leaving");
+  card.style.display = "";
+  sfx("noren");
+  P.boat = isle.id; save();
+  $("#card-go").focus({ preventScroll: true });
+}
+function closeCard() {
+  var card = $("#card"); if (card.classList.contains("hidden")) return;
+  card.classList.add("leaving"); sfx("tick");
+  cut.leaving = 0.001;
+  setTimeout(function () { card.classList.add("hidden"); card.classList.remove("leaving"); }, 450);
+  mode = "return"; cut.t2 = now; cut.camFrom = { x: cam.x, y: cam.y, z: cam.z };
+  var isle = cut.isle;
+  cut.camTo = { x: lerp(isle.x, WORLD_W / 2, 0.5), y: lerp(isle.y, WORLD_H / 2, 0.5), z: 1.15 };
+  music("map");
+}
+function updateReturn() {
+  var e = now - cut.t2, f = ease(e / 1.4);
+  cut.leaving = clamp(e / 1.0, 0, 1);
+  cam.x = lerp(cut.camFrom.x, cut.camTo.x, f); cam.y = lerp(cut.camFrom.y, cut.camTo.y, f); cam.z = lerp(cut.camFrom.z, cut.camTo.z, f);
+  if (e >= 1.4) { cut.isle = null; cut.lift = 0; cut.leaving = 0; mode = "map"; app.classList.remove("ui-hidden"); }
+}
+function goIsle() {
+  var isle = cut.isle; if (!isle) return;
+  var a = $('#cards section[data-isle="' + isle.id + '"] a.go');
+  var url = a && a.getAttribute("data-url"); if (!url) return;
+  sfx("door");
+  var w = window.open(url, "_blank");
+  if (w) { try { w.opener = null; } catch (e) {} }
+}
+function stampIsle() {
+  var isle = cut.isle; if (!isle || isle.state !== "open") return;
+  var st = $("#card .card-stamp");
+  if (!P.stamps[isle.id]) {
+    P.stamps[isle.id] = 1; save(); refreshStamps();
+    st.classList.add("done", "pop"); sfx("stamp");
+    var all = ["pa", "xrd", "sem", "port"].every(function (k) { return P.stamps[k]; });
+    if (S.hints) sayKey(all ? "all-stamped" : "stamped", 3200);
+  } else { st.classList.remove("pop"); void st.offsetWidth; st.classList.add("pop"); sfx("stamp"); }
+}
+function refreshStamps() {
+  $$("#stamps .slot").forEach(function (s) {
+    var id = s.getAttribute("data-isle"), seal = $(".seal", s);
+    if (!seal.firstChild) seal.innerHTML = '<svg viewBox="0 0 40 40"><use href="#ic-' + ISLE[id].icon + '"/></svg>';
+    s.classList.toggle("done", !!P.stamps[id]);
+  });
+  ISLES.forEach(function (i) { if (labels[i.id]) labels[i.id].classList.toggle("stamped", !!P.stamps[i.id]); });
+}
+
+/* ------------------------------------------------------------------ dialog & captions */
+var dlgTimer = 0;
+function sayKey(key, ms) { say(txt(key), txtWho(key), ms); }
+function say(html, who, ms) {
+  if (!html) return;
+  var d = $("#dialog");
+  d.classList.toggle("student", who !== "kiri");
+  $(".who", d).innerHTML = txt("who-" + who);
+  var s = $(".said", d); s.innerHTML = html; s.classList.add("stack");
+  d.classList.remove("hidden"); d.style.animation = "none"; void d.offsetWidth; d.style.animation = "";
+  clearTimeout(dlgTimer); dlgTimer = setTimeout(hideDialog, ms || 4000);
+}
+function hideDialog() { $("#dialog").classList.add("hidden"); clearTimeout(dlgTimer); }
+var shotTimer = 0;
+function showShot(key) {
+  var s = $("#shot"), h = txt(key); if (!h) return;
+  s.innerHTML = h; s.classList.add("stack"); s.classList.remove("hidden");
+  s.style.animation = "none"; void s.offsetWidth; s.style.animation = "";
+}
+function hideShot() { $("#shot").classList.add("hidden"); }
+var sched = [];
+function schedule(sec, fn) { sched.push({ at: now + sec, fn: fn }); }
+function clearSchedule() { sched.length = 0; }
+function runSchedule() {
+  for (var i = 0; i < sched.length; i++) { if (now >= sched[i].at) { var f = sched[i].fn; sched.splice(i, 1); i--; f(); } }
+}
+var toastTimer = 0;
+function toast(key) { var el = $("#toast"); el.innerHTML = txt(key); el.classList.remove("hidden"); clearTimeout(toastTimer); toastTimer = setTimeout(function () { el.classList.add("hidden"); }, 3200); }
+
+/* ------------------------------------------------------------------ frame */
+function frame(ts) {
+  requestAnimationFrame(frame);
+  if (mode === "locked") return;
+  now = (ts - T0) / 1000;
+  var dt = Math.min(0.05, now - lastT); lastT = now;
+  if (document.hidden) return;
+  runSchedule();
+  if (mode === "opening") updateOpening();
+  else if (mode === "voyage") updateVoyage();
+  else if (mode === "closeup") updateCloseup();
+  else if (mode === "return") updateReturn();
+  else if (mode === "map" || mode === "title") { boat.trail.length = Math.max(0, boat.trail.length - (Math.random() < 0.3 ? 1 : 0)); }
+  if (mode !== "opening") clampCamSoft();
+  render(now);
+  placeLabels();
+}
+function clampCamSoft() { if (mode === "map") clampCam(); }
+
+function render(t) {
+  var useGPU = GPU.ok && S.renderer === "webgpu";
+  if (useGPU) drawGPU(t);
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, fx.width, fx.height);
+  var s = scl();
+  ctx.setTransform(RS * s, 0, 0, RS * s, RS * (W / 2 - cam.x * s), RS * (H / 2 - cam.y * s));
+  if (!useGPU) drawSoftSea(t);
+  drawRoute(t);
+  drawIsles(t);
+  drawBoat(t);
+  var ce = (mode === "closeup" || mode === "card" || mode === "return") ? cut.isle : null;
+  if (ce && FX[ce.id]) {
+    var et = mode === "closeup" ? now - cut.t1 : (mode === "card" ? cut.len : cut.len + (now - cut.t2));
+    if (mode === "card" || mode === "return") { ctx.globalAlpha = mode === "return" ? Math.max(0, 1 - cut.leaving) : 1; }
+    if (mode !== "return" || cut.leaving < 1) FX[ce.id](ce, mode === "closeup" ? et : Math.min(et, cut.len));
+    ctx.globalAlpha = 1;
+  }
+  drawMist(t, ce ? { isle: ce, v: cut.lift } : null);
+  if (ce && ce.id === "xrd" && mode === "closeup") screenOverlayXRD(now - cut.t1);
+  if (mode === "opening") drawGlobalMist(t, opening.mist);
+  ctx.setTransform(RS, 0, 0, RS, 0, 0);
+  ctx.globalAlpha = 0.32; ctx.fillStyle = "#2b3a55"; ctx.font = "9px sans-serif"; ctx.textAlign = "right";
+  ctx.fillText(OWNER, W - 6, 11); ctx.globalAlpha = 1; ctx.textAlign = "left";
+}
+function placeLabels() {
+  var show = mode === "map" || mode === "title";
+  ISLES.forEach(function (i) {
+    var el = labels[i.id]; if (!el) return;
+    var p = w2s(i.x, i.y + i.size * 0.36);
+    el.style.transform = "translate(" + Math.round(p.x) + "px," + Math.round(p.y) + "px) translate(-50%,0)";
+    el.classList.toggle("hot", hoverIsle === i);
+  });
+}
+
+/* ------------------------------------------------------------------ input */
+var ptrs = {}, drag = null, pinch = null;
+function hitIsle(sx, sy) {
+  var w = s2w(sx, sy), best = null, bd = 1e9;
+  ISLES.forEach(function (i) { var d = Math.hypot(w.x - i.x, (w.y - i.y) * 1.25); if (d < i.size * 0.4 && d < bd) { bd = d; best = i; } });
+  return best;
+}
+function hitBoat(sx, sy) { var w = s2w(sx, sy); return Math.hypot(w.x - boat.x, w.y - boat.y + 6) < 38; }
+function bindInput() {
+  fx.addEventListener("pointerdown", function (e) {
+    fx.setPointerCapture && fx.setPointerCapture(e.pointerId);
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ids = Object.keys(ptrs);
+    if (ids.length === 1) drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: 0 };
+    else if (ids.length === 2) { var a = ptrs[ids[0]], b = ptrs[ids[1]]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), z: cam.z }; drag = null; }
+  });
+  fx.addEventListener("pointermove", function (e) {
+    if (ptrs[e.pointerId]) { ptrs[e.pointerId].x = e.clientX; ptrs[e.pointerId].y = e.clientY; }
+    var r = fx.getBoundingClientRect(), sx = e.clientX - r.left, sy = e.clientY - r.top;
+    if (mode !== "map") return;
+    if (pinch) { var ids = Object.keys(ptrs); if (ids.length >= 2) { var a = ptrs[ids[0]], b = ptrs[ids[1]]; cam.z = pinch.z * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d; clampCam(); } return; }
+    if (drag) {
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag.moved = Math.max(drag.moved, Math.abs(dx) + Math.abs(dy));
+      if (drag.moved > 5) { fx.classList.add("dragging"); cam.x = drag.cx - dx / scl(); cam.y = drag.cy - dy / scl(); clampCam(); }
+      return;
+    }
+    var h = hitIsle(sx, sy);
+    if (h !== hoverIsle) { hoverIsle = h; if (h) sfx("bell", h.bell); }
+    fx.style.cursor = h || hitBoat(sx, sy) ? "pointer" : "";
+  });
+  function up(e) {
+    var r = fx.getBoundingClientRect(), sx = e.clientX - r.left, sy = e.clientY - r.top;
+    var wasClick = drag && drag.moved <= 6 && !pinch;
+    delete ptrs[e.pointerId];
+    if (Object.keys(ptrs).length < 2) pinch = null;
+    if (Object.keys(ptrs).length === 0) { drag = null; fx.classList.remove("dragging"); }
+    if (!wasClick) return;
+    audioInit();
+    if (mode === "map") {
+      var h = hitIsle(sx, sy);
+      if (h) { sailTo(h); return; }
+      if (hitBoat(sx, sy) && !boat.merc) { boat.merc = { t0: now, x: boat.x, y: boat.y - 2, dir: boat.dir }; sfx("drop"); if (S.hints) sayKey("merc-skip", 3200); }
+    } else if (mode === "opening" || mode === "closeup" || mode === "voyage") { }
+  }
+  fx.addEventListener("pointerup", up);
+  fx.addEventListener("pointercancel", function (e) { delete ptrs[e.pointerId]; drag = null; pinch = null; });
+  fx.addEventListener("pointerleave", function () { if (!drag) hoverIsle = null; });
+  fx.addEventListener("wheel", function (e) {
+    if (mode !== "map") return;
+    e.preventDefault();
+    var r = fx.getBoundingClientRect(), sx = e.clientX - r.left, sy = e.clientY - r.top;
+    var before = s2w(sx, sy);
+    cam.z *= Math.exp(-e.deltaY * 0.0012); clampCam();
+    var after = s2w(sx, sy); cam.x += before.x - after.x; cam.y += before.y - after.y; clampCam();
+  }, { passive: false });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      var open = $(".panel:not(.hidden)");
+      if (open) { open.classList.add("hidden"); return; }
+      if (mode === "card") { closeCard(); return; }
+      if (mode === "opening" || mode === "closeup" || mode === "voyage") skipCut();
+    } else if ((e.key === " " || e.key === "Enter") && (mode === "opening" || mode === "closeup" || mode === "voyage")) { e.preventDefault(); skipCut(); }
+  });
+}
+
+/* ------------------------------------------------------------------ UI */
+function bindUI() {
+  bindInput();
+  $$(".isle-label").forEach(function (b) {
+    b.addEventListener("click", function () { audioInit(); var i = ISLE[b.getAttribute("data-isle")]; if (mode === "map") sailTo(i); });
+    b.addEventListener("mouseenter", function () { var i = ISLE[b.getAttribute("data-isle")]; if (mode === "map" && hoverIsle !== i) { hoverIsle = i; sfx("bell", i.bell); } });
+    b.addEventListener("mouseleave", function () { hoverIsle = null; });
+  });
+  $("#btn-board").disabled = true;
+  $("#btn-board").addEventListener("click", board);
+  $("#btn-fs-title").addEventListener("click", function () { audioInit(); setFs(!isFs()); });
+  $("#btn-fs").addEventListener("click", function () { setFs(!isFs()); });
+  $("#btn-settings").addEventListener("click", function () { openPanel("settings"); });
+  $("#btn-settings-title").addEventListener("click", function () { openPanel("settings"); });
+  $("#btn-stamps").addEventListener("click", function () { refreshStamps(); openPanel("stamps"); });
+  $("#btn-music").addEventListener("click", function () { audioInit(); setSetting("bgm", S.bgm ? 0 : 1); });
+  $("#btn-kiri").addEventListener("click", function () {
+    audioInit(); var qs = $$("#texts .quote"); var q = qs[Math.floor(Math.random() * qs.length)];
+    sfx("bell", 84); say(q.innerHTML, "kiri", 6500);
+  });
+  $("#btn-skip").addEventListener("click", skipCut);
+  $("#card-back").addEventListener("click", closeCard);
+  $("#card-go").addEventListener("click", goIsle);
+  $("#card-done").addEventListener("click", stampIsle);
+  $("#card-omikuji").addEventListener("click", openOmikuji);
+  $("#dialog").addEventListener("click", hideDialog);
+  $("#btn-replay").addEventListener("click", function () { closePanels(); if (mode === "map") { P.seenOpening = 0; save(); startOpening(); } });
+  $("#btn-reset-stamps").addEventListener("click", function () { P.stamps = {}; save(); refreshStamps(); sfx("tick"); });
+  $$("[data-close]").forEach(function (b) { b.addEventListener("click", closePanels); });
+  $$(".panel").forEach(function (p) { p.addEventListener("click", function (e) { if (e.target === p) closePanels(); }); });
+  $$("[data-setlang]").forEach(function (b) { b.addEventListener("click", function () { setSetting("lang", b.getAttribute("data-setlang")); }); });
+  $$(".seg").forEach(function (seg) {
+    var key = seg.getAttribute("data-key");
+    $$("button", seg).forEach(function (b) {
+      b.addEventListener("click", function () { audioInit(); var v = b.getAttribute("data-v"); setSetting(key, /^\d$/.test(v) ? +v : v); sfx("tick"); });
+    });
+  });
+  $$('input[type=range]').forEach(function (r) {
+    var key = r.getAttribute("data-key"); r.value = S[key];
+    r.addEventListener("input", function () { audioInit(); S[key] = +r.value; applyVolumes(); save(); });
+  });
+  syncSettingsUI();
+}
+function board() {
+  audioInit();
+  sfx("chime");
+  if (S.fs && !isFs()) setFs(true);
+  var ts = $("#title-screen"); ts.classList.add("leave");
+  setTimeout(function () { ts.classList.add("hidden"); }, 900);
+  if (!P.seenOpening) startOpening(); else enterMap(false);
+}
+function openPanel(id) { closePanels(); $("#" + id).classList.remove("hidden"); syncSettingsUI(); }
+function closePanels() { $$(".panel").forEach(function (p) { p.classList.add("hidden"); }); }
+function setSetting(key, v) {
+  S[key] = v; save();
+  if (key === "lang") applyLang();
+  else if (key === "bgm") { if (v) { audioInit(); music(M.want || sceneForMode()); } else musicStop(); }
+  else if (key === "sfx") applyVolumes();
+  else if (key === "fs") setFs(!!v);
+  else if (key === "renderer") initRenderer();
+  else if (key === "quality") resize();
+  else if (key === "hints") { if (!v) hideDialog(); }
+  syncSettingsUI();
+}
+function sceneForMode() { if (mode === "title" || mode === "opening") return "title"; if (cut.isle && (mode === "card" || mode === "closeup")) return cut.isle.state === "open" ? cut.isle.scene : "mist"; return "map"; }
+function syncSettingsUI() {
+  $$(".seg").forEach(function (seg) {
+    var key = seg.getAttribute("data-key"), cur = key === "fs" ? (isFs() ? 1 : 0) : S[key];
+    $$("button", seg).forEach(function (b) { var v = b.getAttribute("data-v"); b.classList.toggle("on", String(cur) === v); });
+  });
+  $$("[data-setlang]").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-setlang") === S.lang); });
+  $("#btn-music").classList.toggle("on", !!S.bgm);
+  $$('input[type=range]').forEach(function (r) { r.value = S[r.getAttribute("data-key")]; });
+}
+function applyLang() { document.body.setAttribute("data-lang", S.lang); document.documentElement.lang = S.lang === "en" ? "en" : "zh-Hant"; }
+
+/* fullscreen */
+function isFs() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+function setFs(on) {
+  var el = document.documentElement;
+  if (on) {
+    var rq = el.requestFullscreen || el.webkitRequestFullscreen;
+    if (!rq) { toast("fs-new"); window.open(location.href, "_blank"); return; }
+    try { var p = rq.call(el); if (p && p.catch) p.catch(function () { toast("fs-new"); }); } catch (e) { toast("fs-new"); }
+  } else if (isFs()) {
+    var ex = document.exitFullscreen || document.webkitExitFullscreen; if (ex) ex.call(document);
+  }
+}
+function onFsChange() { S.fs = isFs() ? 1 : 0; save(); syncSettingsUI(); setTimeout(resize, 120); }
+
+/* omikuji */
+function today() { var d = new Date(); return d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(); }
+function openOmikuji() {
+  audioInit(); sfx("shake");
+  var qs = $$("#qbank .q"), o = P.omikuji;
+  var used = o && o.day === today() && o.picked != null;
+  var idx = (o && o.day === today()) ? o.idx : Math.floor(Math.random() * qs.length);
+  if (!o || o.day !== today()) { P.omikuji = { day: today(), idx: idx, picked: null }; save(); }
+  var q = qs[idx], box = $("#omikuji .omi-q"), res = $("#omikuji .omi-result");
+  box.innerHTML = q.innerHTML; res.classList.add("hidden");
+  var ans = +q.getAttribute("data-ans"), isle = q.getAttribute("data-isle");
+  var lis = $$("li", box);
+  function reveal(pick, again) {
+    lis.forEach(function (li, k) { li.classList.toggle("right", k === ans); li.classList.toggle("wrong", k === pick && pick !== ans); });
+    var good = pick === ans;
+    res.innerHTML = '<div class="rank">' + txt(good ? "kichi-good" : "kichi-bad") + "</div><div>" + q.querySelector(".why").innerHTML + "</div>" + (good ? "" : "<div>" + txt("review-" + isle) + "</div>") + (again ? '<div class="set-note">' + txt("omikuji-used") + "</div>" : "");
+    res.classList.remove("hidden");
+  }
+  if (used) reveal(P.omikuji.picked, true);
+  else lis.forEach(function (li, k) {
+    li.addEventListener("click", function () {
+      if (P.omikuji.picked != null) return;
+      P.omikuji.picked = k; save(); sfx(k === ans ? "chime" : "muted"); sfx("paper"); reveal(k, false);
+    });
+  });
+  openPanel("omikuji");
+}
+
+/* ------------------------------------------------------------------ audio */
+var A = { ctx: null };
+function audioInit() {
+  if (A.ctx) { if (A.ctx.state === "suspended") A.ctx.resume(); return; }
+  var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+  var c; try { c = A.ctx = new AC(); } catch (e) { return; }
+  A.master = c.createGain(); A.comp = c.createDynamicsCompressor();
+  A.comp.threshold.value = -14; A.comp.ratio.value = 3;
+  A.master.connect(A.comp); A.comp.connect(c.destination);
+  A.music = c.createGain(); A.music.connect(A.master);
+  A.sfx = c.createGain(); A.sfx.connect(A.master);
+  A.rev = c.createConvolver(); A.rev.buffer = makeIR(c, 2.8);
+  A.revIn = c.createGain(); A.revIn.connect(A.rev); A.rev.connect(A.master);
+  A.noiseBuf = makeNoise(c);
+  applyVolumes();
+  if (S.bgm) music(M.want || sceneForMode());
+}
+function applyVolumes() {
+  if (!A.ctx) return;
+  var t = A.ctx.currentTime;
+  A.master.gain.setTargetAtTime(S.vMaster / 100, t, 0.05);
+  A.music.gain.setTargetAtTime(S.bgm ? (S.vMusic / 100) * 0.7 : 0, t, 0.08);
+  A.sfx.gain.setTargetAtTime(S.sfx ? (S.vSfx / 100) * 0.8 : 0, t, 0.05);
+}
+function makeIR(c, sec) {
+  var len = Math.floor(c.sampleRate * sec), b = c.createBuffer(2, len, c.sampleRate);
+  for (var ch = 0; ch < 2; ch++) { var d = b.getChannelData(ch); for (var i = 0; i < len; i++) { d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3.2) * (i < 60 ? i / 60 : 1); } }
+  return b;
+}
+function makeNoise(c) { var len = c.sampleRate * 2, b = c.createBuffer(1, len, c.sampleRate), d = b.getChannelData(0); for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1; return b; }
+function mtof(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+function env(g, t, a, peak, d, sus, rel, end) {
+  g.gain.cancelScheduledValues(t); g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(Math.max(0.0002, peak), t + a);
+  if (sus != null) { g.gain.setTargetAtTime(Math.max(0.0001, peak * sus), t + a, d / 3); g.gain.setTargetAtTime(0.0001, end, rel / 4); }
+  else g.gain.exponentialRampToValueAtTime(0.0001, t + a + d);
+}
+function osc(type, f, t, stop) { var o = A.ctx.createOscillator(); o.type = type; o.frequency.setValueAtTime(f, t); o.start(t); o.stop(stop); return o; }
+function noiseSrc(t, stop) { var n = A.ctx.createBufferSource(); n.buffer = A.noiseBuf; n.loop = true; n.start(t, Math.random()); n.stop(stop); return n; }
+function biq(type, f, q) { var b = A.ctx.createBiquadFilter(); b.type = type; b.frequency.value = f; if (q != null) b.Q.value = q; return b; }
+function gainN(v) { var g = A.ctx.createGain(); g.gain.value = v; return g; }
+
+/* eight instrument voices + drum kit */
+var INST = {
+  koto: function (t, f, d, v, out) {
+    var end = t + Math.max(1.4, d) + 0.1, g = gainN(0), lp = biq("lowpass", 3200, 0.8);
+    var o1 = osc("triangle", f * 1.012, t, end), o2 = osc("sine", f * 2, t, end), o3 = osc("sawtooth", f, t, end), g3 = gainN(0.12);
+    o1.frequency.exponentialRampToValueAtTime(f, t + 0.07);
+    lp.frequency.setValueAtTime(3200, t); lp.frequency.exponentialRampToValueAtTime(900, t + 0.9);
+    o1.connect(g); o2.connect(gainChain(g, 0.35)); o3.connect(g3); g3.connect(g); g.connect(lp); lp.connect(out);
+    env(g, t, 0.004, v * 0.55, Math.max(1.3, d));
+  },
+  piano: function (t, f, d, v, out) {
+    var end = t + Math.max(1.8, d) + 0.2, g = gainN(0);
+    osc("sine", f, t, end).connect(g); osc("triangle", f * 2.002, t, end).connect(gainChain(g, 0.22)); osc("sine", f * 3.01, t, end).connect(gainChain(g, 0.08));
+    g.connect(out); env(g, t, 0.006, v * 0.5, Math.max(1.7, d * 1.2));
+  },
+  flute: function (t, f, d, v, out) {
+    var end = t + d + 0.4, g = gainN(0), o = osc("sine", f, t, end), lfo = osc("sine", 5.2, t, end), lg = gainN(0);
+    lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(f * 0.007, t + 0.35); lfo.connect(lg); lg.connect(o.frequency);
+    o.frequency.setValueAtTime(f * 0.985, t); o.frequency.exponentialRampToValueAtTime(f, t + 0.08);
+    var n = noiseSrc(t, end), bp = biq("bandpass", f * 2, 6), ng = gainN(0.05);
+    n.connect(bp); bp.connect(ng); ng.connect(g); o.connect(g); g.connect(out);
+    env(g, t, 0.09, v * 0.42, 0.3, 0.8, 0.3, t + d);
+  },
+  shamisen: function (t, f, d, v, out) {
+    var end = t + 0.6, g = gainN(0), bp = biq("bandpass", f * 3, 1.6), o = osc("sawtooth", f, t, end);
+    o.connect(bp); bp.connect(g); g.connect(out); env(g, t, 0.002, v * 0.9, 0.38);
+    var n = noiseSrc(t, t + 0.03), hp = biq("highpass", 3000), ng = gainN(0); n.connect(hp); hp.connect(ng); ng.connect(out); env(ng, t, 0.001, v * 0.25, 0.02);
+  },
+  bass: function (t, f, d, v, out) {
+    var end = t + d + 0.25, g = gainN(0), lp = biq("lowpass", 520, 0.9);
+    osc("triangle", f, t, end).connect(lp); osc("sine", f, t, end).connect(lp); lp.connect(g); g.connect(out);
+    env(g, t, 0.012, v * 0.6, 0.2, 0.75, 0.15, t + d * 0.92);
+  },
+  pad: function (t, f, d, v, out) {
+    var end = t + d + 1.6, g = gainN(0), lp = biq("lowpass", 950, 0.6);
+    [-7, 0, 7].forEach(function (c) { var o = osc("sawtooth", f, t, end); o.detune.value = c; o.connect(lp); });
+    lp.connect(g); g.connect(out); env(g, t, 0.8, v * 0.12, 0.5, 0.85, 1.2, t + d);
+  },
+  bell: function (t, f, d, v, out) {
+    var end = t + 2.6, g = gainN(0), car = osc("sine", f, t, end), mod = osc("sine", f * 3.5, t, end), mg = gainN(f * 1.6);
+    mg.gain.setValueAtTime(f * 1.6, t); mg.gain.exponentialRampToValueAtTime(1, t + 1.5);
+    mod.connect(mg); mg.connect(car.frequency); car.connect(g); g.connect(out); env(g, t, 0.002, v * 0.3, 2.3);
+  },
+  box: function (t, f, d, v, out) {
+    var end = t + 1.2, g = gainN(0);
+    osc("triangle", f, t, end).connect(g); osc("sine", f * 4, t, end).connect(gainChain(g, 0.12));
+    g.connect(out); env(g, t, 0.002, v * 0.35, 0.95);
+  }
+};
+function gainChain(dest, v) { var g = gainN(v); g.connect(dest); return g; }
+var DRUM = {
+  kick: function (t, v, out) { var g = gainN(0), o = osc("sine", 120, t, t + 0.45); o.frequency.exponentialRampToValueAtTime(42, t + 0.16); o.connect(g); g.connect(out); env(g, t, 0.003, v * 0.95, 0.38); },
+  snare: function (t, v, out) { var g = gainN(0), n = noiseSrc(t, t + 0.3), bp = biq("bandpass", 1800, 0.7); n.connect(bp); bp.connect(g); g.connect(out); env(g, t, 0.004, v * 0.5, 0.2); var g2 = gainN(0), o = osc("triangle", 190, t, t + 0.15); o.connect(g2); g2.connect(out); env(g2, t, 0.002, v * 0.25, 0.1); },
+  brush: function (t, v, out) { var g = gainN(0), n = noiseSrc(t, t + 0.4), bp = biq("bandpass", 2600, 0.5); n.connect(bp); bp.connect(g); g.connect(out); env(g, t, 0.03, v * 0.22, 0.28); },
+  hat: function (t, v, out) { var g = gainN(0), n = noiseSrc(t, t + 0.1), hp = biq("highpass", 7200); n.connect(hp); hp.connect(g); g.connect(out); env(g, t, 0.001, v * 0.22, 0.05); },
+  taiko: function (t, v, out) { var g = gainN(0), o = osc("sine", 92, t, t + 0.9); o.frequency.exponentialRampToValueAtTime(52, t + 0.3); o.connect(g); g.connect(out); env(g, t, 0.003, v * 1.0, 0.7); var g2 = gainN(0), n = noiseSrc(t, t + 0.2), lp = biq("lowpass", 420); n.connect(lp); lp.connect(g2); g2.connect(out); env(g2, t, 0.002, v * 0.4, 0.12); },
+  wood: function (t, v, out) { var g = gainN(0); osc("sine", 950, t, t + 0.12).connect(g); osc("sine", 1420, t, t + 0.12).connect(gainChain(g, 0.5)); g.connect(out); env(g, t, 0.001, v * 0.35, 0.06); },
+  shaker: function (t, v, out) { var g = gainN(0), n = noiseSrc(t, t + 0.15), hp = biq("highpass", 5200); n.connect(hp); hp.connect(g); g.connect(out); env(g, t, 0.02, v * 0.14, 0.07); }
+};
+var DRUM_PAN = { kick: 0, snare: 0.05, brush: 0.1, hat: 0.32, taiko: -0.08, wood: -0.38, shaker: 0.45 };
+var TRACKS = ["koto", "piano", "flute", "shamisen", "bass", "pad", "bell", "box"];
+var PAN = { koto: -0.45, piano: 0.18, flute: 0.32, shamisen: -0.22, bass: 0, pad: 0, bell: 0.55, box: -0.6 };
+var REV = { koto: 0.35, piano: 0.3, flute: 0.45, shamisen: 0.2, bass: 0.05, pad: 0.5, bell: 0.6, box: 0.5, drums: 0.15 };
+var YO = [0, 2, 5, 7, 9], MIYAKO = [0, 1, 5, 7, 8], DORIAN = [0, 2, 3, 5, 7, 9, 10];
+var SCENES = {
+  title: { bpm: 64, root: 62, scale: YO, prog: [0, 3, 1, 4], mix: { koto: 0.8, piano: 0.25, flute: 0.55, shamisen: 0, bass: 0.35, pad: 0.7, bell: 0.4, box: 0.25, drums: 0.25 }, drum: { wood: "........x.......", shaker: "....x.......x..." } },
+  map: { bpm: 74, root: 62, scale: YO, prog: [0, 3, 4, 2, 0, 3, 1, 4], mix: { koto: 0.75, piano: 0.55, flute: 0.6, shamisen: 0.25, bass: 0.6, pad: 0.55, bell: 0.4, box: 0.3, drums: 0.6 }, drum: { kick: "x.....x...x.....", brush: "....x.......x...", hat: "..x...x...x...xx", shaker: "x...x...x...x..." } },
+  pa: { bpm: 96, root: 64, scale: YO, prog: [0, 4, 3, 1], mix: { koto: 0.5, piano: 0.3, flute: 0.45, shamisen: 0.85, bass: 0.6, pad: 0.3, bell: 0.3, box: 0.25, drums: 0.7 }, drum: { kick: "x.......x.......", wood: "x..x..x.x..x..x.", hat: "..x...x...x...x.", taiko: "............x..." } },
+  xrd: { bpm: 104, root: 60, scale: DORIAN, swing: 0.6, jazz: 1, prog: [1, 4, 0, 5], mix: { koto: 0.2, piano: 0.8, flute: 0.35, shamisen: 0, bass: 0.85, pad: 0.3, bell: 0.55, box: 0.2, drums: 0.55 }, drum: { hat: "x..x.x..x..x.x..", brush: "....x.......x...", kick: "x.........x....." } },
+  sem: { bpm: 82, root: 65, scale: YO, prog: [0, 2, 3, 1], mix: { koto: 0.35, piano: 0.45, flute: 0.4, shamisen: 0, bass: 0.45, pad: 0.75, bell: 0.55, box: 0.85, drums: 0.35 }, drum: { hat: "x.x.x.x.x.x.x.x.", kick: "x.......x.......", shaker: "...x.......x...." } },
+  port: { bpm: 118, root: 62, scale: YO, prog: [0, 3, 4, 0], mix: { koto: 0.5, piano: 0.2, flute: 0.85, shamisen: 0.7, bass: 0.55, pad: 0.3, bell: 0.45, box: 0.2, drums: 0.95 }, drum: { taiko: "x..x..x.x.x..x..", kick: "x...x...x...x...", wood: "..x...x...x...x.", hat: "x.x.x.x.x.x.x.x." } },
+  mist: { bpm: 56, root: 57, scale: MIYAKO, prog: [0, 3, 2, 0], mix: { koto: 0.45, piano: 0.15, flute: 0.65, shamisen: 0, bass: 0.3, pad: 0.8, bell: 0.35, box: 0.15, drums: 0.3 }, drum: { taiko: "x...............", shaker: "........x......." } }
+};
+var M = { scene: null, want: null, bus: null, loop: null, step: 0, next: 0, timer: 0 };
+function noteOf(sc, deg, oct) {
+  var n = sc.scale.length, o = Math.floor(deg / n), i = ((deg % n) + n) % n;
+  return sc.root + 12 * (oct + o - 4) + sc.scale[i];
+}
+function buildLoop(name) {
+  var sc = SCENES[name], r = seeded(strSeed(name)), bars = 8, ev = [];
+  for (var s = 0; s < bars * 16; s++) ev.push([]);
+  function add(step, tr, midi, dur, vel) { if (step < ev.length) ev[step].push([tr, midi, dur, vel]); }
+  var n = sc.scale.length;
+  var motif = [], pos = 0, deg = n + Math.floor(r() * 3);
+  while (pos < 32) { var dl = [2, 4, 4, 6, 2, 8][Math.floor(r() * 6)]; if (r() < 0.18) { pos += 2; continue; } motif.push([pos, deg, dl]); deg += Math.round((r() - 0.5) * 3); deg = clamp(deg, n - 1, 2 * n + 2); pos += dl; }
+  for (var b = 0; b < bars; b++) {
+    var root = sc.prog[b % sc.prog.length], base = b * 16;
+    var chord = [root, root + 2, root + (n === 7 ? 4 : 3)];
+    if (sc.mix.pad) chord.forEach(function (c) { add(base, "pad", noteOf(sc, c, 4), 16, 0.6); });
+    if (sc.jazz) { for (var q = 0; q < 4; q++) add(base + q * 4, "bass", noteOf(sc, root + [0, 2, 4, 3][q] + (q === 3 && r() < 0.5 ? -1 : 0), 2), 3.6, 0.8); }
+    else { add(base, "bass", noteOf(sc, root, 2), 6, 0.85); add(base + 8, "bass", noteOf(sc, root + (r() < 0.5 ? 3 : 2), 2), 6, 0.7); if (name === "port" || name === "pa") add(base + 12, "bass", noteOf(sc, root, 2), 3, 0.6); }
+    if (sc.mix.piano) {
+      var hits = sc.jazz ? [2, 6, 10, 14].filter(function () { return r() < 0.6; }) : [0, r() < 0.5 ? 6 : 10];
+      hits.forEach(function (h) { chord.concat([root + 4]).forEach(function (c) { add(base + h, "piano", noteOf(sc, c, 4), sc.jazz ? 2 : 4, 0.45); }); });
+    }
+    if (sc.mix.koto) {
+      var dens = name === "title" || name === "mist" ? 4 : 2;
+      for (var k = 0; k < 16; k += dens) { if (r() < 0.82) { var idx = Math.floor(k / dens) % 6, arp = [0, 1, 2, 3, 2, 1][idx]; add(base + k, "koto", noteOf(sc, chord[0] + [0, 2, 4, 5][arp], 4), dens, 0.5 + r() * 0.2); } }
+    }
+    var half = (b % 2) * 16, vari = (b >= 4 ? 1 : 0);
+    motif.forEach(function (m) { if (m[0] >= half && m[0] < half + 16) { var dg = m[1] + (b === 7 && m === motif[motif.length - 1] ? 0 : vari * (b % 4 === 2 ? 1 : 0)); add(base + m[0] - half, "flute", noteOf(sc, b === 7 && m[0] - half > 10 ? root + n : dg, 4), m[2], 0.7); } });
+    if (sc.mix.shamisen) [0, 3, 6, 8, 10, 13, 14].forEach(function (k) { if (r() < 0.8) add(base + k, "shamisen", noteOf(sc, chord[Math.floor(r() * 3)] + n, 3), 1, 0.6 + (k % 4 === 0 ? 0.2 : 0)); });
+    if (sc.mix.bell && b % 2 === 0) add(base, "bell", noteOf(sc, chord[2] + n, 5), 4, 0.5);
+    if (sc.mix.bell && r() < 0.4) add(base + 10, "bell", noteOf(sc, chord[1] + 2 * n, 4), 2, 0.35);
+    if (sc.mix.box) { var st = name === "sem" ? 1 : 2; for (var k2 = 0; k2 < 16; k2 += st) { if (name === "sem" || r() < 0.4) add(base + k2, "box", noteOf(sc, chord[(k2 / st) % 3] + n * (1 + ((k2 / st) % 6 >= 3 ? 1 : 0)), 4), 1, 0.4); } }
+    Object.keys(sc.drum).forEach(function (dk) { var pat = sc.drum[dk]; for (var k3 = 0; k3 < 16; k3++) if (pat.charAt(k3) === "x") add(base + k3, "drum:" + dk, 0, 1, (k3 % 4 === 0 ? 1 : 0.75) * (0.85 + r() * 0.15)); });
+  }
+  return { ev: ev, len: bars * 16 };
+}
+var LOOPS = {};
+function makeBus() {
+  var c = A.ctx, out = c.createGain(); out.gain.value = 0.0001; out.connect(A.music);
+  var bus = { out: out, tr: {} };
+  TRACKS.concat(["drums"]).forEach(function (name) {
+    var g = c.createGain(), p = c.createStereoPanner ? c.createStereoPanner() : null, send = c.createGain();
+    if (p) { p.pan.value = PAN[name] || 0; g.connect(p); p.connect(out); } else g.connect(out);
+    send.gain.value = REV[name]; g.connect(send); send.connect(A.revIn);
+    bus.tr[name] = g;
+  });
+  bus.drumPan = {};
+  Object.keys(DRUM_PAN).forEach(function (k) { var p = c.createStereoPanner ? c.createStereoPanner() : null; if (p) { p.pan.value = DRUM_PAN[k]; p.connect(bus.tr.drums); bus.drumPan[k] = p; } else bus.drumPan[k] = bus.tr.drums; });
+  return bus;
+}
+function music(name) {
+  M.want = name;
+  if (!A.ctx || !S.bgm) return;
+  if (M.scene === name && M.bus) return;
+  var c = A.ctx, t = c.currentTime;
+  if (M.bus) { var old = M.bus; old.out.gain.cancelScheduledValues(t); old.out.gain.setTargetAtTime(0.0001, t, 0.45); setTimeout(function () { try { old.out.disconnect(); } catch (e) {} }, 3500); }
+  var sc = SCENES[name]; if (!sc) return;
+  var bus = makeBus();
+  TRACKS.concat(["drums"]).forEach(function (k) { bus.tr[k].gain.value = (sc.mix[k] || 0) * 0.9; });
+  bus.out.gain.setTargetAtTime(1, t, 0.6);
+  M.bus = bus; M.scene = name; M.loop = LOOPS[name] || (LOOPS[name] = buildLoop(name));
+  M.sc = sc; M.step = 0; M.next = t + 0.08;
+  if (!M.timer) M.timer = setInterval(musicTick, 25);
+}
+function musicStop() {
+  if (A.ctx && M.bus) { var old = M.bus; old.out.gain.setTargetAtTime(0.0001, A.ctx.currentTime, 0.3); setTimeout(function () { try { old.out.disconnect(); } catch (e) {} }, 2000); }
+  M.bus = null; M.scene = null; clearInterval(M.timer); M.timer = 0; applyVolumes();
+}
+function musicTick() {
+  if (!A.ctx || !M.bus) return;
+  var c = A.ctx, sd = 60 / M.sc.bpm / 4;
+  if (M.next < c.currentTime - 0.5) M.next = c.currentTime + 0.05;
+  while (M.next < c.currentTime + 0.15) {
+    var swing = (M.sc.swing && M.step % 4 === 2) ? sd * 0.33 * M.sc.swing : 0;
+    var list = M.loop.ev[M.step], tt = M.next + swing;
+    for (var i = 0; i < list.length; i++) {
+      var e = list[i];
+      try {
+        if (e[0].indexOf("drum:") === 0) { var dk = e[0].slice(5); DRUM[dk](tt, e[3], M.bus.drumPan[dk]); }
+        else if (M.sc.mix[e[0]]) INST[e[0]](tt, mtof(e[1]), e[2] * sd, e[3], M.bus.tr[e[0]]);
+      } catch (er) {}
+    }
+    M.next += sd; M.step = (M.step + 1) % M.loop.len;
+  }
+}
+
+/* sound effects */
+function sfx(name, arg) {
+  if (!A.ctx || !S.sfx) return;
+  var c = A.ctx, t = c.currentTime + 0.01, out = A.sfx, g, n, f;
+  try {
+    if (name === "bell") { INST.bell(t, mtof(arg || 79), 1, 0.9, out); INST.bell(t + 0.002, mtof((arg || 79) + 12), 1, 0.25, out); }
+    else if (name === "chime") { [79, 84, 86, 91].forEach(function (m, k) { INST.bell(t + k * 0.11, mtof(m), 1, 0.55, out); }); var rv = gainN(0.5); rv.connect(A.revIn); INST.bell(t, mtof(91), 1, 0.4, rv); }
+    else if (name === "muted") { var lp = biq("lowpass", 700); lp.connect(out); INST.bell(t, mtof(69), 1, 0.9, lp); INST.bell(t + 0.18, mtof(64), 1, 0.7, lp); }
+    else if (name === "click") { DRUM.wood(t, 1.4, out); DRUM.wood(t + 0.07, 0.9, out); }
+    else if (name === "tick") { g = gainN(0); osc("sine", 1800, t, t + 0.06).connect(g); g.connect(out); env(g, t, 0.001, 0.12, 0.04); }
+    else if (name === "sail") { g = gainN(0); n = noiseSrc(t, t + 2.4); f = biq("bandpass", 400, 1.2); f.frequency.setValueAtTime(350, t); f.frequency.linearRampToValueAtTime(1200, t + 0.9); f.frequency.linearRampToValueAtTime(300, t + 2.2); n.connect(f); f.connect(g); g.connect(out); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.35, t + 0.5); g.gain.linearRampToValueAtTime(0.0001, t + 2.3); var rr = gainN(0.3); g.connect(rr); rr.connect(A.revIn); }
+    else if (name === "noren") { g = gainN(0); n = noiseSrc(t, t + 0.7); f = biq("highpass", 1800); f.frequency.setValueAtTime(5000, t); f.frequency.exponentialRampToValueAtTime(900, t + 0.5); n.connect(f); f.connect(g); g.connect(out); env(g, t, 0.05, 0.35, 0.5); DRUM.wood(t + 0.55, 0.8, out); }
+    else if (name === "stamp") { DRUM.kick(t, 0.9, out); DRUM.taiko(t + 0.01, 0.6, out); g = gainN(0); n = noiseSrc(t, t + 0.1); f = biq("bandpass", 900, 1); n.connect(f); f.connect(g); g.connect(out); env(g, t, 0.001, 0.4, 0.08); }
+    else if (name === "door") { g = gainN(0); n = noiseSrc(t, t + 0.9); f = biq("lowpass", 800); f.frequency.setValueAtTime(400, t); f.frequency.linearRampToValueAtTime(1600, t + 0.7); n.connect(f); f.connect(g); g.connect(out); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.3, t + 0.15); g.gain.linearRampToValueAtTime(0.0001, t + 0.8); DRUM.wood(t + 0.8, 0.7, out); }
+    else if (name === "drop") { g = gainN(0); var o = osc("sine", 700, t, t + 0.25); o.frequency.exponentialRampToValueAtTime(1700, t + 0.12); o.connect(g); g.connect(out); env(g, t, 0.003, 0.35, 0.18); var r2 = gainN(0.4); g.connect(r2); r2.connect(A.revIn); }
+    else if (name === "pop") { DRUM.taiko(t, 0.7, out); g = gainN(0); n = noiseSrc(t, t + 1.2); f = biq("highpass", 3000); n.connect(f); f.connect(g); g.connect(out); env(g, t + 0.05, 0.02, 0.18, 1.0); }
+    else if (name === "shake") { for (var k = 0; k < 7; k++) DRUM.shaker(t + k * 0.07, 2.2, out); DRUM.wood(t + 0.55, 0.8, out); }
+    else if (name === "paper") { g = gainN(0); n = noiseSrc(t, t + 0.3); f = biq("bandpass", 2400, 0.7); n.connect(f); f.connect(g); g.connect(out); env(g, t, 0.01, 0.25, 0.2); }
+    else if (name === "grains") { for (var j = 0; j < 22; j++) { var tt = t + j * 0.18 + Math.random() * 0.1; DRUM.wood(tt, 0.25 + Math.random() * 0.25, out); } }
+    else if (name === "scan") { g = gainN(0); var so = osc("sine", 880, t, t + 6); var lf = osc("square", 7, t, t + 6), lg = gainN(30); lf.connect(lg); lg.connect(so.frequency); so.connect(g); g.connect(out); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.05, t + 0.4); g.gain.linearRampToValueAtTime(0.0001, t + 6); }
+  } catch (e) {}
+}
+
+})();
+</script>
+</body>
+</html>
