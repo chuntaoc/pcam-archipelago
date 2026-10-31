@@ -22,7 +22,7 @@
 <script id="aeml-guard">
 /* AEML, NTUST integrity guard. (c) 2026 AEML, NTUST */
 (function(){
-  var SIG = "0a307155";
+  var SIG = "32e0d1ff";
   function fnv(s){ var h = 0x811c9dc5; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ("0000000" + h.toString(16)).slice(-8); }
   function check(){
     var core = document.getElementById("aeml-core");
@@ -816,6 +816,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
         <tr><th><span class="zh">劇情提示</span><span class="en">Story hints</span></th><td class="seg" data-key="hints"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
       </table>
       <p class="set-note"><span class="zh">背景音樂由 8 個樂器音軌（琴、鋼琴、尺八、三味線、貝斯、弦樂鋪底、鐘琴、八音盒）加 1 個鼓組音軌即時合成，立體聲雙聲道，並依場景切換。</span><span class="en">Music is synthesised live from 8 instrument tracks (koto, piano, shakuhachi, shamisen, bass, string pad, celesta, music box) plus 1 drum-kit track, in stereo, and changes with each scene.</span></p>
+      <p class="set-note"><span class="zh">版本</span><span class="en">Version</span> <b id="build-ver"></b> · AEML, NTUST</p>
       <div class="panel-actions">
         <button id="btn-replay"><span class="zh">重播開場</span><span class="en">Replay opening</span></button>
         <button id="btn-reset-stamps"><span class="zh">清除御朱印</span><span class="en">Clear stamps</span></button>
@@ -893,7 +894,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
 (function () {
 "use strict";
 var OWNER = "AEML, NTUST";
-var BUILD = "2026.10.31";
+var BUILD = "2026.10.31-c";
 
 function $(s, r) { return (r || document).querySelector(s); }
 function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -908,6 +909,7 @@ function strSeed(str) { var h = 2166136261; for (var i = 0; i < str.length; i++)
 var DEF = { lang: "both", track: "auto", bgm: 0, sfx: 1, vMaster: 80, vMusic: 60, vSfx: 80, fs: 0, renderer: "webgpu", quality: "smooth", hints: 1 };
 var PDEF = { seenOpening: 0, stamps: {}, boat: "", omikuji: null, visits: 0 };
 var S = loadObj("aeml-archi-settings", DEF);
+S.track = "auto";
 var P = loadObj("aeml-archi-progress", PDEF);
 function loadObj(k, d) {
   var o = JSON.parse(JSON.stringify(d));
@@ -2184,6 +2186,7 @@ function bindUI() {
     r.addEventListener("input", function () { audioInit(); S[key] = +r.value; applyVolumes(); save(); });
   });
   syncSettingsUI();
+  var bv = $("#build-ver"); if (bv) bv.textContent = BUILD;
 }
 function board() {
   audioInit();
@@ -2198,7 +2201,7 @@ function closePanels() { $$(".panel").forEach(function (p) { p.classList.add("hi
 function setSetting(key, v) {
   S[key] = v; save();
   if (key === "lang") applyLang();
-  else if (key === "bgm") { if (v) { audioInit(); music(M.want || sceneForMode()); } else musicStop(); }
+  else if (key === "bgm") { audioInit(); applyVolumes(); if (v) { M.scene = null; music(M.want || sceneForMode()); } else musicStop(); }
   else if (key === "track") { if (!S.bgm && v !== "auto") { S.bgm = 1; save(); applyVolumes(); } audioInit(); if (S.bgm) { M.scene = null; music(M.want || sceneForMode()); } }
   else if (key === "sfx") applyVolumes();
   else if (key === "fs") setFs(!!v);
@@ -2496,6 +2499,7 @@ function music(want) {
   M.want = want;
   var name = (S.track && S.track !== "auto" && SCENES[S.track]) ? S.track : want;
   if (!A.ctx || !S.bgm) { nowPlaying(null); return; }
+  applyVolumes();
   if (M.scene === name && M.bus) return;
   nowPlaying(name);
   var c = A.ctx, t = c.currentTime;
