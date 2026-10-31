@@ -34,7 +34,7 @@
     if (window.top !== window.self) {
       var ref = "";
       try { if (location.ancestorOrigins && location.ancestorOrigins.length) { ref = location.ancestorOrigins[location.ancestorOrigins.length - 1]; } else { ref = document.referrer; } } catch (e) { ref = document.referrer; }
-      if (ref) { frameOk = /^https?:\/\/([a-z0-9-]+\.)*(concrete\.tw|blogspot\.com|blogger\.com|googleusercontent\.com|chuntaoc\.github\.io|localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(ref); }
+      if (ref) { frameOk = /^https?:\/\/([a-z0-9-]+\.)*(concrete\.tw|blogspot\.com|blogger\.com|googleusercontent\.com|ntust\.edu\.tw|chuntaoc\.github\.io|localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(ref); }
     }
     var meta = document.querySelector('meta[name="author"]');
     var credit = document.getElementById("aeml-credit");
@@ -360,6 +360,51 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
   .lx-final{bottom:calc(6vh + 10px);padding:10px 14px}
   .lx-progress{bottom:6vh}
   #lx-skip{top:calc(6vh + 6px)}
+}
+
+/* ---- very small embeds (e.g. Moodle 640x360) ---- */
+@media (max-height:420px),(max-width:680px){
+  #btn-kiri span{display:none}
+  #btn-kiri{padding:3px}
+  #btn-kiri img{width:28px;height:28px}
+  #aeml-logo{height:20px;padding:2px 4px;left:8px;bottom:14px}
+  #aeml-credit{font-size:8.5px}
+  .brand{font-size:13px}
+  .brand em{display:none}
+  .hud-btn{padding:.25em .42em}
+  .hud-btn svg{width:15px;height:15px}
+  .hud-btn.np b{display:none}
+  .isle-label{padding:.15em .45em;border-radius:7px}
+  .isle-label b{font-size:11px}
+  .isle-label small{font-size:8.5px}
+  body[data-lang="both"] .isle-label small .en{display:none}
+  #dialog{bottom:24px;width:86vw}
+  #shot{font-size:11px;top:36px}
+  .noren-cloth{height:72px}
+  .noren-title{font-size:22px}
+  .noren-title .en{font-size:10px;margin-top:.2em}
+  .card-sheet{margin-top:72px}
+  .card-stamp{width:56px;height:56px;top:-34px}
+  .card-stamp svg{width:30px;height:30px}
+  .card-content .hook{font-size:15px}
+  .card-actions button{font-size:12.5px;padding:.45em .9em}
+  .card-content ul,.card-content .meta{display:none}
+  .card-content .game{font-size:12px;margin:.3em 0}
+  .card-actions{margin-top:10px}
+  .card-sheet{padding:12px 16px 12px}
+  #launch.phase2 .lx-unit{display:none}
+  #launch.phase2 .lx-kanji{font-size:18px}
+  .lx-slide{top:calc(6vh + 34px) !important;font-size:11.5px;width:min(420px,62vw)}
+  .lx-slide h4{font-size:13.5px}
+  .lx-slide .story{font-size:12px}
+  .lx-slide .kiri{display:none}
+  .lx-ready{font-size:20px}
+  .lx-gamename{font-size:12px;margin:.1em 0 .5em}
+  #lx-enter{font-size:14px;padding:.55em 1.2em}
+  #lx-back{font-size:12px;padding:.45em .9em}
+  .lx-note{display:none}
+  .ts-course{font-size:10.5px}
+  .ts-sub{font-size:12px}
 }
 
 </style>
