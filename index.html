@@ -22,7 +22,7 @@
 <script id="aeml-guard">
 /* AEML, NTUST integrity guard. (c) 2026 AEML, NTUST */
 (function(){
-  var SIG = "32e0d1ff";
+  var SIG = "dc15f273";
   function fnv(s){ var h = 0x811c9dc5; for (var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return ("0000000" + h.toString(16)).slice(-8); }
   function check(){
     var core = document.getElementById("aeml-core");
@@ -420,7 +420,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
     <button class="isle-label open" data-isle="xrd"><b><span class="zh">晶之島</span><span class="en">Crystal Isle</span></b><small>XRD · <span class="zh">X 光繞射</span><span class="en">X-ray Diffraction</span></small></button>
     <button class="isle-label open" data-isle="sem"><b><span class="zh">微光之島</span><span class="en">Glimmer Isle</span></b><small>SEM · <span class="zh">掃描式電子顯微鏡</span><span class="en">Scanning Electron Microscopy</span></small></button>
     <button class="isle-label open gate" data-isle="port"><b><span class="zh">星屑港</span><span class="en">Stardust Harbor</span></b><small>Midterm · <span class="zh">期中考</span><span class="en">Midterm Review</span></small></button>
-    <button class="isle-label mist" data-isle="mip"><b><span class="zh">汞之島</span><span class="en">Mercury Isle</span></b><small>MIP · <span class="zh">霧中</span><span class="en">In the mist</span></small></button>
+    <button class="isle-label open" data-isle="mip"><b><span class="zh">汞之島</span><span class="en">Mercury Isle</span></b><small>MIP · <span class="zh">壓汞試驗</span><span class="en">Mercury Intrusion Porosimetry</span></small></button>
     <button class="isle-label mist" data-isle="ga"><b><span class="zh">雲苔之庭</span><span class="en">Cloud-Moss Garden</span></b><small>GA · <span class="zh">霧中</span><span class="en">In the mist</span></small></button>
     <button class="isle-label mist" data-isle="ta"><b><span class="zh">熱之火山</span><span class="en">Ember Volcano</span></b><small>TA · <span class="zh">霧中</span><span class="en">In the mist</span></small></button>
     <button class="isle-label mist fog" data-isle="unk"><b><span class="zh">無名之霧</span><span class="en">Nameless Mist</span></b><small>? · <span class="zh">未來單元</span><span class="en">Future unit</span></small></button>
@@ -516,12 +516,18 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
       <p class="meta"><span class="zh">客串：噗芙 · 手機遊玩請改用「手機版」連結</span><span class="en">Cameo: Puff · on a phone, use the mobile link</span> · <a href="https://chuntaoc.github.io/pcam/" target="_blank" rel="noopener"><span class="zh">手機版</span><span class="en">Mobile version</span> ↗</a></p>
       <a class="go" data-url="https://news.concrete.tw/2026/10/rts-puffs-star-shard-adventure-taipei.html"></a>
     </section>
-    <section data-isle="mip" data-icon="drop" class="misty">
+    <section data-isle="mip" data-icon="drop">
       <h2><span class="zh">汞之島</span><span class="en">Mercury Isle</span></h2>
       <p class="unit">Mercury Intrusion Porosimetry · <span class="zh">壓汞試驗</span></p>
-      <p class="hook"><span class="en">"Something silver refuses to get wet…"</span><span class="zh">有個銀色的東西，拒絕被沾濕……</span></p>
-      <p class="mistnote"><span class="zh">這座島還在霧中，即將開放。</span><span class="en">This island is still in the mist. Coming soon.</span></p>
-      <p class="meta"><span class="zh">霧教授：「まだですよ。再等一下。」</span><span class="en">Prof. Kiri: "Not yet. Just a little longer."</span></p>
+      <p class="hook"><span class="en">"Push harder, and I'll squeeze into smaller pores."</span><span class="zh">壓得越用力，我就鑽得進越小的孔。</span></p>
+      <p class="game"><span class="zh">遊戲：</span><span class="en">Game: </span>汞流突襲 Mercury Raiders</p>
+      <ul>
+        <li><span class="en">The Washburn equation D = −4γcosθ / P, contact angle and pore-size conversion</span><span class="zh">Washburn 方程式、接觸角與孔徑換算</span></li>
+        <li><span class="en">Critical pore diameter (dV/dlogD peak), equilibration time and porosity</span><span class="zh">臨界孔徑（dV/dlogD 峰值）、平衡時間與孔隙率</span></li>
+        <li><span class="en">Hysteresis, entrapped mercury, the ink-bottle effect, sample drying and mercury safety</span><span class="zh">遲滯與殘留汞、墨水瓶效應、試樣前處理與汞安全</span></li>
+      </ul>
+      <p class="meta"><span class="zh">客串：汐里學姊、Hg 醬 · 5 關（含 Boss 墨水瓶魔像）· 單人</span><span class="en">Cameo: Shiori and Hg-chan · 5 stages incl. the Ink-Bottle Golem boss · single player</span></p>
+      <a class="go" data-url="https://news.concrete.tw/2026/11/mercury-raiders.html"></a>
     </section>
     <section data-isle="ga" data-icon="cloud" class="misty">
       <h2><span class="zh">雲苔之庭</span><span class="en">Cloud-Moss Garden</span></h2>
@@ -592,8 +598,13 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
     <p data-t="port-n"><span class="en">Three islands, one night. Gather the shards of what you have learned. The bridge opens only after the festival.</span><span class="zh">三座島，一個夜晚。把學過的碎片撿回來，祭典結束後，橋才會打開。</span></p>
     <p data-t="port-q" data-who="ren"><span class="en">Festival first, exam second… right?</span><span class="zh">先祭典，再考試……對吧？</span></p>
     <!-- MIST teasers -->
-    <p data-t="mip-s1"><span class="zh">霧裡傳來水滴聲。一顆銀色水珠滾上岸，又縮回霧中。</span><span class="en">A drip in the mist. A silver bead rolls ashore, then shrinks back.</span></p>
-    <p data-t="mip-n"><span class="en">Something silver refuses to get wet… Not yet. Soon.</span><span class="zh">有個銀色的東西，拒絕被沾濕……還不是時候，快了。</span></p>
+    <!-- MIP -->
+    <p data-t="mip-s1"><span class="zh">霧散了。銀色的汞之潟湖環抱著一座多孔岩島，汞珠在岩面上滾成圓球，不肯沾濕。</span><span class="en">The mist lifts. A silver lagoon rings an island of porous rock; mercury beads up on the stone and refuses to wet it.</span></p>
+    <p data-t="mip-s2"><span class="zh">壓力計的指針開始上升：汞先灌進大孔，壓力越高，才擠得進越小的孔。</span><span class="en">The pressure gauge climbs: mercury floods the large pores first, and only higher pressure forces it into smaller ones.</span></p>
+    <p data-t="mip-s3"><span class="zh">釋壓，汞退回潟湖，但退汞曲線沒有原路返回，幾顆汞珠被困在墨水瓶孔裡發著光。</span><span class="en">Pressure released. The mercury drains back, but the extrusion curve never retraces its path; a few beads stay trapped in ink-bottle pores.</span></p>
+    <p data-t="mip-s4"><span class="zh">山的陰影裡，一雙眼睛睜開，墨水瓶魔像正在扭曲數據。</span><span class="en">In the mountain's shadow a pair of eyes opens: the Ink-Bottle Golem is bending the data.</span></p>
+    <p data-t="mip-n"><span class="en">Mercury will not wet the pore walls, so we must push it in. The pressure tells us the size of the door, not the size of the room behind it. Remember that.</span><span class="zh">汞不會潤濕孔壁，所以得用壓力把它推進去。壓力告訴我們的是「門」有多大，不是門後的「房間」有多大。記住這一點。</span></p>
+    <p data-t="mip-q" data-who="merc"><span class="en">Wait, so a big room behind a tiny door counts as a tiny pore?!</span><span class="zh">等等，所以小門後面的大房間，會被算成小孔？！</span></p>
     <p data-t="ga-s1"><span class="zh">霧中一片苔蘚，露珠一層一層地凝結。</span><span class="en">Moss in the mist; dew gathers, one layer after another.</span></p>
     <p data-t="ga-n"><span class="en">One layer, then another… You'll count them one day.</span><span class="zh">一層，再一層……總有一天你會數清楚它們。</span></p>
     <p data-t="ta-s1"><span class="zh">霧的後面，火山口閃過一陣紅光。</span><span class="en">Behind the mist, the crater flickers red.</span></p>
@@ -609,6 +620,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
     <p class="quote"><span class="en">Habit hints at structure. Only diffraction proves it.</span><span class="zh">晶體外觀只暗示結構，唯有繞射能證明它。</span></p>
     <p class="quote"><span class="en">A smaller spot is not free: you pay for it in signal.</span><span class="zh">更小的束斑不是免費的，代價是訊號。</span></p>
     <p class="quote"><span class="en">Ask what the instrument saw before you ask what the material is.</span><span class="zh">先問儀器看見了什麼，再問材料是什麼。</span></p>
+    <p class="quote"><span class="en">MIP measures the throat, not the pore body. Ink bottles will fool you if you let them.</span><span class="zh">MIP 量到的是喉道，不是孔體。一不小心，墨水瓶就會騙過你。</span></p>
     <p class="quote"><span class="en">Precision grows with √N: double it, and you count four times as long.</span><span class="zh">精度與 √N 成正比：要加倍，就得數四倍久。</span></p>
 
     <!-- omikuji results -->
@@ -623,6 +635,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
     <p data-t="trk-xrd"><span class="zh">布拉格夜曲（爵士）</span><span class="en">Bragg Nocturne (jazz)</span></p>
     <p data-t="trk-sem"><span class="zh">微光花園圓舞曲</span><span class="en">Glimmer Garden Waltz</span></p>
     <p data-t="trk-port"><span class="zh">星屑祭（祭囃子）</span><span class="en">Stardust Festival (matsuri)</span></p>
+    <p data-t="trk-mip"><span class="zh">汞流突襲（加壓進行曲）</span><span class="en">Mercury Raid (pressure march)</span></p>
     <p data-t="trk-mist"><span class="zh">霧中（都節）</span><span class="en">In the Mist (miyako-bushi)</span></p>
     <p data-t="fs-new"><span class="zh">這個瀏覽器無法在頁內全螢幕，已改開新分頁。</span><span class="en">This browser can't go fullscreen here, so the map opened in a new tab.</span></p>
     <p data-t="gpu-on"><span class="zh">WebGPU 運作中</span><span class="en">WebGPU active</span></p>
@@ -770,6 +783,21 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
       <div class="sl" data-dur="7"><h4><span class="zh">港口小提醒</span><span class="en">Harbor tips</span></h4>
         <p><span class="zh">回到港邊神社，每天可以抽一支籤複習一題。期中考後，這裡會改為「複習港」。</span><span class="en">Come back to the harbor shrine for one review question a day. After the midterm, this becomes the Review Harbor.</span></p></div>
     </section>
+    <section data-isle="mip" data-game="汞流突襲 Mercury Raiders">
+      <div class="sl" data-dur="9"><h4><span class="zh">序章 · 新進汞探員</span><span class="en">Prologue · The new mercury agent</span></h4>
+        <p class="story"><span class="zh">你是 AEML 實驗室的新進「汞探員」。在汐里學姊與汞精靈 Hg 醬的帶領下，用壓汞儀潛入玻璃珠、水泥漿體與 LC3 的孔隙世界。</span><span class="en">You are the newest mercury agent at AEML. Guided by senior student Shiori and the mercury sprite Hg-chan, you use the porosimeter to raid the pore worlds of glass beads, cement paste and LC3.</span></p>
+        <p class="story"><span class="zh">孔隙深處潛伏著「墨水瓶魔像」，它會把大孔藏在小喉道後面，扭曲你的數據。</span><span class="en">Deep in the pores lurks the Ink-Bottle Golem, hiding large pores behind narrow throats and bending your data.</span></p></div>
+      <div class="sl" data-dur="10"><h4><span class="zh">你將學到</span><span class="en">What you will learn</span></h4>
+        <ul><li><span class="zh">Washburn 方程式 D = −4γcosθ / P；γ = 0.485 N/m、θ = 130° 時，D (µm) ≈ 1.247 / P (MPa)</span><span class="en">The Washburn equation D = −4γcosθ / P; with γ = 0.485 N/m and θ = 130°, D (µm) ≈ 1.247 / P (MPa)</span></li>
+        <li><span class="zh">接觸角 130° 與 140° 相差約 19% 孔徑；臨界孔徑與 dV/dlogD 峰值</span><span class="en">130° vs. 140° shifts pore size by about 19%; the critical pore diameter and the dV/dlogD peak</span></li>
+        <li><span class="zh">平衡時間、遲滯與殘留汞、墨水瓶效應、前處理（烘乾 vs. 溶劑置換）、孔隙率與汞安全</span><span class="en">Equilibration time, hysteresis and entrapped mercury, the ink-bottle effect, drying vs. solvent exchange, porosity and mercury safety</span></li></ul></div>
+      <div class="sl" data-dur="9"><h4><span class="zh">玩法</span><span class="en">How to play</span></h4>
+        <p><span class="zh">選擇步幅（細步 ×1.5、中步 ×3、快速 ×12）後加壓，汞依 Washburn 方程式侵入孔隙，右側即時畫出累積侵入曲線。結束加壓後退汞，在曲線上標出臨界孔徑並回答觀念題。加壓太快會產生「未平衡點」扣分。</span><span class="en">Pick a step (fine ×1.5, medium ×3, fast ×12) and press to pressurise; mercury intrudes by the Washburn equation and the cumulative curve draws live. Stop to extrude, mark the critical pore diameter on the curve and answer the concept questions. Pressing too fast leaves unequilibrated points that cost you.</span></p>
+        <p class="keys">← → / A D <span class="zh">步幅</span><span class="en">step</span> · Space / Enter <span class="zh">加壓</span><span class="en">pressurise</span> · Backspace / X <span class="zh">退汞</span><span class="en">extrude</span> · Esc / P <span class="zh">暫停</span><span class="en">pause</span></p></div>
+      <div class="sl" data-dur="9"><h4><span class="zh">五個關卡與強化卡</span><span class="en">Five stages and power-up cards</span></h4>
+        <p class="chips"><i><span class="zh">玻璃珠堆積體</span><span class="en">Glass-bead pack</span></i><i>OPC w/c 0.50</i><i>OPC w/c 0.35</i><i>LC3 w/c 0.50</i><i><span class="zh">Boss・墨水瓶迷宮</span><span class="en">Boss · Ink-Bottle Maze</span></i></p>
+        <p><span class="zh">每關結算後從 7 張強化卡選一張，例如 dV/dlogD 透視鏡、精密步進器、通風櫥。Boss 戰中汞蒸氣警報響起時，答對安全題才能壓制魔像。手機可開啟螢幕搖桿。</span><span class="en">After each stage pick one of 7 power-up cards, such as the dV/dlogD Lens, the Precision Stepper or the Fume Hood. In the boss fight, answer the safety question when the mercury-vapour alarm sounds to pin the Golem down. Phones can turn on an on-screen gamepad.</span></p></div>
+    </section>
   </div>
 
   <!-- title screen -->
@@ -805,7 +833,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
       <table class="set-table">
         <tr><th><span class="zh">語言</span><span class="en">Language</span></th><td class="seg" data-key="lang"><button data-v="zh">中文</button><button data-v="both">中文/English</button><button data-v="en">English</button></td></tr>
         <tr><th><span class="zh">背景音樂</span><span class="en">Music</span></th><td class="seg" data-key="bgm"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
-        <tr><th><span class="zh">曲目</span><span class="en">Track</span></th><td class="seg wrap" data-key="track"><button data-v="auto"><span class="zh">依場景轉換</span><span class="en">Follow the scene</span></button><button data-v="title"><span class="zh">序曲</span><span class="en">Prelude</span></button><button data-v="map"><span class="zh">測之海</span><span class="en">Sea of Measurement</span></button><button data-v="pa"><span class="zh">篩之梯田</span><span class="en">Sieve Terraces</span></button><button data-v="xrd"><span class="zh">布拉格夜曲</span><span class="en">Bragg Nocturne</span></button><button data-v="sem"><span class="zh">微光圓舞曲</span><span class="en">Glimmer Waltz</span></button><button data-v="port"><span class="zh">星屑祭</span><span class="en">Stardust Festival</span></button><button data-v="mist"><span class="zh">霧中</span><span class="en">In the Mist</span></button></td></tr>
+        <tr><th><span class="zh">曲目</span><span class="en">Track</span></th><td class="seg wrap" data-key="track"><button data-v="auto"><span class="zh">依場景轉換</span><span class="en">Follow the scene</span></button><button data-v="title"><span class="zh">序曲</span><span class="en">Prelude</span></button><button data-v="map"><span class="zh">測之海</span><span class="en">Sea of Measurement</span></button><button data-v="pa"><span class="zh">篩之梯田</span><span class="en">Sieve Terraces</span></button><button data-v="xrd"><span class="zh">布拉格夜曲</span><span class="en">Bragg Nocturne</span></button><button data-v="sem"><span class="zh">微光圓舞曲</span><span class="en">Glimmer Waltz</span></button><button data-v="port"><span class="zh">星屑祭</span><span class="en">Stardust Festival</span></button><button data-v="mip"><span class="zh">汞流突襲</span><span class="en">Mercury Raid</span></button><button data-v="mist"><span class="zh">霧中</span><span class="en">In the Mist</span></button></td></tr>
         <tr><th><span class="zh">音效</span><span class="en">Sound FX</span></th><td class="seg" data-key="sfx"><button data-v="0"><span class="zh">關閉</span><span class="en">Off</span></button><button data-v="1"><span class="zh">開啟</span><span class="en">On</span></button></td></tr>
         <tr><th><span class="zh">主音量</span><span class="en">Master volume</span></th><td><input type="range" min="0" max="100" data-key="vMaster"></td></tr>
         <tr><th><span class="zh">音樂音量</span><span class="en">Music volume</span></th><td><input type="range" min="0" max="100" data-key="vMusic"></td></tr>
@@ -835,7 +863,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
         <div class="slot" data-isle="xrd"><div class="seal"></div><span class="zh">晶之島</span><span class="en">Crystal</span></div>
         <div class="slot" data-isle="sem"><div class="seal"></div><span class="zh">微光之島</span><span class="en">Glimmer</span></div>
         <div class="slot" data-isle="port"><div class="seal"></div><span class="zh">星屑港</span><span class="en">Harbor</span></div>
-        <div class="slot locked" data-isle="mip"><div class="seal"></div><span class="zh">汞之島</span><span class="en">Mercury</span></div>
+        <div class="slot" data-isle="mip"><div class="seal"></div><span class="zh">汞之島</span><span class="en">Mercury</span></div>
         <div class="slot locked" data-isle="ga"><div class="seal"></div><span class="zh">雲苔之庭</span><span class="en">Moss</span></div>
         <div class="slot locked" data-isle="ta"><div class="seal"></div><span class="zh">熱之火山</span><span class="en">Ember</span></div>
       </div>
@@ -894,7 +922,7 @@ body[data-lang="both"] .lx-slide .chips .en,body[data-lang="both"] .lx-slide .ke
 (function () {
 "use strict";
 var OWNER = "AEML, NTUST";
-var BUILD = "2026.10.31-c";
+var BUILD = "2026.11.03-a";
 
 function $(s, r) { return (r || document).querySelector(s); }
 function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -930,7 +958,7 @@ var ISLES = [
   { id: "xrd",  x: 640,  y: 235, size: 300, state: "open", scene: "xrd",  bell: 76, noren: "#3c4677", icon: "crystal" },
   { id: "sem",  x: 1000, y: 335, size: 300, state: "open", scene: "sem",  bell: 79, noren: "#7a3d5c", icon: "flower" },
   { id: "port", x: 1345, y: 440, size: 315, state: "open", scene: "port", bell: 81, noren: "#9a2e28", icon: "star" },
-  { id: "mip",  x: 1235, y: 725, size: 270, state: "mist", scene: "mist", bell: 69, noren: "#56657e", icon: "drop" },
+  { id: "mip",  x: 1235, y: 725, size: 285, state: "open", scene: "mip",  bell: 72, noren: "#4b5f78", icon: "drop" },
   { id: "ga",   x: 865,  y: 745, size: 270, state: "mist", scene: "mist", bell: 67, noren: "#56657e", icon: "cloud" },
   { id: "ta",   x: 495,  y: 725, size: 270, state: "mist", scene: "mist", bell: 64, noren: "#56657e", icon: "flame" },
   { id: "unk",  x: 150,  y: 735, size: 230, state: "fog",  scene: "mist", bell: 62, noren: "#56657e", icon: "mist" }
@@ -1274,7 +1302,8 @@ var LANTERNS = {
   pa: [[-0.05, -0.17], [0.14, 0.02], [-0.2, 0.1]],
   xrd: [[0.08, -0.08], [-0.12, 0.06], [0.16, 0.1]],
   sem: [[0.12, -0.04], [-0.1, 0.08], [0.2, 0.15]],
-  port: [[-0.15, 0.2], [-0.05, 0.16], [0.08, -0.04], [-0.2, -0.06]]
+  port: [[-0.15, 0.2], [-0.05, 0.16], [0.08, -0.04], [-0.2, -0.06]],
+  mip: [[0.13, 0.02], [0.2, 0.02], [-0.02, -0.04]]
 };
 var lanternLit = 1;
 function drawIsles(t) {
@@ -1578,6 +1607,9 @@ function lxSpawn(e) {
   } else if (id === "port") {
     if (e > LX.next) { LX.next = e + 1.2 + r() * 1.4; var fx = w * (0.15 + r() * 0.7), fy = h * (0.15 + r() * 0.3), col = ["255,214,140", "242,184,198", "235,110,95", "200,230,255"][Math.floor(r() * 4)]; for (var q = 0; q < 46; q++) { var a = q / 46 * 6.283, sp = 90 + r() * 70; P.push({ k: "spark", x: fx, y: fy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 1.8, age: 0, c: col }); } sfx("pop"); }
     if (r() < 0.15) P.push({ k: "lantern", x: r() * w, y: h + 20, vx: (r() - 0.5) * 6, vy: -(14 + r() * 12), life: 30, ph: r() * 6 });
+  } else if (id === "mip") {
+    if (r() < 0.07) P.push({ k: "bead", x: r() * w, y: -20, vx: (r() - 0.5) * 50, vy: 40 + r() * 60, s: 3 + r() * 7, life: 16, b: 0 });
+    if (r() < 0.04) P.push({ k: "ring", x: w * (0.1 + r() * 0.8), y: h * (0.55 + r() * 0.35), life: 2.2, age: 0 });
   }
 }
 function petalPart(w, h) { var r = Math.random; return { k: "petal", x: -20 - r() * 40, y: r() * h * 0.7, vx: 40 + r() * 40, vy: 25 + r() * 30, rot: r() * 6, vr: (r() - 0.5) * 4, s: 5 + r() * 5, life: 14, sw: r() * 6 }; }
@@ -1589,6 +1621,11 @@ function drawLaunchFx(e) {
     g.save(); g.globalCompositeOperation = "lighter";
     for (var k = 0; k < 5; k++) { var a = -Math.PI / 2 + Math.sin(e * 0.25 + k * 1.3) * 0.9; var gr = g.createLinearGradient(w * 0.7, -40, w * 0.7 + Math.cos(a) * h * 1.4, -40 - Math.sin(a) * h * 1.4); gr.addColorStop(0, "rgba(255,240,200,0.22)"); gr.addColorStop(1, "rgba(255,240,200,0)"); g.fillStyle = gr; g.beginPath(); g.moveTo(w * 0.7, -40); g.lineTo(w * 0.7 + Math.cos(a - 0.05) * h * 1.6, -40 - Math.sin(a - 0.05) * h * 1.6); g.lineTo(w * 0.7 + Math.cos(a + 0.05) * h * 1.6, -40 - Math.sin(a + 0.05) * h * 1.6); g.closePath(); g.fill(); }
     g.restore();
+  }
+  if (id === "mip") {
+    var lv = h * (0.97 - 0.07 * (0.5 + 0.5 * Math.sin(e * 0.5))), sg = g.createLinearGradient(0, lv, 0, h);
+    sg.addColorStop(0, "rgba(205,212,226,0.55)"); sg.addColorStop(1, "rgba(120,130,150,0.65)"); g.fillStyle = sg; g.fillRect(0, lv, w, h - lv);
+    g.fillStyle = "rgba(255,255,255,0.7)"; g.fillRect(0, lv, w, 1.2);
   }
   if (id === "sem") {
     var sy = ((e * 0.12) % 1) * h; g.fillStyle = "rgba(200,230,255,0.10)"; g.fillRect(0, sy - 40, w, 40); g.fillStyle = "rgba(200,230,255,0.5)"; g.fillRect(0, sy, w, 1.2);
@@ -1604,6 +1641,14 @@ function drawLaunchFx(e) {
     else if (p.k === "glint") { var f = Math.sin(p.age / p.life * Math.PI); g.save(); g.globalAlpha = f; g.fillStyle = "#fff8e0"; g.translate(p.x, p.y); g.rotate(0.785); g.fillRect(-p.s, -0.6, p.s * 2, 1.2); g.fillRect(-0.6, -p.s, 1.2, p.s * 2); g.restore(); }
     else if (p.k === "mote") { var a2 = Math.min(1, p.age) * (1 - p.age / p.life); var gg = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.s * 4); gg.addColorStop(0, "rgba(" + p.c + "," + a2.toFixed(2) + ")"); gg.addColorStop(1, "rgba(" + p.c + ",0)"); g.fillStyle = gg; g.beginPath(); g.arc(p.x, p.y, p.s * 4, 0, 7); g.fill(); }
     else if (p.k === "spark") { p.vy += 60 * DT; p.vx *= 0.985; p.vy *= 0.985; var a3 = 1 - p.age / p.life; g.fillStyle = "rgba(" + p.c + "," + a3.toFixed(2) + ")"; g.beginPath(); g.arc(p.x, p.y, 2.2, 0, 7); g.fill(); }
+    else if (p.k === "bead") {
+      p.vy += 260 * DT; var floor = h * 0.9;
+      if (p.y + p.s > floor && p.vy > 0) { p.y = floor - p.s; p.vy *= -0.55; p.vx *= 0.9; p.b++; if (p.b < 3 && p.s > 6 && Math.random() < 0.5) sfx("drop"); if (p.b > 5) p.age = p.life; }
+      var bg = g.createRadialGradient(p.x - p.s * 0.35, p.y - p.s * 0.4, 0, p.x, p.y, p.s);
+      bg.addColorStop(0, "rgba(255,255,255,0.98)"); bg.addColorStop(0.5, "rgba(190,198,212,0.95)"); bg.addColorStop(1, "rgba(95,104,122,0.95)");
+      g.fillStyle = bg; g.beginPath(); g.ellipse(p.x, p.y, p.s * (p.b && p.vy < 0 && p.y > floor - p.s * 1.3 ? 1.15 : 1), p.s * (p.b && p.vy < 0 && p.y > floor - p.s * 1.3 ? 0.85 : 1), 0, 0, 7); g.fill();
+    }
+    else if (p.k === "ring") { var q2 = p.age / p.life; g.strokeStyle = "rgba(200,212,232," + (0.6 * (1 - q2)).toFixed(2) + ")"; g.lineWidth = 1.5; g.beginPath(); g.ellipse(p.x, p.y, 8 + q2 * 70, 3 + q2 * 18, 0, 0, 7); g.stroke(); }
     else if (p.k === "lantern") { var fl = 0.7 + 0.3 * Math.sin(e * 3 + p.ph); var lg = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, 22); lg.addColorStop(0, "rgba(255,206,120," + (0.6 * fl).toFixed(2) + ")"); lg.addColorStop(1, "rgba(255,206,120,0)"); g.fillStyle = lg; g.beginPath(); g.arc(p.x, p.y, 22, 0, 7); g.fill(); g.fillStyle = "rgba(255,236,190,0.95)"; g.fillRect(p.x - 4, p.y - 6, 8, 10); }
   }
 }
@@ -1769,12 +1814,79 @@ function star(x, y, r, col, ph) {
   ctx.closePath(); ctx.fill();
 }
 FX.mip = function (i, t) {
-  var cx = i.x, cy = i.y, R = i.size / 2;
-  var sx = cx - R * 0.65, sy = cy + R * 0.4, ex = cx - R * 0.22, ey = cy + R * 0.3;
-  var f = t < 2.6 ? easeOut(t / 2.6) : t < 4.6 ? 1 - ease((t - 2.6) / 2) : 0;
-  var r = 7 * (t < 4.6 ? 1 : Math.max(0, 1 - (t - 4.6)));
-  if (r > 0) drawMerc(lerp(sx, ex, f), lerp(sy, ey, f) - Math.abs(Math.sin(t * 5)) * 3, r, t);
-  [0.5, 3.0].forEach(function (tt) { var e = t - tt; if (e < 0 || e > 1.6) return; ctx.strokeStyle = "rgba(255,255,255," + (0.7 * (1 - e / 1.6)).toFixed(2) + ")"; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.ellipse(sx + 10, sy + 6, 6 + e * 26, 2 + e * 8, 0, 0, 7); ctx.stroke(); });
+  var cx = i.x, cy = i.y, R = i.size / 2, k, e;
+  if (i.state !== "open") {
+    var sx0 = cx - R * 0.65, sy0 = cy + R * 0.4, ex0 = cx - R * 0.22, ey0 = cy + R * 0.3;
+    var f0 = t < 2.6 ? easeOut(t / 2.6) : t < 4.6 ? 1 - ease((t - 2.6) / 2) : 0, r0 = 7 * (t < 4.6 ? 1 : Math.max(0, 1 - (t - 4.6)));
+    if (r0 > 0) drawMerc(lerp(sx0, ex0, f0), lerp(sy0, ey0, f0) - Math.abs(Math.sin(t * 5)) * 3, r0, t);
+    return;
+  }
+  tint(t, 0.22, "rgba(30,40,62,");
+  /* pressure 0..1: rises 3.0-6.8 s, falls 7.0-8.4 s */
+  var P = t < 3 ? 0 : t < 6.8 ? ease((t - 3) / 3.8) : t < 7 ? 1 : Math.max(0, 1 - (t - 7) / 1.4);
+  var rising = t < 7;
+  /* pores on the porous rocks (relative to the island art) */
+  if (!FX._mip) FX._mip = prand(53, 46, function (r) {
+    var rock = [[-0.24, 0.07, 0.1], [-0.08, 0.06, 0.09], [0.07, 0.13, 0.08], [-0.17, 0.12, 0.07]][Math.floor(r() * 4)];
+    var a = r() * 6.283, d = Math.sqrt(r()) * rock[2];
+    var sz = 0.15 + r() * 0.85, ink = r() < 0.18;
+    return { x: rock[0] + Math.cos(a) * d * 1.3, y: rock[1] + Math.sin(a) * d * 0.6, s: sz, ink: ink, th: ink ? 0.12 + r() * 0.2 : sz };
+  });
+  FX._mip.forEach(function (p) {
+    var x = cx + p.x * i.size, y = cy + p.y * i.size, rr = 1.6 + p.s * 4.2;
+    var need = 1 - p.th, full = rising ? clamp((P - need) / 0.12, 0, 1) : (p.ink ? 1 : clamp((P - (1 - p.s)) / 0.12, 0, 1));
+    if (!rising && p.ink && t > 3) full = 1;
+    ctx.fillStyle = "rgba(30,34,44,0.55)"; ctx.beginPath(); ctx.ellipse(x, y, rr, rr * 0.78, 0, 0, 7); ctx.fill();
+    if (full > 0) {
+      var g = ctx.createRadialGradient(x - rr * 0.35, y - rr * 0.35, 0, x, y, rr);
+      g.addColorStop(0, "rgba(255,255,255," + (0.95 * full).toFixed(2) + ")"); g.addColorStop(0.45, "rgba(196,204,216," + (0.9 * full).toFixed(2) + ")"); g.addColorStop(1, "rgba(110,120,138," + (0.9 * full).toFixed(2) + ")");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(x, y, rr * full, rr * 0.78 * full, 0, 0, 7); ctx.fill();
+    }
+    if (p.ink && t > 7.6) { var bl = 0.55 + 0.45 * Math.sin(t * 5 + p.x * 40); ctx.strokeStyle = "rgba(255,214,90," + (bl * Math.min(1, (t - 7.6) * 2)).toFixed(2) + ")"; ctx.lineWidth = 1.4; ctx.strokeRect(x - rr - 2.5, y - rr - 2.5, rr * 2 + 5, rr * 2 + 5); }
+  });
+  /* rising silver tide in the lagoon */
+  if (P > 0) { ctx.save(); ctx.globalCompositeOperation = "lighter"; var lg = ctx.createRadialGradient(cx, cy + R * 0.22, R * 0.3, cx, cy + R * 0.22, R * 0.95); lg.addColorStop(0, "rgba(200,210,230,0)"); lg.addColorStop(1, "rgba(200,210,230," + (0.22 * P).toFixed(3) + ")"); ctx.fillStyle = lg; ctx.beginPath(); ctx.ellipse(cx, cy + R * 0.22, R * 0.95, R * 0.5, 0, 0, 7); ctx.fill(); ctx.restore(); }
+  /* Merc beads up and rolls in (non-wetting) */
+  if (t < 3.4) { var f = easeOut(clamp(t / 2.4, 0, 1)); drawMerc(lerp(cx - R * 0.8, cx - R * 0.42, f), cy + R * 0.42 - Math.abs(Math.sin(t * 6)) * 4 * (1 - f), 7, t); }
+  /* pressure gauge (top left) */
+  var gx = cx - R * 1.22, gy = cy - R * 0.05, gr = R * 0.2, ga = Math.min(1, Math.max(0, (t - 2.4) * 1.5));
+  if (ga > 0) {
+    ctx.globalAlpha = ga;
+    ctx.fillStyle = "rgba(250,247,240,0.92)"; ctx.strokeStyle = "#2b3a55"; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(gx, gy, gr, 0, 7); ctx.fill(); ctx.stroke();
+    for (k = 0; k <= 8; k++) { var aa = Math.PI * 0.75 + k / 8 * Math.PI * 1.5; ctx.strokeStyle = k > 6 ? "#c0392b" : "#2b3a55"; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(gx + Math.cos(aa) * gr * 0.72, gy + Math.sin(aa) * gr * 0.72); ctx.lineTo(gx + Math.cos(aa) * gr * 0.88, gy + Math.sin(aa) * gr * 0.88); ctx.stroke(); }
+    var na = Math.PI * 0.75 + (P + (P > 0.05 && rising ? Math.sin(t * 30) * 0.008 : 0)) * Math.PI * 1.5;
+    ctx.strokeStyle = "#c0392b"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(gx, gy); ctx.lineTo(gx + Math.cos(na) * gr * 0.8, gy + Math.sin(na) * gr * 0.8); ctx.stroke();
+    ctx.fillStyle = "#2b3a55"; ctx.beginPath(); ctx.arc(gx, gy, 2.4, 0, 7); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  /* intrusion / extrusion curve drawn in the sky (top right) */
+  var bx = cx + R * 1.0, by = cy - R * 0.3, bw = R * 0.66, bh = R * 0.42, ba = Math.min(1, Math.max(0, (t - 3) * 1.5));
+  if (ba > 0) {
+    ctx.globalAlpha = ba * 0.9;
+    ctx.fillStyle = "rgba(250,247,240,0.85)"; ctx.fillRect(bx - 6, by - 6, bw + 12, bh + 12);
+    ctx.strokeStyle = "#2b3a55"; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx, by + bh); ctx.lineTo(bx + bw, by + bh); ctx.stroke();
+    var S1 = function (u) { return 1 / (1 + Math.exp(-(u - 0.55) * 11)); };
+    var nIn = rising ? P : 1;
+    ctx.strokeStyle = "#4a6fa5"; ctx.lineWidth = 2; ctx.beginPath();
+    for (k = 0; k <= 40 * nIn; k++) { var u = k / 40, X = bx + u * bw, Y = by + bh - S1(u) * bh * 0.9; if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); }
+    ctx.stroke();
+    if (!rising) {
+      var back = 1 - P; ctx.strokeStyle = "#d9534f"; ctx.lineWidth = 2; ctx.beginPath();
+      for (k = 0; k <= 40 * back; k++) { var u2 = 1 - k / 40, X2 = bx + u2 * bw, Y2 = by + bh - (0.38 + 0.62 * S1(u2 + 0.18)) * bh * 0.9 * (u2 > 0.05 ? 1 : 1); if (k === 0) ctx.moveTo(X2, Y2); else ctx.lineTo(X2, Y2); }
+      ctx.stroke();
+    }
+    if (t > 5.2) { var cpx = bx + 0.55 * bw, cpa = Math.min(1, (t - 5.2) * 2); ctx.setLineDash([3, 3]); ctx.strokeStyle = "rgba(201,169,97," + cpa.toFixed(2) + ")"; ctx.beginPath(); ctx.moveTo(cpx, by); ctx.lineTo(cpx, by + bh); ctx.stroke(); ctx.setLineDash([]); }
+    ctx.globalAlpha = 1;
+  }
+  /* the Ink-Bottle Golem stirs in the mountain's shadow */
+  if (t > 9.6) {
+    e = Math.min(1, (t - 9.6) / 1.2); var hx = cx - R * 0.02, hy = cy - R * 0.32;
+    var sh = ctx.createRadialGradient(hx, hy, 0, hx, hy, R * 0.32); sh.addColorStop(0, "rgba(20,24,40," + (0.45 * e).toFixed(2) + ")"); sh.addColorStop(1, "rgba(20,24,40,0)");
+    ctx.fillStyle = sh; ctx.beginPath(); ctx.arc(hx, hy, R * 0.32, 0, 7); ctx.fill();
+    var blink = (t % 3.2) < 0.12 ? 0.15 : 1;
+    [-1, 1].forEach(function (sd) { var ex2 = hx + sd * R * 0.07, ey2 = hy; var eg = ctx.createRadialGradient(ex2, ey2, 0, ex2, ey2, 9); eg.addColorStop(0, "rgba(255,226,120," + (e * 0.95).toFixed(2) + ")"); eg.addColorStop(1, "rgba(255,180,60,0)"); ctx.fillStyle = eg; ctx.beginPath(); ctx.arc(ex2, ey2, 9, 0, 7); ctx.fill(); ctx.fillStyle = "rgba(255,246,210," + e.toFixed(2) + ")"; ctx.beginPath(); ctx.ellipse(ex2, ey2, 3.2, 3.2 * blink, 0, 0, 7); ctx.fill(); });
+  }
 };
 FX.ga = function (i, t) {
   var cx = i.x, cy = i.y, R = i.size / 2;
@@ -1898,10 +2010,17 @@ function startCloseup() {
     if (id === "xrd") { [4.0, 5.5, 7.0].forEach(function (tt, k) { schedule(tt, function () { sfx("bell", 79 + k * 3); }); }); }
     if (id === "pa") schedule(3.0, function () { sfx("grains"); });
     if (id === "sem") schedule(2.4, function () { sfx("scan"); });
+    if (id === "mip") {
+      schedule(0.6, function () { sfx("drop"); }); schedule(1.4, function () { sfx("drop"); });
+      schedule(3.0, function () { sfx("press"); });
+      [3.6, 4.3, 5.0, 5.6, 6.1, 6.5].forEach(function (tt, k) { schedule(tt, function () { sfx("gulp", k); }); });
+      schedule(7.0, function () { sfx("hiss"); });
+      schedule(8.2, function () { sfx("bell", 88); });
+      schedule(10.0, function () { sfx("rumble"); });
+    }
   } else {
     schedule(0.1, function () { showShot(id + "-s1"); });
     if (S.hints) schedule(1.5, function () { sayKey(id + "-n", 4300); });
-    if (id === "mip") { schedule(0.5, function () { sfx("drop"); }); schedule(3.0, function () { sfx("drop"); }); }
     schedule(0.4, function () { sfx("muted"); });
   }
   schedule(cut.len, openCard);
@@ -1973,7 +2092,7 @@ function stampIsle() {
   if (!P.stamps[isle.id]) {
     P.stamps[isle.id] = 1; save(); refreshStamps();
     st.classList.add("done", "pop"); sfx("stamp");
-    var all = ["pa", "xrd", "sem", "port"].every(function (k) { return P.stamps[k]; });
+    var all = ["pa", "xrd", "sem", "port", "mip"].every(function (k) { return P.stamps[k]; });
     if (S.hints) sayKey(all ? "all-stamped" : "stamped", 3200);
   } else { st.classList.remove("pop"); void st.offsetWidth; st.classList.add("pop"); sfx("stamp"); }
 }
@@ -2369,8 +2488,8 @@ var DRUM_PAN = { kick: 0, snare: 0.05, brush: 0.1, hat: 0.32, taiko: -0.08, wood
 var TRACKS = ["koto", "piano", "flute", "shamisen", "bass", "pad", "bell", "box"];
 var PAN = { koto: -0.45, piano: 0.18, flute: 0.32, shamisen: -0.22, bass: 0, pad: 0, bell: 0.55, box: -0.6 };
 var REV = { koto: 0.35, piano: 0.3, flute: 0.45, shamisen: 0.2, bass: 0.05, pad: 0.5, bell: 0.6, box: 0.5, drums: 0.15 };
-var YO = [0, 2, 5, 7, 9], MAJP = [0, 2, 4, 7, 9], MINYO = [0, 3, 5, 7, 10], MIYAKO = [0, 1, 5, 7, 8], DORIAN = [0, 2, 3, 5, 7, 9, 10], LYDIAN = [0, 2, 4, 6, 7, 9, 11];
-var TRACK_IDS = ["title", "map", "pa", "xrd", "sem", "port", "mist"];
+var HIRA = [0, 2, 3, 7, 8], YO = [0, 2, 5, 7, 9], MAJP = [0, 2, 4, 7, 9], MINYO = [0, 3, 5, 7, 10], MIYAKO = [0, 1, 5, 7, 8], DORIAN = [0, 2, 3, 5, 7, 9, 10], LYDIAN = [0, 2, 4, 6, 7, 9, 11];
+var TRACK_IDS = ["title", "map", "pa", "xrd", "sem", "port", "mip", "mist"];
 var SCENES = {
   title: { style: "ambient", bpm: 62, root: 62, scale: YO, prog: [0, 3, 1, 4], lead: "flute", leadOct: 4, counter: "koto", rhythm: [8, 12, 16, 6, 8], rest: 0.1,
     mix: { koto: 0.75, piano: 0.3, flute: 0.65, shamisen: 0, bass: 0.4, pad: 0.75, bell: 0.45, box: 0.35, drums: 0.3 },
@@ -2390,6 +2509,9 @@ var SCENES = {
   port: { style: "matsuri", bpm: 144, root: 67, scale: YO, prog: [0, 3, 4, 0], lead: "flute", leadOct: 4, counter: "shamisen", rhythm: [1, 1, 2, 2, 1, 3], rest: 0.05,
     mix: { koto: 0.55, piano: 0.15, flute: 0.85, shamisen: 0.7, bass: 0.6, pad: 0.3, bell: 0.45, box: 0.25, drums: 1 },
     drum: { taiko: "x..x..x.x.x..x.x", kick: "x...x...x...x...", wood: "..x...x...x...x.", hat: "xxxxxxxxxxxxxxxx", snare: "....x.......x..x" }, fill: "taiko" },
+  mip: { style: "march", bpm: 118, root: 62, scale: HIRA, prog: [0, 0, 3, 2, 0, 0, 4, 3], lead: "piano", leadOct: 4, counter: "koto", rhythm: [2, 2, 1, 1, 4, 2, 3], rest: 0.14,
+    mix: { koto: 0.6, piano: 0.75, flute: 0.35, shamisen: 0.45, bass: 0.9, pad: 0.45, bell: 0.5, box: 0.45, drums: 0.85 },
+    drum: { kick: "x.....x...x.....", snare: "....x.......x..x", hat: "x.xxx.xxx.xxx.xx", wood: "x...x...x...x..." }, fill: "snare" },
   mist: { style: "mist", bpm: 52, root: 57, scale: MIYAKO, prog: [0, 3, 2, 0], lead: "flute", leadOct: 3, counter: "", rhythm: [12, 16, 8, 6], rest: 0.25,
     mix: { koto: 0.5, piano: 0.15, flute: 0.7, shamisen: 0, bass: 0.35, pad: 0.85, bell: 0.35, box: 0.1, drums: 0.35 },
     drum: { taiko: "x..............." } }
@@ -2444,12 +2566,14 @@ function buildLoop(name) {
     else if (st === "waltz") add(base, "bass", R2, 4, 0.8);
     else if (st === "matsuri") { add(base, "bass", R2, 3, 0.85); add(base + 4, "bass", F2, 3, 0.7); add(base + 8, "bass", R2 + 12, 3, 0.75); add(base + 12, "bass", F2, 3, 0.7); }
     else if (st === "mist" && b % 2 === 0) add(base, "bass", R2, spb * 2, 0.6);
+    else if (st === "march") { for (var kb = 0; kb < spb; kb += 2) add(base + kb, "bass", kb === 6 || kb === 14 ? R2 + 12 : R2, 1.6, kb % 4 === 0 ? 0.9 : 0.62); }
     /* piano */
     var voice = ch.concat([rt + 4]);
     if (st === "lofi") { voice.forEach(function (c) { add(base, "piano", noteOf(sc, c, 3), 6, 0.42); }); if (b % 2) voice.forEach(function (c) { add(base + 7, "piano", noteOf(sc, c + 1, 3), 4, 0.35); }); }
     else if (st === "jazz") { [2, 6, 7, 10, 14].forEach(function (k) { if (r() < 0.45) voice.forEach(function (c) { add(base + k, "piano", noteOf(sc, c, 3), 2, 0.4); }); }); }
     else if (st === "waltz") { [4, 8].forEach(function (k) { ch.slice(0, 3).forEach(function (c) { add(base + k, "piano", noteOf(sc, c, 4), 3, 0.32); }); }); }
     else if (st === "ambient" && b % 2 === 0) ch.forEach(function (c) { add(base, "piano", noteOf(sc, c, 3), 12, 0.3); });
+    else if (st === "march" && sec !== 2) [3, 11].forEach(function (k) { ch.forEach(function (c) { add(base + k, "piano", noteOf(sc, c, 3), 1, 0.3); }); });
     /* koto */
     if (st === "ambient") { for (var k = 0; k < spb; k += 2) add(base + k, "koto", noteOf(sc, ch[0] + [0, 1, 2, 3, 4, 3, 2, 1][(k / 2) % 8], 4), 3, 0.5); }
     else if (st === "lofi" && b % 2 === 1) { for (var k1 = 12; k1 < 16; k1++) add(base + k1, "koto", noteOf(sc, 2 * n - (k1 - 12), 4), 1, 0.45); }
@@ -2457,6 +2581,9 @@ function buildLoop(name) {
     else if (st === "matsuri") { for (var k2 = 8; k2 < 16; k2++) add(base + k2, "koto", noteOf(sc, ch[2] + n, 3), 1, 0.3 + (k2 % 2) * 0.1); }
     else if (st === "mist") { for (var k3 = 0; k3 < spb; k3 += 4) if (r() < 0.3) add(base + k3, "koto", noteOf(sc, ch[Math.floor(r() * 3)] + n, 3), 8, 0.5); }
     else if (st === "waltz" && b % 2 === 0) add(base, "koto", noteOf(sc, ch[2] + n, 4), 6, 0.35);
+    else if (st === "march" && (b % 4 === 3 || sec === 2)) { for (var k8 = 0; k8 < 8; k8++) add(base + 8 + k8, "koto", noteOf(sc, ch[0] + k8, 3), 1, 0.3 + k8 * 0.05); }
+    if (st === "march" && sec === 2) { add(base, "pad", noteOf(sc, rt + n, 4), spb, 0.5); [2, 6, 10, 14].forEach(function (k) { add(base + k, "shamisen", noteOf(sc, ch[1] + n, 3), 1, 0.5); }); }
+    if (st === "march" && b % 2 === 1) [5, 13].forEach(function (k) { if (r() < 0.7) add(base + k, "box", noteOf(sc, ch[Math.floor(r() * 3)] + 2 * n, 4), 1, 0.35); });
     /* shamisen backing */
     if (st === "matsuri") [2, 6, 10, 14].forEach(function (k) { add(base + k, "shamisen", noteOf(sc, ch[Math.floor(r() * 3)] + n, 3), 1, 0.55); });
     if (st === "lofi" && b === 5) [0, 3, 6].forEach(function (k) { add(base + k, "shamisen", noteOf(sc, rt + n, 3), 1, 0.4); });
@@ -2561,6 +2688,10 @@ function sfx(name, arg) {
     else if (name === "shake") { for (var k = 0; k < 7; k++) DRUM.shaker(t + k * 0.07, 2.2, out); DRUM.wood(t + 0.55, 0.8, out); }
     else if (name === "paper") { g = gainN(0); n = noiseSrc(t, t + 0.3); f = biq("bandpass", 2400, 0.7); n.connect(f); f.connect(g); g.connect(out); env(g, t, 0.01, 0.25, 0.2); }
     else if (name === "grains") { for (var j = 0; j < 22; j++) { var tt = t + j * 0.18 + Math.random() * 0.1; DRUM.wood(tt, 0.25 + Math.random() * 0.25, out); } }
+    else if (name === "press") { g = gainN(0); var po = osc("sawtooth", 55, t, t + 4.2); po.frequency.exponentialRampToValueAtTime(260, t + 3.8); f = biq("lowpass", 300, 4); f.frequency.setValueAtTime(260, t); f.frequency.exponentialRampToValueAtTime(1600, t + 3.8); po.connect(f); f.connect(g); g.connect(out); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.08, t + 0.6); g.gain.linearRampToValueAtTime(0.12, t + 3.6); g.gain.linearRampToValueAtTime(0.0001, t + 4.1); }
+    else if (name === "gulp") { var gf = 420 + (arg || 0) * 120; g = gainN(0); var go = osc("sine", gf * 0.6, t, t + 0.18); go.frequency.exponentialRampToValueAtTime(gf, t + 0.09); go.connect(g); g.connect(out); env(g, t, 0.004, 0.22, 0.13); }
+    else if (name === "hiss") { g = gainN(0); n = noiseSrc(t, t + 1.8); f = biq("highpass", 2500); f.frequency.setValueAtTime(5000, t); f.frequency.exponentialRampToValueAtTime(1200, t + 1.6); n.connect(f); f.connect(g); g.connect(out); env(g, t, 0.02, 0.28, 1.5); DRUM.wood(t + 1.5, 0.6, out); }
+    else if (name === "rumble") { g = gainN(0); var ro = osc("sine", 48, t, t + 2.4); var rl = osc("sine", 6, t, t + 2.4), rg = gainN(10); rl.connect(rg); rg.connect(ro.frequency); ro.connect(g); g.connect(out); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.4, t + 0.5); g.gain.linearRampToValueAtTime(0.0001, t + 2.3); DRUM.taiko(t + 0.1, 0.6, out); }
     else if (name === "scan") { g = gainN(0); var so = osc("sine", 880, t, t + 6); var lf = osc("square", 7, t, t + 6), lg = gainN(30); lf.connect(lg); lg.connect(so.frequency); so.connect(g); g.connect(out); g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.05, t + 0.4); g.gain.linearRampToValueAtTime(0.0001, t + 6); }
   } catch (e) {}
 }
